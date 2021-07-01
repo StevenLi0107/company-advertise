@@ -21,7 +21,7 @@ const ContactUs = () => {
   const handleChangeForm = (e) => {
     setForm({
       ...form,
-      [e.target.name]: e.target.valeu,
+      [e.target.name]: e.target.value,
     });
   };
 
