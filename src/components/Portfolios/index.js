@@ -1,9 +1,10 @@
 import React from 'react';
-import { IconButton } from '@material-ui/core';
+import { IconButton, Box, Button } from '@material-ui/core';
 import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline';
-import PortfolioCard from '../PortfolioCard';
+import PortfolioCard from './PortfolioCard';
 import { useStyles } from './styles';
 import { mock } from './mock';
+import { CardDnd } from '../CardDnd';
 
 const Portfolios = () => {
   const [formState, setFormState] = React.useState(mock);
@@ -17,20 +18,48 @@ const Portfolios = () => {
     [formState],
   );
 
+  const moveCard = React.useCallback(
+    (dragIndex, hoverIndex) => {
+      const dragCard = formState[dragIndex];
+
+      const coppiedStateArray = [...formState];
+
+      const prevItem = coppiedStateArray.splice(hoverIndex, 1, dragCard);
+
+      coppiedStateArray.splice(dragIndex, 1, prevItem[0]);
+
+      setFormState(coppiedStateArray);
+    },
+    [formState],
+  );
+
   return (
     <>
-      <IconButton aria-label="add">
-        <AddCircleOutlineIcon />
-        Add
-      </IconButton>
+      <Box display="flex" justifyContent="space-between">
+        <IconButton aria-label="add">
+          <AddCircleOutlineIcon />
+          Add
+        </IconButton>
+        <Button variant="contained" color="primary">
+          Save
+        </Button>
+      </Box>
+
       <hr />
-      {formState.map((portfolio) => (
-        <PortfolioCard
-          key={portfolio.id + portfolio.title}
-          portfolio={portfolio}
-          handleDeletePortfolio={handleDeletePortfolio}
-        />
-      ))}
+      <Box className={classes.content}>
+        {formState.map((portfolio, index) => (
+          <CardDnd
+            key={portfolio.id + portfolio.title}
+            id={portfolio.id}
+            index={index}
+            moveCard={moveCard}>
+            <PortfolioCard
+              portfolio={portfolio}
+              handleDeletePortfolio={handleDeletePortfolio}
+            />
+          </CardDnd>
+        ))}
+      </Box>
     </>
   );
 };

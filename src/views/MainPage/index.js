@@ -5,13 +5,17 @@ import MainHeader from '../../components/MainHeader';
 import OurCases from '../../components/OurCases';
 import OurClients from '../../components/OurClients';
 import './index.css';
+import { useSelector } from 'react-redux';
 
 const MainPage = () => {
+  const isActiveLogosSection = useSelector(
+    (state) => state.adminReducer.isActiveLogosSection,
+  );
   return (
     <div>
       <MainHeader />
       <HeaderContainer />
-      <OurClients />
+      {isActiveLogosSection && <OurClients />}
       <OurCases />
       <ContactUs />
     </div>

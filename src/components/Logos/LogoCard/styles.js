@@ -4,8 +4,10 @@ export const useStyles = makeStyles((theme) => ({
   subtitle: {
     fontSize: 12,
   },
-  content: {
-    overflow: 'auto',
-    height: '87vh',
+  companyLogo: {
+    marginRight: 20,
+    width: 50,
+    height: 50,
+    background: '#f2eded',
   },
 }));

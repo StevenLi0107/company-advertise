@@ -1,14 +1,14 @@
 import React from 'react';
 import { useStyles } from './styles';
 import { Typography, Box, TextField } from '@material-ui/core';
-import ListItem from '../ListItem';
+import ListItem from '../../ListItem';
 
-const PortfolioCard = ({ portfolio, handleDeletePortfolio }) => {
-  const [formState, setFormstate] = React.useState(portfolio);
+const LogoCard = ({ company, handleDeleteCompany }) => {
+  const [formState, setFormstate] = React.useState(company);
   const [isEditing, setIsEditing] = React.useState(false);
   const classes = useStyles();
 
-  const { title, description } = formState;
+  const { companyName, url } = formState;
 
   const handleChange = React.useCallback(
     ({ target: { name, value } }) => {
@@ -23,8 +23,8 @@ const PortfolioCard = ({ portfolio, handleDeletePortfolio }) => {
 
   return (
     <ListItem
-      id={portfolio.id}
-      handleDelete={handleDeletePortfolio}
+      id={company.id}
+      handleDelete={handleDeleteCompany}
       handleEdit={handleEdit}>
       <Box display="flex" flexDirection="column">
         {isEditing ? (
@@ -32,29 +32,21 @@ const PortfolioCard = ({ portfolio, handleDeletePortfolio }) => {
             <TextField
               variant="outlined"
               size="small"
-              name="title"
+              name="companyName"
               onChange={handleChange}
-              value={title}
-              placeholder="title"
-            />
-            <TextField
-              variant="outlined"
-              size="small"
-              name="description"
-              onChange={handleChange}
-              value={description}
-              placeholder="description"
+              value={companyName}
+              placeholder="companyName"
             />
           </Box>
         ) : (
-          <>
-            <Typography>{title}</Typography>
-            <span className={classes.subtitle}>{description}</span>
-          </>
+          <Box display="flex" alignItems="center">
+            <img className={classes.companyLogo} src={url} />
+            <Typography>{companyName}</Typography>
+          </Box>
         )}
       </Box>
     </ListItem>
   );
 };
 
-export default PortfolioCard;
+export default LogoCard;

@@ -1,7 +1,7 @@
 import React from 'react';
 import { useStyles } from './styles';
 import { Typography, Avatar, Box, TextField } from '@material-ui/core';
-import ListItem from '../ListItem';
+import ListItem from '../../ListItem';
 
 const UserCard = ({ user, handleDeleteUser }) => {
   const [formState, setFormstate] = React.useState(user);
