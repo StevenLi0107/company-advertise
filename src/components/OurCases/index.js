@@ -1,8 +1,10 @@
 import React from 'react';
 
-const OurCases = () => {
+const OurCases = ({ ref }) => {
   return (
-    <div className="WidthContainer-OuterContainer-module--cls2--2akaW WidthContainer-OuterContainer-module--cls1--1qDQ4">
+    <div
+      ref={ref}
+      className="WidthContainer-OuterContainer-module--cls2--2akaW WidthContainer-OuterContainer-module--cls1--1qDQ4">
       <div className="WidthContainer-InnerContainer-module--cls2--32dv6 WidthContainer-InnerContainer-module--cls1--1Ms9D">
         <div className="OurCases-Container-module--cls2--3r3Xq OurCases-Container-module--cls1--13szu">
           <h2 className="OurCases-CustomTitle-module--cls2--344Ju OurCases-CustomTitle-module--cls1--13kNv commonStyles-Title-module--cls2--34psA commonStyles-Title-module--cls1--2d40n">

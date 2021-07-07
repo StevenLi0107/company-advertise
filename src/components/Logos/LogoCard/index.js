@@ -3,12 +3,12 @@ import { useStyles } from './styles';
 import { Typography, Box, TextField } from '@material-ui/core';
 import ListItem from '../../ListItem';
 
-const LogoCard = ({ company, handleDeleteCompany }) => {
+const LogoCard = ({ company, handleDeleteCompany, handleChangeClientInfo }) => {
   const [formState, setFormstate] = React.useState(company);
   const [isEditing, setIsEditing] = React.useState(false);
   const classes = useStyles();
 
-  const { companyName, url } = formState;
+  const { name, url } = formState;
 
   const handleChange = React.useCallback(
     ({ target: { name, value } }) => {
@@ -18,6 +18,9 @@ const LogoCard = ({ company, handleDeleteCompany }) => {
   );
 
   const handleEdit = () => {
+    if (isEditing) {
+      handleChangeClientInfo(formState);
+    }
     setIsEditing(!isEditing);
   };
 
@@ -34,14 +37,14 @@ const LogoCard = ({ company, handleDeleteCompany }) => {
               size="small"
               name="companyName"
               onChange={handleChange}
-              value={companyName}
+              value={name}
               placeholder="companyName"
             />
           </Box>
         ) : (
           <Box display="flex" alignItems="center">
             <img className={classes.companyLogo} src={url} />
-            <Typography>{companyName}</Typography>
+            <Typography>{name}</Typography>
           </Box>
         )}
       </Box>

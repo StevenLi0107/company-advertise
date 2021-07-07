@@ -5,6 +5,12 @@ import Portfolios from '../../components/Portfolios';
 import VerticalTabs from '../../components/VerticalTabs';
 import People from '../../components/People';
 import Logos from '../../components/Logos';
+import { useSelector, useDispatch } from 'react-redux';
+import {
+  getClientsList,
+  getPortfoliosList,
+  getUserList,
+} from '../../redux/actions/adminAction';
 
 const configureTab = () => [
   {
@@ -30,6 +36,20 @@ const configureTab = () => [
 ];
 
 const AdminDetails = () => {
+  const dispatch = useDispatch();
+
+  // const usersList = useSelector((state) => state.adminReducer.usersList);
+  // const clientsList = useSelector((state) => state.adminReducer.clientsList);
+  // const portfoliosList = useSelector(
+  //   (state) => state.adminReducer.portfoliosList,
+  // );
+
+  React.useEffect(() => {
+    dispatch(getUserList());
+    dispatch(getPortfoliosList());
+    dispatch(getClientsList());
+  }, []);
+
   return (
     <Paper elevation={0} square>
       <Suspense fallback={<></>}>

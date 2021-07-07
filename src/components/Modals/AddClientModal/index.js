@@ -102,20 +102,18 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export const AddUserModal = memo(({ open, handleClose, handleAddUser }) => {
+export const AddClientModal = memo(({ open, handleClose, handleAddClient }) => {
   const classes = useStyles();
 
   const initialFormState = {
     name: '',
-    role: '',
-    url: '',
-    img: false,
+    img: '',
   };
 
   const [formState, setFormstate] = React.useState(initialFormState);
   const imgRef = React.useRef();
 
-  const { name, role, url } = formState;
+  const { name, url } = formState;
 
   const handleChange = React.useCallback(
     ({ target: { name, value } }) => {
@@ -125,14 +123,13 @@ export const AddUserModal = memo(({ open, handleClose, handleAddUser }) => {
   );
 
   const onSubmit = () => {
-    const newUser = {
+    const newClient = {
       // id: Date.now(),
       name: formState.name,
-      role: formState.role,
       img: formState.img,
     };
     onClose();
-    handleAddUser(newUser);
+    handleAddClient(newClient);
   };
 
   const handleUploadClick = () => {
@@ -167,7 +164,7 @@ export const AddUserModal = memo(({ open, handleClose, handleAddUser }) => {
       fullWidth
       onClose={onClose}>
       <Box mb="16px" display="flex" justifyContent="center">
-        <Typography className={classes.title}>Add User</Typography>
+        <Typography className={classes.title}>Add Client</Typography>
       </Box>
 
       <StyledDialogContent>
@@ -180,18 +177,7 @@ export const AddUserModal = memo(({ open, handleClose, handleAddUser }) => {
               name="name"
               onChange={handleChange}
               value={name}
-              placeholder="Name"
-            />
-          </FormControl>
-          <FormControl className={classes.formControl}>
-            <TextField
-              className={classes.textField}
-              variant="outlined"
-              size="medium"
-              name="role"
-              onChange={handleChange}
-              value={role}
-              placeholder="role"
+              placeholder="Company name"
             />
           </FormControl>
           <FormControl className={classes.formControl}>

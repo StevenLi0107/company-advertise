@@ -1,6 +1,6 @@
 import React from 'react';
 
-const ContactUs = () => {
+const ContactUs = ({ ref }) => {
   const [activeButtons, setActiveButtons] = React.useState([]);
   const [activeInputs, setActiveInputs] = React.useState([]);
   const fileRef = React.useRef();
@@ -41,7 +41,9 @@ const ContactUs = () => {
   };
 
   return (
-    <div class="WriteToUs-ColorContainer-module--cls2--1yHxW WriteToUs-ColorContainer-module--cls1--1WAkb">
+    <div
+      ref={ref}
+      class="WriteToUs-ColorContainer-module--cls2--1yHxW WriteToUs-ColorContainer-module--cls1--1WAkb">
       <div class="WidthContainer-OuterContainer-module--cls2--2akaW WidthContainer-OuterContainer-module--cls1--1qDQ4">
         <div class="WidthContainer-InnerContainer-module--cls2--32dv6 WidthContainer-InnerContainer-module--cls1--1Ms9D">
           <div class="WriteToUs-ContentContainer-module--cls2--34jXv WriteToUs-ContentContainer-module--cls1--2T6EL">

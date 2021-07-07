@@ -4356,6 +4356,7 @@ input::-webkit-contacts-auto-fill-button {
   color: #fff;
   text-transform: uppercase;
   position: relative;
+  cursor: pointer;
 }
 .HeaderLink-Link-module--cls2--vzGtU.HeaderLink-Link-module--active--3vJNl {
   color: #fc336f;

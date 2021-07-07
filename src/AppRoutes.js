@@ -4,6 +4,7 @@ import AdminDetails from './views/AdminDetails';
 import Login from './views/Login';
 import MainPage from './views/MainPage';
 import ApplyForJob from './components/ApplyForJob';
+import DevelopersPage from './views/DevelopersPage';
 
 const AppRoutes = () => {
   return (
@@ -11,6 +12,10 @@ const AppRoutes = () => {
       <Route path="/admin" render={(props) => <AdminDetails {...props} />} />
       <Route path="/login" render={(props) => <Login {...props} />} />
       <Route path="/apply" render={(props) => <ApplyForJob {...props} />} />
+      <Route
+        path="/developers"
+        render={(props) => <DevelopersPage {...props} />}
+      />
       <Route path="/" render={(props) => <MainPage {...props} />} />
     </Switch>
   );

@@ -1,17 +1,30 @@
 import React from 'react';
 import { IconButton, Box, Button } from '@material-ui/core';
 import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline';
-// import List from '../List';
 import { useStyles } from './styles';
 import { mock } from './mock';
 import { AddUserModal } from '../Modals/AddUserModal';
 import UserCard from './UserCard';
 import { CardDnd } from '../CardDnd';
+import { useSelector, useDispatch } from 'react-redux';
+import {
+  deleteUser,
+  addUser,
+  saveUsersOrder,
+  updateUser,
+  changeUsersOrder,
+} from '../../redux/actions/adminAction';
 
 const People = () => {
-  const [formState, setFormState] = React.useState(mock);
+  const usersList = useSelector((state) => state.adminReducer.usersList);
+  const initialState = React.useRef();
   const [openModal, setOpenModal] = React.useState(false);
+  const dispatch = useDispatch();
   const classes = useStyles();
+
+  React.useEffect(() => {
+    initialState.current = usersList;
+  }, []);
 
   const handleOpenModal = () => {
     setOpenModal(true);
@@ -21,35 +34,41 @@ const People = () => {
     setOpenModal(false);
   }, [openModal]);
 
-  const handleDeleteUser = React.useCallback(
-    (id) => {
-      const newUserList = formState.filter((user) => user.id !== id);
-      setFormState(newUserList);
-    },
-    [formState],
-  );
+  const handleDeleteUser = React.useCallback((id) => {
+    dispatch(deleteUser(id));
+  }, []);
 
-  const handleAddUser = React.useCallback(
-    (newUser) => {
-      setFormState([...formState, newUser]);
-    },
-    [formState],
-  );
+  const handleAddUser = React.useCallback((newUser) => {
+    dispatch(addUser(newUser));
+  }, []);
+
+  const handleChangeUserInfo = React.useCallback((user) => {
+    dispatch(updateUser(user));
+  }, []);
 
   const moveCard = React.useCallback(
     (dragIndex, hoverIndex) => {
-      const dragCard = formState[dragIndex];
+      const dragCard = usersList[dragIndex];
 
-      const coppiedStateArray = [...formState];
+      const coppiedStateArray = [...usersList];
 
       const prevItem = coppiedStateArray.splice(hoverIndex, 1, dragCard);
 
       coppiedStateArray.splice(dragIndex, 1, prevItem[0]);
 
-      setFormState(coppiedStateArray);
+      dispatch(changeUsersOrder(coppiedStateArray));
     },
-    [formState],
+    [usersList],
   );
+
+  const handleSave = () => {
+    dispatch(saveUsersOrder(usersList));
+  };
+
+  const isDisabledButton = React.useCallback(() => {
+    if (!usersList?.length || !initialState?.current?.length) return true;
+    return JSON.stringify(initialState.current) === JSON.stringify(usersList);
+  }, [usersList]);
 
   return (
     <>
@@ -58,25 +77,30 @@ const People = () => {
           <AddCircleOutlineIcon />
           Add
         </IconButton>
-        <Button variant="contained" color="primary">
+        <Button
+          disabled={isDisabledButton()}
+          onClick={handleSave}
+          variant="contained"
+          color="primary">
           Save
         </Button>
       </Box>
 
       <hr />
-      {formState.map((user, index) => (
-        <CardDnd
-          key={user.id + user.title}
-          id={user.id}
-          index={index}
-          moveCard={moveCard}>
-          <UserCard
-            key={user.id + user.firstName}
-            user={user}
-            handleDeleteUser={handleDeleteUser}
-          />
-        </CardDnd>
-      ))}
+      {usersList &&
+        usersList.map((user, index) => (
+          <CardDnd
+            key={user.id + user.name}
+            id={user.id}
+            index={index}
+            moveCard={moveCard}>
+            <UserCard
+              user={user}
+              handleDeleteUser={handleDeleteUser}
+              handleChangeUserInfo={handleChangeUserInfo}
+            />
+          </CardDnd>
+        ))}
       <AddUserModal
         open={openModal}
         handleClose={handleCloseModal}
@@ -86,4 +110,4 @@ const People = () => {
   );
 };
 
-export default People;
+export default React.memo(People);

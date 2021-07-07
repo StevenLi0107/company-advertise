@@ -1,6 +1,6 @@
 import React from 'react';
 
-const MainHeader = () => {
+const MainHeader = ({ scrollToElement }) => {
   const [scrollPosition, setScrollPosition] = React.useState(false);
 
   React.useEffect(() => {
@@ -219,41 +219,30 @@ l48.64-48.64C517.581,425.6,517.581,394.88,499.66,376.96z"></path>
             <div className="HeaderLink-RightContainer-module--cls2--GsD5t HeaderLink-RightContainer-module--cls1--1pFNp">
               <nav className="HeaderLink-LinkContainer-module--cls2--3driM HeaderLink-LinkContainer-module--cls1--1eSmk HeaderLink-LinkContainer-module--hide--2t9x1">
                 <a
-                  href="/"
+                  onClick={scrollToElement}
+                  id="main"
                   className="HeaderLink-Link-module--cls2--vzGtU HeaderLink-Link-module--cls1--McJKF HeaderLink-Link-module--active--3vJNl">
                   Главная
                 </a>
                 <a
-                  href="/Services/"
+                  onClick={scrollToElement}
+                  id="portfolio"
                   className="HeaderLink-Link-module--cls2--vzGtU HeaderLink-Link-module--cls1--McJKF">
-                  Услуги
+                  Портфолио
                 </a>
                 <a
-                  href="/Ru/Page/InDevelopment"
+                  href="/developers"
                   className="HeaderLink-Link-module--cls2--vzGtU HeaderLink-Link-module--cls1--McJKF">
-                  Кейсы
-                </a>
-                <a
-                  href="/Activity/"
-                  className="HeaderLink-Link-module--cls2--vzGtU HeaderLink-Link-module--cls1--McJKF">
-                  Мероприятия
-                </a>
-                <a
-                  href="https://Job.dex-it.ru"
-                  target="_blank"
-                  className="HeaderLink-Link-module--cls2--vzGtU HeaderLink-Link-module--cls1--McJKF">
-                  Вакансии
-                </a>
-                <a
-                  href="#writeToUs"
-                  className="HeaderLink-Link-module--cls2--vzGtU HeaderLink-Link-module--cls1--McJKF HeaderLink-Link-module--mobile--s8AZq">
-                  Контакты
+                  Разработчики
                 </a>
               </nav>
               <span>
                 <div className="HeaderLink-IconBurger-module--cls2--1k4-B HeaderLink-IconBurger-module--cls1--1fSrp"></div>
               </span>
-              <a className="HeaderLink-WhiteButton-module--cls2--1a7Fg HeaderLink-WhiteButton-module--cls1--2kzxS">
+              <a
+                onClick={scrollToElement}
+                id="contactUs"
+                className="HeaderLink-WhiteButton-module--cls2--1a7Fg HeaderLink-WhiteButton-module--cls1--2kzxS">
                 Оставить заявку
               </a>
             </div>

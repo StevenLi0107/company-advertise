@@ -5,60 +5,112 @@ import PortfolioCard from './PortfolioCard';
 import { useStyles } from './styles';
 import { mock } from './mock';
 import { CardDnd } from '../CardDnd';
+import { useSelector, useDispatch } from 'react-redux';
+import { AddPortfolioModal } from '../Modals/AddPortfolioModal';
+import {
+  addPortfolio,
+  changePortfoliosOrder,
+  deletePortfolio,
+  savePortfoliosOrder,
+  updatePortfolio,
+} from '../../redux/actions/adminAction';
 
 const Portfolios = () => {
-  const [formState, setFormState] = React.useState(mock);
+  const portfoliosList = useSelector(
+    (state) => state.adminReducer.portfoliosList,
+  );
+  const initialState = React.useRef();
+  const [openModal, setOpenModal] = React.useState(false);
+  const dispatch = useDispatch();
   const classes = useStyles();
 
-  const handleDeletePortfolio = React.useCallback(
-    (id) => {
-      const newPortfolioList = formState.filter((user) => user.id !== id);
-      setFormState(newPortfolioList);
-    },
-    [formState],
-  );
+  React.useEffect(() => {
+    initialState.current = portfoliosList;
+  }, []);
+
+  const handleOpenModal = () => {
+    setOpenModal(true);
+  };
+
+  const handleCloseModal = React.useCallback(() => {
+    setOpenModal(false);
+  }, [openModal]);
+
+  const handleDeletePortfolio = React.useCallback((id) => {
+    dispatch(deletePortfolio(id));
+  }, []);
+
+  const handleAddPortfolio = React.useCallback((newPortfolio) => {
+    dispatch(addPortfolio(newPortfolio));
+  }, []);
+
+  const handleChangePortfolioInfo = React.useCallback((portfolio) => {
+    dispatch(updatePortfolio(portfolio));
+  }, []);
 
   const moveCard = React.useCallback(
     (dragIndex, hoverIndex) => {
-      const dragCard = formState[dragIndex];
+      const dragCard = portfoliosList[dragIndex];
 
-      const coppiedStateArray = [...formState];
+      const coppiedStateArray = [...portfoliosList];
 
       const prevItem = coppiedStateArray.splice(hoverIndex, 1, dragCard);
 
       coppiedStateArray.splice(dragIndex, 1, prevItem[0]);
 
-      setFormState(coppiedStateArray);
+      dispatch(changePortfoliosOrder(coppiedStateArray));
     },
-    [formState],
+    [portfoliosList],
   );
+
+  const handleSave = () => {
+    dispatch(savePortfoliosOrder(portfoliosList));
+  };
+
+  const isDisabledButton = React.useCallback(() => {
+    if (!portfoliosList?.length || !initialState?.current?.length) return true;
+    return (
+      JSON.stringify(initialState.current) === JSON.stringify(portfoliosList)
+    );
+  }, [portfoliosList]);
 
   return (
     <>
       <Box display="flex" justifyContent="space-between">
-        <IconButton aria-label="add">
+        <IconButton onClick={handleOpenModal} aria-label="add">
           <AddCircleOutlineIcon />
           Add
         </IconButton>
-        <Button variant="contained" color="primary">
+        <Button
+          disabled={isDisabledButton()}
+          onClick={handleSave}
+          variant="contained"
+          color="primary">
           Save
         </Button>
       </Box>
 
       <hr />
       <Box className={classes.content}>
-        {formState.map((portfolio, index) => (
-          <CardDnd
-            key={portfolio.id + portfolio.title}
-            id={portfolio.id}
-            index={index}
-            moveCard={moveCard}>
-            <PortfolioCard
-              portfolio={portfolio}
-              handleDeletePortfolio={handleDeletePortfolio}
-            />
-          </CardDnd>
-        ))}
+        {portfoliosList &&
+          portfoliosList.map((portfolio, index) => (
+            <CardDnd
+              key={portfolio.id + portfolio.name}
+              id={portfolio.id}
+              index={index}
+              moveCard={moveCard}>
+              <PortfolioCard
+                portfolio={portfolio}
+                handleDeletePortfolio={handleDeletePortfolio}
+                handleChangePortfolioInfo={handleChangePortfolioInfo}
+              />
+            </CardDnd>
+          ))}
+        <AddPortfolioModal
+          open={openModal}
+          handleClose={handleCloseModal}
+          handleAddPortfolio={handleAddPortfolio}
+        />
       </Box>
     </>
   );

@@ -3,12 +3,12 @@ import { useStyles } from './styles';
 import { Typography, Avatar, Box, TextField } from '@material-ui/core';
 import ListItem from '../../ListItem';
 
-const UserCard = ({ user, handleDeleteUser }) => {
+const UserCard = ({ user, handleDeleteUser, handleChangeUserInfo }) => {
   const [formState, setFormstate] = React.useState(user);
   const [isEditing, setIsEditing] = React.useState(false);
   const classes = useStyles();
 
-  const { firstName, lastName, role, url } = formState;
+  const { name, role, url } = formState;
 
   const handleChange = React.useCallback(
     ({ target: { name, value } }) => {
@@ -18,6 +18,9 @@ const UserCard = ({ user, handleDeleteUser }) => {
   );
 
   const handleEdit = () => {
+    if (isEditing) {
+      handleChangeUserInfo(formState);
+    }
     setIsEditing(!isEditing);
   };
 
@@ -34,18 +37,10 @@ const UserCard = ({ user, handleDeleteUser }) => {
               <TextField
                 variant="outlined"
                 size="small"
-                name="firstName"
+                name="name"
                 onChange={handleChange}
-                value={firstName}
-                placeholder="firstName"
-              />
-              <TextField
-                variant="outlined"
-                size="small"
-                name="lastName"
-                onChange={handleChange}
-                value={lastName}
-                placeholder="lastName"
+                value={name}
+                placeholder="Name"
               />
               <TextField
                 variant="outlined"
@@ -53,15 +48,13 @@ const UserCard = ({ user, handleDeleteUser }) => {
                 name="role"
                 onChange={handleChange}
                 value={role}
-                placeholder="role"
+                placeholder="Role"
               />
             </Box>
           ) : (
             <>
-              <Typography>
-                {firstName} {lastName}
-              </Typography>
-              <span className={classes.subtitle}>{role}</span>
+              <Typography>{user.name}</Typography>
+              <span className={classes.subtitle}>{user.role}</span>
             </>
           )}
         </Box>
