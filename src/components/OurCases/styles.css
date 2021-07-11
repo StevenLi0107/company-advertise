@@ -175,7 +175,7 @@
   align-items: center;
   text-align: left;
 
-  margin-top: 59px;
+  margin-top: 30px;
   margin-left: 144px;
   margin-right: 76px;
 
@@ -222,6 +222,7 @@
 
 .client-service-list {
   margin-top: 10px;
+  margin-bottom: 15px;
   margin-left: 145px;
 
   font-family: "tommy-thin";

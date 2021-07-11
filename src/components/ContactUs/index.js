@@ -137,6 +137,7 @@ const ContactUs = ({ ref }) => {
   const fileRef = useRef();
 
   const handleActiveButtons = (num) => {
+    console.log("handleActiveButtons:", num);
     if (activeButtons.some((n) => n === num)) {
       return setActiveButtons((prev) => prev.filter((n) => n !== num));
     }
@@ -184,6 +185,8 @@ const ContactUs = ({ ref }) => {
   };
 
   const handleSubmit = () => {
+    if (isSending) return;
+
     const a = Object.entries(form).map(([key, value]) =>
       !isEmpty(value.text)
         ? { ...value, key }
@@ -245,7 +248,6 @@ const ContactUs = ({ ref }) => {
       setAttachFileFailed(false);
       setIsSending(false);
       setForm(initForm);
-      dispatch({ type: TYPES.SEND_MSG_REQUEST, payload: null });
     }
     if (isSendFailed) {
       setIsSending(false);
@@ -358,8 +360,9 @@ const ContactUs = ({ ref }) => {
                 <div
                   onClick={handleActiveButtons.bind(null, index)}
                   className={
-                    activeButtons.some((num) => num === index) &&
-                    "contact-service-item-active"
+                    activeButtons.some((num) => num === index)
+                      ? "contact-service-item-active"
+                      : "contact-service-item-deactive"
                   }
                 >
                   {item.label}

@@ -221,9 +221,8 @@
   font-family: "tommy-light";
 }
 
-.contact-service div {
+.contact-service-item-deactive {
   display: inline-block;
-  /* color: #e2e2e1; */
   background: #e2e2e1;
   background-clip: text;
   -webkit-background-clip: text;
@@ -231,29 +230,17 @@
   cursor: pointer;
 }
 
-.contact-service div:hover {
+.contact-service-item-active,
+.contact-service-item-deactive:hover {
   display: inline-block;
-  background: -webkit-linear-gradient(
-    300.83deg,
+  background: linear-gradient(
+    137.83deg,
     #dec8a7 15.11%,
     #f3963a 37.03%,
     #e37b00 62.01%,
     #b03b31 87.72%
   );
-  background-clip: text;
-  -webkit-background-clip: text;
-  color: transparent;
-  cursor: pointer;
-}
 
-.contact-service-item-active {
-  background: -webkit-linear-gradient(
-    300.83deg,
-    #dec8a7 15.11%,
-    #f3963a 37.03%,
-    #e37b00 62.01%,
-    #b03b31 87.72%
-  );
   background-clip: text;
   -webkit-background-clip: text;
   color: transparent;

@@ -109,7 +109,7 @@
 }
 
 .about-color-pattern {
-  opacity: 80%;
+  /* opacity: 0.8; */
   width: 43%;
   display: flex;
   justify-content: center;
