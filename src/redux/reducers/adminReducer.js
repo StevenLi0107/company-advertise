@@ -2,45 +2,8 @@ import * as TYPES from '../actions/types';
 
 const initialState = {
   isActiveLogosSection: true,
-  usersList: [
-    {
-      id: 1,
-      name: 'John Doe',
-      role: 'admin',
-      url:
-        'https://avataaars.io/?avatarStyle=Circle&topType=LongHairStraight&accessoriesType=Blank&hairColor=BrownDark&facialHairType=Blank&clotheType=BlazerShirt&eyeType=Default&eyebrowType=Default&mouthType=Default&skinColor=Light',
-    },
-    {
-      id: 2,
-      name: 'Michael Jordan',
-      role: 'admin',
-    },
-    {
-      id: 3,
-      name: 'Joe Biden',
-      role: 'admin',
-      url:
-        'https://avataaars.io/?avatarStyle=Circle&topType=LongHairStraight&accessoriesType=Blank&hairColor=BrownDark&facialHairType=Blank&clotheType=BlazerShirt&eyeType=Default&eyebrowType=Default&mouthType=Default&skinColor=Light',
-    },
-  ],
-  clientsList: [
-    {
-      id: 1,
-      name: 'Roshen',
-      url: false,
-    },
-    {
-      id: 2,
-      name: 'MTC',
-      url: false,
-    },
-    {
-      id: 3,
-      name: 'Nokia',
-      url:
-        'https://avataaars.io/?avatarStyle=Circle&topType=LongHairStraight&accessoriesType=Blank&hairColor=BrownDark&facialHairType=Blank&clotheType=BlazerShirt&eyeType=Default&eyebrowType=Default&mouthType=Default&skinColor=Light',
-    },
-  ],
+  usersList: [],
+  clientsList: [],
   portfoliosList: [],
   loading: false,
   success: false,
@@ -94,7 +57,12 @@ export default function (state = initialState, action) {
         loading: false,
         error: null,
         success: true,
-        usersList: action.payload,
+        usersList: state.usersList.map((user) => {
+          if (user.id === action.payload.id) {
+            return action.payload;
+          }
+          return user;
+        }),
       };
     case TYPES.CHANGE_USERS_ORDER:
       return {
@@ -110,7 +78,7 @@ export default function (state = initialState, action) {
         loading: false,
         error: null,
         success: true,
-        usersList: action.payload,
+        usersList: [...state.usersList, action.payload],
       };
     case TYPES.SAVE_USERS_ORDER_SUCCESS:
       return {
@@ -126,7 +94,9 @@ export default function (state = initialState, action) {
         loading: false,
         error: null,
         success: true,
-        usersList: action.payload,
+        usersList: state.usersList.filter(
+          (user) => user.id !== action.payload.id,
+        ),
       };
 
     case TYPES.GET_PORTFOLIOS_LIST_SUCCESS:
@@ -143,7 +113,12 @@ export default function (state = initialState, action) {
         loading: false,
         error: null,
         success: true,
-        portfoliosList: action.payload,
+        portfoliosList: state.portfoliosList.map((portfolio) => {
+          if (portfolio.id === action.payload.id) {
+            return action.payload;
+          }
+          return portfolio;
+        }),
       };
     case TYPES.ADD_PORTFOLIO_SUCCESS:
       return {
@@ -151,7 +126,7 @@ export default function (state = initialState, action) {
         loading: false,
         error: null,
         success: true,
-        portfoliosList: action.payload,
+        portfoliosList: [...state.portfoliosList, action.payload],
       };
     case TYPES.CHANGE_PORTFOLIOS_ORDER:
       return {
@@ -175,7 +150,9 @@ export default function (state = initialState, action) {
         loading: false,
         error: null,
         success: true,
-        portfoliosList: action.payload,
+        portfoliosList: state.portfoliosList.filter(
+          (portfolio) => portfolio.id !== action.payload.id,
+        ),
       };
 
     case TYPES.GET_CLIENTS_LIST_SUCCESS:
@@ -192,7 +169,12 @@ export default function (state = initialState, action) {
         loading: false,
         error: null,
         success: true,
-        clientsList: action.payload,
+        clientsList: state.clientsList.map((client) => {
+          if (client.id === action.payload.id) {
+            return action.payload;
+          }
+          return client;
+        }),
       };
     case TYPES.ADD_CLIENT_SUCCESS:
       return {
@@ -200,7 +182,7 @@ export default function (state = initialState, action) {
         loading: false,
         error: null,
         success: true,
-        clientsList: action.payload,
+        clientsList: [...state.clientsList, action.payload],
       };
     case TYPES.CHANGE_CLIENTS_ORDER:
       return {
@@ -224,7 +206,9 @@ export default function (state = initialState, action) {
         loading: false,
         error: null,
         success: true,
-        clientsList: action.payload,
+        clientsList: state.clientsList.filter(
+          (user) => user.id !== action.payload.id,
+        ),
       };
 
     case TYPES.GET_USERS_LIST_ERROR:

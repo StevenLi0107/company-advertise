@@ -40,6 +40,7 @@ export default function Logos() {
   }, [openModal]);
 
   const handleAddClient = React.useCallback((newClient) => {
+    console.log(newClient);
     dispatch(addClient(newClient));
   }, []);
 

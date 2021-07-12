@@ -1,15 +1,36 @@
 import React from 'react';
+import { applyForJob } from '../../redux/actions/formsActions';
+import { getBase64 } from '../../utils/base64';
+import { useDispatch } from 'react-redux';
+import { isEmpty } from '../../utils/stringUtils';
 
 const ApplyForJob = () => {
   const [activeButtons, setActiveButtons] = React.useState([]);
   const [activeInputs, setActiveInputs] = React.useState([]);
   const fileRef = React.useRef();
   const [form, setForm] = React.useState({
-    name: '',
-    email: '',
-    number: '',
-    hourlyRate: '',
+    name: {
+      text: '',
+      error: false,
+    },
+    email: {
+      text: '',
+      error: false,
+    },
+    phoneNumber: {
+      text: '',
+      error: false,
+    },
+    rate: {
+      text: '',
+      error: false,
+    },
+    attachment: {
+      name: '',
+      body: '',
+    },
   });
+  const dispatch = useDispatch();
 
   const handleActiveButtons = (num) => {
     if (activeButtons.some((n) => n === num)) {
@@ -21,7 +42,10 @@ const ApplyForJob = () => {
   const handleChangeForm = (e) => {
     setForm({
       ...form,
-      [e.target.name]: e.target.valeu,
+      [e.target.name]: {
+        ...form[e.target.name],
+        text: e.target.value,
+      },
     });
   };
 
@@ -33,11 +57,51 @@ const ApplyForJob = () => {
   };
 
   const handleAttachOnChange = () => {
-    console.log(fileRef.current.files);
+    const _file = fileRef.current.files[0];
+    if (_file.size > 26000000) {
+      return alert('Размер файла должен быть меньше 25МБ');
+    }
+    getBase64(_file)
+      .then((res) =>
+        setForm((prev) => {
+          return {
+            ...prev,
+            attachment: {
+              name: _file.name,
+              body: res,
+            },
+          };
+        }),
+      )
+      .catch((e) => console.log(e));
   };
 
   const handleAttachClick = () => {
     fileRef.current.click();
+  };
+
+  const handleSubmit = () => {
+    const a = Object.entries(form).map(([key, value]) =>
+      !isEmpty(value.text)
+        ? { ...value, key }
+        : {
+            ...value,
+            error: true,
+            key,
+          },
+    );
+    if (a.some((el) => el.error)) {
+      const b = a.reduce((acum, item) => {
+        return {
+          ...acum,
+          [item.key]: {
+            ...item,
+          },
+        };
+      }, {});
+      setForm(b);
+    }
+    dispatch(applyForJob(form));
   };
 
   return (
@@ -128,7 +192,7 @@ const ApplyForJob = () => {
                         Имя
                       </span>
                       <input
-                        value={form.name}
+                        value={form.name.text}
                         onChange={handleChangeForm}
                         onFocus={handleActiveInput.bind(null, 0)}
                         onBlur={handleActiveInput.bind(null, 0)}
@@ -136,7 +200,12 @@ const ApplyForJob = () => {
                         class="Input-InputText-module--cls2--1y9p_ Input-InputText-module--cls1--1lNxY"
                       />
                     </label>
-                    <div class="WriteToUsForm-Error-module--cls2--3DVeU WriteToUsForm-Error-module--cls1--38RV1">
+                    <div
+                      className={`WriteToUsForm-Error-module--cls2--3DVeU WriteToUsForm-Error-module--cls1--38RV1 ${
+                        form.name.error
+                          ? 'WriteToUsForm-Error-module--active--1KhNh'
+                          : ''
+                      }`}>
                       Пожалуйста, введите Ваше имя
                     </div>
                   </div>
@@ -150,7 +219,7 @@ const ApplyForJob = () => {
                       </span>
                       <input
                         type="email"
-                        value={form.email}
+                        value={form.email.text}
                         onChange={handleChangeForm}
                         onFocus={handleActiveInput.bind(null, 1)}
                         onBlur={handleActiveInput.bind(null, 1)}
@@ -158,8 +227,13 @@ const ApplyForJob = () => {
                         class="Input-InputText-module--cls2--1y9p_ Input-InputText-module--cls1--1lNxY"
                       />
                     </label>
-                    <div class="WriteToUsForm-Error-module--cls2--3DVeU WriteToUsForm-Error-module--cls1--38RV1">
-                      Пожалуйста, введите Ваше имя
+                    <div
+                      className={`WriteToUsForm-Error-module--cls2--3DVeU WriteToUsForm-Error-module--cls1--38RV1 ${
+                        form.email.error
+                          ? 'WriteToUsForm-Error-module--active--1KhNh'
+                          : ''
+                      }`}>
+                      Пожалуйста, вашу почту
                     </div>
                   </div>
                   <div class="WriteToUsForm-InputWrapper-module--cls2--3HVds WriteToUsForm-InputWrapper-module--cls1--3XTyl">
@@ -172,15 +246,20 @@ const ApplyForJob = () => {
                       </span>
                       <input
                         type="number"
-                        value={form.number}
+                        value={form.phoneNumber.text}
                         onChange={handleChangeForm}
                         onFocus={handleActiveInput.bind(null, 2)}
                         onBlur={handleActiveInput.bind(null, 2)}
-                        name="number"
+                        name="phoneNumber"
                         class="Input-InputText-module--cls2--1y9p_ Input-InputText-module--cls1--1lNxY"
                       />
                     </label>
-                    <div class="WriteToUsForm-Error-module--cls2--3DVeU WriteToUsForm-Error-module--cls1--38RV1">
+                    <div
+                      className={`WriteToUsForm-Error-module--cls2--3DVeU WriteToUsForm-Error-module--cls1--38RV1 ${
+                        form.phoneNumber.error
+                          ? 'WriteToUsForm-Error-module--active--1KhNh'
+                          : ''
+                      }`}>
                       Пожалуйста, заполните поле
                     </div>
                   </div>
@@ -195,14 +274,22 @@ const ApplyForJob = () => {
                     </span>
                     <input
                       type="number"
-                      value={form.hourlyRate}
+                      value={form.rate.text}
                       onChange={handleChangeForm}
                       onFocus={handleActiveInput.bind(null, 3)}
                       onBlur={handleActiveInput.bind(null, 3)}
-                      name="hourlyRate"
+                      name="rate"
                       class="InputArea-InputText-module--cls2--n-Nh7 InputArea-InputText-module--cls1--2I79l"
                     />
                   </label>
+                  <div
+                    className={`WriteToUsForm-Error-module--cls2--3DVeU WriteToUsForm-Error-module--cls1--38RV1 ${
+                      form.rate.error
+                        ? 'WriteToUsForm-Error-module--active--1KhNh'
+                        : ''
+                    }`}>
+                    Пожалуйста, заполните поле
+                  </div>
                   <img
                     onClick={handleAttachClick}
                     src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4NCjxwYXRoIGQ9Ik0xNi4zNjM2IDUuNDU0NTdWMThDMTYuMzYzNiAyMC40MTA5IDE0LjQxMDkgMjIuMzYzNiAxMiAyMi4zNjM2QzkuNTg5MTEgMjIuMzYzNiA3LjYzNjMxIDIwLjQxMDkgNy42MzYzMSAxOFY0LjM2MzYyQzcuNjM2MzEgMi44NTgxNyA4Ljg1ODEyIDEuNjM2MzYgMTAuMzYzNiAxLjYzNjM2QzExLjg2OSAxLjYzNjM2IDEzLjA5MDkgMi44NTgxNyAxMy4wOTA5IDQuMzYzNjJWMTUuODE4MkMxMy4wOTA5IDE2LjQxODIgMTIuNjA1NCAxNi45MDkxIDEyIDE2LjkwOTFDMTEuMzk0NSAxNi45MDkxIDEwLjkwOTEgMTYuNDE4MiAxMC45MDkxIDE1LjgxODJWNS40NTQ1N0g5LjI3MjczVjE1LjgxODJDOS4yNzI3MyAxNy4zMjM3IDEwLjQ5NDUgMTguNTQ1NSAxMiAxOC41NDU1QzEzLjUwNTQgMTguNTQ1NSAxNC43MjcyIDE3LjMyMzYgMTQuNzI3MiAxNS44MTgyVjQuMzYzNjJDMTQuNzI3MiAxLjk1Mjc1IDEyLjc3NDUgMCAxMC4zNjM2IDBDNy45NTI3NSAwIDYgMS45NTI3NSA2IDQuMzYzNjJWMThDNiAyMS4zMTY0IDguNjg5MTEgMjQgMTIgMjRDMTUuMzEwOSAyNCAxOCAyMS4zMTY0IDE4IDE4VjUuNDU0NTdIMTYuMzYzNloiIGZpbGw9IndoaXRlIi8+DQo8L3N2Zz4NCg=="
@@ -217,7 +304,9 @@ const ApplyForJob = () => {
                   />
                 </div>
               </div>
-              <a class="WriteToUsForm-SendButton-module--cls2--3aCUc WriteToUsForm-SendButton-module--cls1--3XEGZ Buttons-BigWhiteButton-module--cls2--g05zN Buttons-BigWhiteButton-module--cls1--2H7YS">
+              <a
+                onClick={handleSubmit}
+                class="WriteToUsForm-SendButton-module--cls2--3aCUc WriteToUsForm-SendButton-module--cls1--3XEGZ Buttons-BigWhiteButton-module--cls2--g05zN Buttons-BigWhiteButton-module--cls1--2H7YS">
                 Отправить
               </a>
             </form>

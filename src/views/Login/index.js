@@ -11,9 +11,34 @@ import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import Container from '@material-ui/core/Container';
 import { useStyles } from './styles';
+import { useDispatch } from 'react-redux';
+import { loginUser } from '../../redux/actions/authAction';
 
 export default function Login() {
+  const dispatch = useDispatch();
   const classes = useStyles();
+
+  const [formState, setFormstate] = React.useState({
+    name: '',
+    password: '',
+  });
+
+  const { name, password } = formState;
+
+  const handleChange = React.useCallback(
+    ({ target: { name, value } }) => {
+      setFormstate({ ...formState, [name]: value });
+    },
+    [formState],
+  );
+
+  const onSubmit = () => {
+    const newUser = {
+      username: name,
+      password: password,
+    };
+    dispatch(loginUser(newUser));
+  };
 
   return (
     <Container component="main" maxWidth="xs">
@@ -31,11 +56,13 @@ export default function Login() {
             margin="normal"
             required
             fullWidth
-            id="email"
-            label="Email Address"
-            name="email"
+            id="name"
+            label="Name"
+            name="name"
             autoComplete="email"
             autoFocus
+            onChange={handleChange}
+            value={name}
           />
           <TextField
             variant="outlined"
@@ -47,17 +74,19 @@ export default function Login() {
             type="password"
             id="password"
             autoComplete="current-password"
+            onChange={handleChange}
+            value={password}
           />
-          <FormControlLabel
+          {/* <FormControlLabel
             control={<Checkbox value="remember" color="primary" />}
             label="Remember me"
-          />
+          /> */}
           <Button
-            type="submit"
             fullWidth
             variant="contained"
             color="primary"
-            className={classes.submit}>
+            className={classes.submit}
+            onClick={onSubmit}>
             Sign In
           </Button>
           <Grid container>
