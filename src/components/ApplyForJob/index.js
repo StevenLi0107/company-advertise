@@ -40,6 +40,7 @@ const ApplyForJob = () => {
   };
 
   const handleChangeForm = (e) => {
+    if (e.target.name === 'phoneNumber' && isNaN(e.target.value)) return;
     setForm({
       ...form,
       [e.target.name]: {
@@ -101,7 +102,19 @@ const ApplyForJob = () => {
       }, {});
       setForm(b);
     }
-    dispatch(applyForJob(form));
+    const query = {
+      attachment: {
+        name: form.name.text,
+        email: form.email.text,
+        phoneNumber: form.phoneNumber.text,
+        rate: form.rate.text,
+        attachment: {
+          body: form.attachment.body,
+          name: form.attachment.name,
+        },
+      },
+    };
+    dispatch(applyForJob(query));
   };
 
   return (
@@ -245,7 +258,8 @@ const ApplyForJob = () => {
                         Телефон
                       </span>
                       <input
-                        type="number"
+                        type="text"
+                        maxLength={12}
                         value={form.phoneNumber.text}
                         onChange={handleChangeForm}
                         onFocus={handleActiveInput.bind(null, 2)}

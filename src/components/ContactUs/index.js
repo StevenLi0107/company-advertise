@@ -40,6 +40,7 @@ const ContactUs = ({ ref }) => {
   };
 
   const handleChangeForm = (e) => {
+    if (e.target.name === 'phoneNumber' && isNaN(e.target.value)) return;
     setForm({
       ...form,
       [e.target.name]: {
@@ -101,7 +102,17 @@ const ContactUs = ({ ref }) => {
       }, {});
       setForm(b);
     }
-    dispatch(contactUs(form));
+    const query = {
+      companyName: form.companyName.text,
+      email: form.email.text,
+      phoneNumber: form.phoneNumber.text,
+      projectDetails: form.projectDetails.text,
+      attachment: {
+        body: form.attachment.body,
+        name: form.attachment.name,
+      },
+    };
+    dispatch(contactUs(query));
   };
 
   return (
@@ -247,7 +258,8 @@ const ContactUs = ({ ref }) => {
                         Телефон
                       </span>
                       <input
-                        type="number"
+                        type="text"
+                        maxLength={12}
                         value={form.phoneNumber.text}
                         onChange={handleChangeForm}
                         onFocus={handleActiveInput.bind(null, 2)}

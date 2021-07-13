@@ -7,7 +7,7 @@ export const loginUser = (payload) => async (dispatch) => {
   try {
     const { data } = await authService.loginUser(payload);
     setAuthentication(data.token);
-    dispatch({ type: TYPES.LOGIN_USER_SUCCESS, payload: data });
+    await dispatch({ type: TYPES.LOGIN_USER_SUCCESS, payload: data });
   } catch (error) {
     dispatch({ type: TYPES.LOGIN_USER_ERROR, payload: null });
   }

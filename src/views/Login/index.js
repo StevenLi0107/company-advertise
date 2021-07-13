@@ -13,9 +13,11 @@ import Container from '@material-ui/core/Container';
 import { useStyles } from './styles';
 import { useDispatch } from 'react-redux';
 import { loginUser } from '../../redux/actions/authAction';
+import { useHistory } from 'react-router-dom';
 
 export default function Login() {
   const dispatch = useDispatch();
+  const history = useHistory();
   const classes = useStyles();
 
   const [formState, setFormstate] = React.useState({
@@ -38,6 +40,11 @@ export default function Login() {
       password: password,
     };
     dispatch(loginUser(newUser));
+    setFormstate({
+      name: '',
+      password: '',
+    });
+    history.push(`/admin`);
   };
 
   return (
