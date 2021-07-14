@@ -1,6 +1,7 @@
 import * as TYPES from './types';
 import * as authService from '../../services/auth';
 import { setAuthentication } from '../../AppInitializer';
+import { removeFromBrowserStorage } from '../../utils/browserStorage';
 
 export const loginUser = (payload) => async (dispatch) => {
   dispatch({ type: TYPES.LOGIN_USER_REQUEST, payload: null });
@@ -10,5 +11,18 @@ export const loginUser = (payload) => async (dispatch) => {
     await dispatch({ type: TYPES.LOGIN_USER_SUCCESS, payload: data });
   } catch (error) {
     dispatch({ type: TYPES.LOGIN_USER_ERROR, payload: null });
+  }
+};
+
+export const checkTokenValid = (payload) => async (dispatch, getState) => {
+  dispatch({ type: TYPES.CHECK_TOKEN_VALID_REQUEST, payload: null });
+  try {
+    const token = getState().auth.token;
+    const { data } = await authService.checkTokenValid({ token });
+    await dispatch({ type: TYPES.CHECK_TOKEN_VALID_SUCCESS, payload: data });
+  } catch (error) {
+    console.log(error);
+    removeFromBrowserStorage('token');
+    dispatch({ type: TYPES.CHECK_TOKEN_VALID_ERROR, payload: null });
   }
 };

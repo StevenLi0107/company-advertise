@@ -129,7 +129,7 @@ export const AddPortfolioModal = memo(
         // id: Date.now(),
         name: formState.title,
         description: formState.desc,
-        img: formState.img,
+        img: formState.img.split(',')[1],
       };
       onClose();
       handleAddPortfolio(newPortfolio);

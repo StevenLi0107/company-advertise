@@ -126,7 +126,7 @@ export const AddClientModal = memo(({ open, handleClose, handleAddClient }) => {
     const newClient = {
       // id: Date.now(),
       name: formState.name,
-      img: formState.img,
+      img: formState.img.split(',')[1],
     };
     onClose();
     handleAddClient(newClient);

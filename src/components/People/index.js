@@ -14,6 +14,7 @@ import {
   updateUser,
   changeUsersOrder,
 } from '../../redux/actions/adminAction';
+import { checkTokenValid } from '../../redux/actions/authAction';
 
 const People = () => {
   const usersList = useSelector((state) => state.adminReducer.usersList);
@@ -23,6 +24,7 @@ const People = () => {
   const classes = useStyles();
 
   React.useEffect(() => {
+    dispatch(checkTokenValid());
     initialState.current = usersList;
   }, []);
 

@@ -15,6 +15,7 @@ import {
   updateClient,
 } from '../../redux/actions/adminAction';
 import { AddClientModal } from '../Modals/AddClientModal';
+import { checkTokenValid } from '../../redux/actions/authAction';
 
 export default function Logos() {
   // const [formState, setFormState] = React.useState(mock);
@@ -28,6 +29,7 @@ export default function Logos() {
   const classes = useStyles();
 
   React.useEffect(() => {
+    dispatch(checkTokenValid());
     initialState.current = clientsList;
   }, []);
 

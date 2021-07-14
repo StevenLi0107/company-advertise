@@ -4,16 +4,16 @@ export function getUserList() {
   return http.get('/user');
 }
 
-export function updateUser(query) {
-  return http.put('/user', query);
+export function updateUser(data) {
+  return http.put('/user', data);
 }
 
-export function addUser(query) {
-  return http.post('/user', query);
+export function addUser(data) {
+  return http.post('/user', data);
 }
 
-export function saveUsersOrder(query) {
-  return http.put('/user', query);
+export function saveUsersOrder(data) {
+  return http.put('/user', data);
 }
 
 export function deleteUser(id) {
@@ -24,16 +24,16 @@ export function getPortfoliosList() {
   return http.get('/portfolio');
 }
 
-export function updatePortfolio(query) {
-  return http.put('/portfolio', query);
+export function updatePortfolio(data) {
+  return http.put('/portfolio', data);
 }
 
-export function addPortfolio(query) {
-  return http.post('/portfolio', query);
+export function addPortfolio(data) {
+  return http.post('/portfolio', data);
 }
 
-export function savePortfoliosOrder(query) {
-  return http.put('/portfolio', query);
+export function savePortfoliosOrder(data) {
+  return http.put('/portfolio', data);
 }
 
 export function deletePortfolio(id) {
@@ -44,16 +44,16 @@ export function getClientsList() {
   return http.get('/client ');
 }
 
-export function addClient(query) {
-  return http.post('/client', query);
+export function addClient(data) {
+  return http.post('/client', data);
 }
 
-export function saveClientsOrder(query) {
-  return http.put('/client', query);
+export function saveClientsOrder(data) {
+  return http.put('/client', data);
 }
 
-export function updateClient(query) {
-  return http.put('/client ', query);
+export function updateClient(data) {
+  return http.put('/client ', data);
 }
 
 export function deleteClient(id) {

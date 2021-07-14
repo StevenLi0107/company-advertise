@@ -129,7 +129,7 @@ export const AddUserModal = memo(({ open, handleClose, handleAddUser }) => {
       // id: Date.now(),
       name: formState.name,
       role: formState.role,
-      img: formState.img,
+      img: formState.img.split(',')[1],
     };
     onClose();
     handleAddUser(newUser);

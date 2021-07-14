@@ -1,5 +1,9 @@
 import http from './api';
 
-export function loginUser(query) {
-  return http.post('/auth', query);
+export function loginUser(data) {
+  return http.post('/auth', data);
+}
+
+export function checkTokenValid(data) {
+  return http.post('/checkToken', data);
 }

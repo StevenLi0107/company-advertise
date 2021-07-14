@@ -108,7 +108,7 @@ const ContactUs = ({ ref }) => {
       phoneNumber: form.phoneNumber.text,
       projectDetails: form.projectDetails.text,
       attachment: {
-        body: form.attachment.body,
+        body: form.attachment.body.split(',')[1],
         name: form.attachment.name,
       },
     };

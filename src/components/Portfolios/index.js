@@ -14,6 +14,7 @@ import {
   savePortfoliosOrder,
   updatePortfolio,
 } from '../../redux/actions/adminAction';
+import { checkTokenValid } from '../../redux/actions/authAction';
 
 const Portfolios = () => {
   const portfoliosList = useSelector(
@@ -25,6 +26,7 @@ const Portfolios = () => {
   const classes = useStyles();
 
   React.useEffect(() => {
+    dispatch(checkTokenValid());
     initialState.current = portfoliosList;
   }, []);
 

@@ -12,6 +12,7 @@ const initialState = {
 export default function (state = initialState, action) {
   switch (action.type) {
     case TYPES.LOGIN_USER_REQUEST:
+    case TYPES.CHECK_TOKEN_VALID_REQUEST:
       return {
         ...state,
         loading: true,
@@ -26,6 +27,23 @@ export default function (state = initialState, action) {
         error: null,
         success: true,
         token: action.payload.token,
+      };
+
+    case TYPES.CHECK_TOKEN_VALID_SUCCESS:
+      return {
+        loading: false,
+        error: null,
+        success: true,
+        token: null,
+      };
+
+    case TYPES.CHECK_TOKEN_VALID_ERROR:
+      return {
+        ...state,
+        loading: false,
+        error: action.payload,
+        success: false,
+        token: null,
       };
 
     case TYPES.LOGIN_USER_ERROR:
