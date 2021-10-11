@@ -1,19 +1,19 @@
-import React from "react";
-import Avatar from "@material-ui/core/Avatar";
-import Button from "@material-ui/core/Button";
-import CssBaseline from "@material-ui/core/CssBaseline";
-import TextField from "@material-ui/core/TextField";
-// import FormControlLabel from "@material-ui/core/FormControlLabel";
-// import Checkbox from "@material-ui/core/Checkbox";
-import Link from "@material-ui/core/Link";
-import Grid from "@material-ui/core/Grid";
-import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
-import Typography from "@material-ui/core/Typography";
-import Container from "@material-ui/core/Container";
-import { useStyles } from "./styles";
-import { useDispatch } from "react-redux";
-import { loginUser } from "../../redux/actions/authAction";
-import { useHistory } from "react-router-dom";
+import React from 'react';
+import Avatar from '@material-ui/core/Avatar';
+import Button from '@material-ui/core/Button';
+import CssBaseline from '@material-ui/core/CssBaseline';
+import TextField from '@material-ui/core/TextField';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+import Checkbox from '@material-ui/core/Checkbox';
+import Link from '@material-ui/core/Link';
+import Grid from '@material-ui/core/Grid';
+import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
+import Typography from '@material-ui/core/Typography';
+import Container from '@material-ui/core/Container';
+import { useStyles } from './styles';
+import { useDispatch } from 'react-redux';
+import { loginUser } from '../../redux/actions/authAction';
+import { useHistory } from 'react-router-dom';
 
 export default function Login() {
   const dispatch = useDispatch();
@@ -21,8 +21,8 @@ export default function Login() {
   const classes = useStyles();
 
   const [formState, setFormstate] = React.useState({
-    name: "",
-    password: "",
+    name: '',
+    password: '',
   });
 
   const { name, password } = formState;
@@ -31,18 +31,18 @@ export default function Login() {
     ({ target: { name, value } }) => {
       setFormstate({ ...formState, [name]: value });
     },
-    [formState]
+    [formState],
   );
 
-  const onSubmit = async () => {
+  const onSubmit = () => {
     const newUser = {
       username: name,
       password: password,
     };
-    await dispatch(loginUser(newUser));
+    dispatch(loginUser(newUser));
     setFormstate({
-      name: "",
-      password: "",
+      name: '',
+      password: '',
     });
     history.push(`/admin`);
   };
@@ -93,8 +93,7 @@ export default function Login() {
             variant="contained"
             color="primary"
             className={classes.submit}
-            onClick={onSubmit}
-          >
+            onClick={onSubmit}>
             Sign In
           </Button>
           <Grid container>
