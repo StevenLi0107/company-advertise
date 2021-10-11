@@ -1,14 +1,15 @@
-import * as TYPES from '../actions/types';
-import { getValueForKeyInBrowserStorage } from '../../utils/browserStorage';
+import * as TYPES from "../actions/types";
+import { getValueForKeyInBrowserStorage } from "../../utils/browserStorage";
 
 const initialState = {
   user: null,
-  token: getValueForKeyInBrowserStorage('token') || '',
+  token: getValueForKeyInBrowserStorage("token") || "",
   loading: false,
   success: false,
   error: null,
 };
 
+// eslint-disable-next-line import/no-anonymous-default-export
 export default function (state = initialState, action) {
   switch (action.type) {
     case TYPES.LOGIN_USER_REQUEST:
@@ -34,7 +35,7 @@ export default function (state = initialState, action) {
         loading: false,
         error: null,
         success: true,
-        token: null,
+        token: action.payload.token,
       };
 
     case TYPES.CHECK_TOKEN_VALID_ERROR:
