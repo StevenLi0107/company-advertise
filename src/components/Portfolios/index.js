@@ -1,24 +1,24 @@
-import React from 'react';
-import { IconButton, Box, Button } from '@material-ui/core';
-import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline';
-import PortfolioCard from './PortfolioCard';
-import { useStyles } from './styles';
-import { mock } from './mock';
-import { CardDnd } from '../CardDnd';
-import { useSelector, useDispatch } from 'react-redux';
-import { AddPortfolioModal } from '../Modals/AddPortfolioModal';
+import React from "react";
+import { IconButton, Box, Button } from "@material-ui/core";
+import AddCircleOutlineIcon from "@material-ui/icons/AddCircleOutline";
+import PortfolioCard from "./PortfolioCard";
+import { useStyles } from "./styles";
+import { mock } from "./mock";
+import { CardDnd } from "../CardDnd";
+import { useSelector, useDispatch } from "react-redux";
+import { AddPortfolioModal } from "../Modals/AddPortfolioModal";
 import {
   addPortfolio,
   changePortfoliosOrder,
   deletePortfolio,
   savePortfoliosOrder,
   updatePortfolio,
-} from '../../redux/actions/adminAction';
-import { checkTokenValid } from '../../redux/actions/authAction';
+} from "../../redux/actions/adminAction";
+import { checkTokenValid } from "../../redux/actions/authAction";
 
 const Portfolios = () => {
   const portfoliosList = useSelector(
-    (state) => state.adminReducer.portfoliosList,
+    (state) => state.adminReducer.portfoliosList
   );
   const initialState = React.useRef();
   const [openModal, setOpenModal] = React.useState(false);
@@ -39,7 +39,7 @@ const Portfolios = () => {
   }, [openModal]);
 
   const handleDeletePortfolio = React.useCallback((id) => {
-    dispatch(deletePortfolio(id));
+    dispatch(deletePortfolio({ id }));
   }, []);
 
   const handleAddPortfolio = React.useCallback((newPortfolio) => {
@@ -62,7 +62,7 @@ const Portfolios = () => {
 
       dispatch(changePortfoliosOrder(coppiedStateArray));
     },
-    [portfoliosList],
+    [portfoliosList]
   );
 
   const handleSave = () => {
@@ -87,7 +87,8 @@ const Portfolios = () => {
           disabled={isDisabledButton()}
           onClick={handleSave}
           variant="contained"
-          color="primary">
+          color="primary"
+        >
           Save
         </Button>
       </Box>
@@ -100,7 +101,8 @@ const Portfolios = () => {
               key={portfolio.id + portfolio.name}
               id={portfolio.id}
               index={index}
-              moveCard={moveCard}>
+              moveCard={moveCard}
+            >
               <PortfolioCard
                 portfolio={portfolio}
                 handleDeletePortfolio={handleDeletePortfolio}

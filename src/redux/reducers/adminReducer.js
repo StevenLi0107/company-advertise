@@ -1,4 +1,4 @@
-import * as TYPES from '../actions/types';
+import * as TYPES from "../actions/types";
 
 const initialState = {
   isActiveLogosSection: true,
@@ -10,6 +10,7 @@ const initialState = {
   error: null,
 };
 
+// eslint-disable-next-line import/no-anonymous-default-export
 export default function (state = initialState, action) {
   switch (action.type) {
     case TYPES.GET_USERS_LIST_REQUEST:
@@ -95,7 +96,7 @@ export default function (state = initialState, action) {
         error: null,
         success: true,
         usersList: state.usersList.filter(
-          (user) => user.id !== action.payload.id,
+          (user) => user.id !== action.payload.id
         ),
       };
 
@@ -151,7 +152,7 @@ export default function (state = initialState, action) {
         error: null,
         success: true,
         portfoliosList: state.portfoliosList.filter(
-          (portfolio) => portfolio.id !== action.payload.id,
+          (portfolio) => portfolio.id !== action.payload.id
         ),
       };
 
@@ -207,7 +208,7 @@ export default function (state = initialState, action) {
         error: null,
         success: true,
         clientsList: state.clientsList.filter(
-          (user) => user.id !== action.payload.id,
+          (user) => user.id !== action.payload.id
         ),
       };
 
