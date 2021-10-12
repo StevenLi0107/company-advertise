@@ -1,35 +1,35 @@
-import React, { Suspense } from 'react';
-import { Paper } from '@material-ui/core';
+import React, { Suspense } from "react";
+import { Paper } from "@material-ui/core";
 
-import Portfolios from '../../components/Portfolios';
-import VerticalTabs from '../../components/VerticalTabs';
-import People from '../../components/People';
-import Logos from '../../components/Logos';
-import { useSelector, useDispatch } from 'react-redux';
+import Portfolios from "../../components/Portfolios";
+import VerticalTabs from "../../components/VerticalTabs";
+import People from "../../components/People";
+import Logos from "../../components/Logos";
+import { useSelector, useDispatch } from "react-redux";
 import {
   getClientsList,
   getPortfoliosList,
   getUserList,
-} from '../../redux/actions/adminAction';
+} from "../../redux/actions/adminAction";
 
 const configureTab = () => [
   {
-    label: 'Portfolios',
+    label: "Portfolios",
     link: `/admin/portfolios`,
     component: <Portfolios />,
   },
   {
-    label: 'People',
+    label: "People",
     link: `/admin/people`,
     component: <People />,
   },
   {
-    label: 'Logos',
+    label: "Logos",
     link: `/admin/logos`,
     component: <Logos />,
   },
   {
-    label: 'Log out',
+    label: "Log out",
     link: `/login`,
     component: <></>,
   },
@@ -48,7 +48,7 @@ const AdminDetails = () => {
     dispatch(getUserList());
     dispatch(getPortfoliosList());
     dispatch(getClientsList());
-  }, []);
+  }, [dispatch]);
 
   return (
     <Paper elevation={0} square>

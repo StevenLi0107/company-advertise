@@ -20,10 +20,12 @@ export const checkTokenValid = (payload) => async (dispatch, getState) => {
   try {
     const token = getState().auth.token;
     const { data } = await authService.checkTokenValid({ token });
-    await dispatch({
-      type: TYPES.CHECK_TOKEN_VALID_SUCCESS,
-      payload: { token: token },
-    });
+    if (data === []) {
+      await dispatch({
+        type: TYPES.CHECK_TOKEN_VALID_SUCCESS,
+        payload: { token: token },
+      });
+    }
   } catch (error) {
     console.log(error);
     removeFromBrowserStorage("token");

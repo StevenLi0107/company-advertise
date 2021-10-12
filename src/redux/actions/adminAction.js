@@ -1,5 +1,5 @@
-import * as TYPES from './types';
-import * as adminService from '../../services/admin';
+import * as TYPES from "./types";
+import * as adminService from "../../services/admin";
 
 export const changeStatusOfLogosSection = (payload) => {
   return {
@@ -36,10 +36,12 @@ export const updateUser = (payload) => async (dispatch) => {
   }
 };
 
-export const addUser = (payload) => async (dispatch) => {
+export const addUser = (payload) => async (dispatch, getState) => {
   dispatch({ type: TYPES.ADD_USER_REQUEST, payload: null });
   try {
-    const { data } = await adminService.addUser(payload);
+    const token = getState().auth.token;
+
+    const { data } = await adminService.addUser({ token, ...payload });
     await dispatch({ type: TYPES.ADD_USER_SUCCESS, payload: data });
   } catch (error) {
     dispatch({ type: TYPES.ADD_USER_ERROR, payload: error });
@@ -95,10 +97,11 @@ export const getPortfoliosList = (payload) => async (dispatch) => {
   }
 };
 
-export const updatePortfolio = (payload) => async (dispatch) => {
+export const updatePortfolio = (payload) => async (dispatch, getState) => {
   dispatch({ type: TYPES.UPDATE_PORTFOLIO_REQUEST, payload: null });
   try {
-    const { data } = await adminService.updatePortfolio(payload);
+    const token = getState().auth.token;
+    const { data } = await adminService.updatePortfolio({ token, ...payload });
     await dispatch({
       type: TYPES.UPDATE_PORTFOLIO_SUCCESS,
       payload: data,
@@ -108,10 +111,11 @@ export const updatePortfolio = (payload) => async (dispatch) => {
   }
 };
 
-export const addPortfolio = (payload) => async (dispatch) => {
+export const addPortfolio = (payload) => async (dispatch, getState) => {
   dispatch({ type: TYPES.ADD_PORTFOLIO_REQUEST, payload: null });
   try {
-    const { data } = await adminService.addPortfolio(payload);
+    const token = getState().auth.token;
+    const { data } = await adminService.addPortfolio({ token, ...payload });
     await dispatch({ type: TYPES.ADD_PORTFOLIO_SUCCESS, payload: data });
   } catch (error) {
     dispatch({ type: TYPES.ADD_PORTFOLIO_ERROR, payload: error });
@@ -138,10 +142,12 @@ export const savePortfoliosOrder = (payload) => async (dispatch) => {
   }
 };
 
-export const deletePortfolio = (payload) => async (dispatch) => {
+export const deletePortfolio = (payload) => async (dispatch, getState) => {
   dispatch({ type: TYPES.DELETE_PORTFOLIO_REQUEST, payload: null });
   try {
-    const { data } = await adminService.deletePortfolio(payload);
+    const token = getState().auth.token;
+    console.log("deleteportfolio-payload=", payload);
+    const { data } = await adminService.deletePortfolio({ token, ...payload });
     await dispatch({
       type: TYPES.DELETE_PORTFOLIO_SUCCESS,
       payload: data,
@@ -186,10 +192,12 @@ export const updateClient = (payload) => async (dispatch) => {
   }
 };
 
-export const addClient = (payload) => async (dispatch) => {
+export const addClient = (payload) => async (dispatch, getState) => {
   dispatch({ type: TYPES.ADD_CLIENT_REQUEST, payload: null });
   try {
-    const { data } = await adminService.addClient(payload);
+    const token = getState().auth.token;
+
+    const { data } = await adminService.addClient({ token, ...payload });
     await dispatch({ type: TYPES.ADD_CLIENT_SUCCESS, payload: data });
   } catch (error) {
     dispatch({ type: TYPES.ADD_CLIENT_ERROR, payload: error });

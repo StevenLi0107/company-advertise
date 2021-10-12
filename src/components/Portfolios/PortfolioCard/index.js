@@ -1,7 +1,7 @@
-import React from 'react';
-import { useStyles } from './styles';
-import { Typography, Box, TextField, Avatar } from '@material-ui/core';
-import ListItem from '../../ListItem';
+import React from "react";
+import { useStyles } from "./styles";
+import { Typography, Box, TextField, Avatar } from "@material-ui/core";
+import ListItem from "../../ListItem";
 
 const PortfolioCard = ({
   portfolio,
@@ -18,7 +18,7 @@ const PortfolioCard = ({
     ({ target: { name, value } }) => {
       setFormstate({ ...formState, [name]: value });
     },
-    [formState],
+    [formState]
   );
 
   const handleEdit = () => {
@@ -32,7 +32,8 @@ const PortfolioCard = ({
     <ListItem
       id={portfolio.id}
       handleDelete={handleDeletePortfolio}
-      handleEdit={handleEdit}>
+      handleEdit={handleEdit}
+    >
       <Box display="flex">
         <Avatar src={url} />
         <Box ml="10px" display="flex" flexDirection="column">
