@@ -95,9 +95,7 @@ export default function (state = initialState, action) {
         loading: false,
         error: null,
         success: true,
-        usersList: state.usersList.filter(
-          (user) => user.id !== action.payload.id
-        ),
+        usersList: state.usersList.filter((user) => user.id !== action.payload),
       };
 
     case TYPES.GET_PORTFOLIOS_LIST_SUCCESS:
@@ -152,10 +150,9 @@ export default function (state = initialState, action) {
         error: null,
         success: true,
         portfoliosList: state.portfoliosList.filter(
-          (portfolio) => portfolio.id !== action.payload.id
+          (portfolio) => portfolio.id !== action.payload
         ),
       };
-
     case TYPES.GET_CLIENTS_LIST_SUCCESS:
       return {
         ...state,
@@ -208,7 +205,7 @@ export default function (state = initialState, action) {
         error: null,
         success: true,
         clientsList: state.clientsList.filter(
-          (user) => user.id !== action.payload.id
+          (user) => user.id !== action.payload
         ),
       };
 
