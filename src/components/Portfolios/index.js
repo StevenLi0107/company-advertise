@@ -39,7 +39,7 @@ const Portfolios = () => {
   }, [openModal]);
 
   const handleDeletePortfolio = React.useCallback((id) => {
-    dispatch(deletePortfolio({ id }));
+    dispatch(deletePortfolio(id));
   }, []);
 
   const handleAddPortfolio = React.useCallback((newPortfolio) => {

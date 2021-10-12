@@ -26,11 +26,12 @@ export const getUserList = (payload) => async (dispatch) => {
   }
 };
 
-export const updateUser = (payload) => async (dispatch) => {
+export const updateUser = (payload) => async (dispatch, getState) => {
   dispatch({ type: TYPES.UPDATE_USER_REQUEST, payload: null });
   try {
-    const { data } = await adminService.updateUser(payload);
-    await dispatch({ type: TYPES.UPDATE_USER_SUCCESS, payload: data });
+    const token = getState().auth.token;
+    await adminService.updateUser({ token, ...payload });
+    await dispatch({ type: TYPES.UPDATE_USER_SUCCESS, payload });
   } catch (error) {
     dispatch({ type: TYPES.UPDATE_USER_ERROR, payload: error });
   }
@@ -65,11 +66,12 @@ export const saveUsersOrder = (payload) => async (dispatch) => {
   }
 };
 
-export const deleteUser = (payload) => async (dispatch) => {
+export const deleteUser = (payload) => async (dispatch, getState) => {
   dispatch({ type: TYPES.DELETE_USER_REQUEST, payload: null });
   try {
-    const { data } = await adminService.deleteUser(payload);
-    await dispatch({ type: TYPES.DELETE_USER_SUCCESS, payload: data });
+    const token = getState().auth.token;
+    await adminService.deleteUser(payload, { token });
+    await dispatch({ type: TYPES.DELETE_USER_SUCCESS, payload });
   } catch (error) {
     dispatch({ type: TYPES.DELETE_USER_ERROR, payload: error });
   }
@@ -146,11 +148,10 @@ export const deletePortfolio = (payload) => async (dispatch, getState) => {
   dispatch({ type: TYPES.DELETE_PORTFOLIO_REQUEST, payload: null });
   try {
     const token = getState().auth.token;
-    console.log("deleteportfolio-payload=", payload);
-    const { data } = await adminService.deletePortfolio({ token, ...payload });
+    await adminService.deletePortfolio(payload, { token });
     await dispatch({
       type: TYPES.DELETE_PORTFOLIO_SUCCESS,
-      payload: data,
+      payload,
     });
   } catch (error) {
     dispatch({ type: TYPES.DELETE_PORTFOLIO_ERROR, payload: error });
@@ -179,10 +180,11 @@ export const getClientsList = (payload) => async (dispatch) => {
   }
 };
 
-export const updateClient = (payload) => async (dispatch) => {
+export const updateClient = (payload) => async (dispatch, getState) => {
   dispatch({ type: TYPES.UPDATE_CLIENT_REQUEST, payload: null });
   try {
-    const { data } = await adminService.updateClient(payload);
+    const token = getState().auth.token;
+    const { data } = await adminService.updateClient({ token, ...payload });
     await dispatch({
       type: TYPES.UPDATE_CLIENT_SUCCESS,
       payload: data,
@@ -224,13 +226,14 @@ export const saveClientsOrder = (payload) => async (dispatch) => {
   }
 };
 
-export const deleteClient = (payload) => async (dispatch) => {
+export const deleteClient = (payload) => async (dispatch, getState) => {
   dispatch({ type: TYPES.DELETE_CLIENT_REQUEST, payload: null });
   try {
-    const { data } = await adminService.deleteClient(payload);
+    const token = getState().auth.token;
+    await adminService.deleteClient(payload, { token });
     await dispatch({
       type: TYPES.DELETE_CLIENT_SUCCESS,
-      payload: data,
+      payload,
     });
   } catch (error) {
     dispatch({ type: TYPES.DELETE_CLIENT_ERROR, payload: error });

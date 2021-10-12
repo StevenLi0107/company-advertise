@@ -5,7 +5,7 @@ export function getUserList() {
 }
 
 export function updateUser(data) {
-  return http.put("/user", data);
+  return http.put(`/user/${data.id}`, data);
 }
 
 export function addUser(data) {
@@ -16,8 +16,9 @@ export function saveUsersOrder(data) {
   return http.put("/user", data);
 }
 
-export function deleteUser(id) {
-  return http.delete(`/user/${id}`);
+export function deleteUser(id, token) {
+  const data = { data: token };
+  return http.delete(`/user/${id}`, data);
 }
 
 export function getPortfoliosList() {
@@ -25,7 +26,7 @@ export function getPortfoliosList() {
 }
 
 export function updatePortfolio(data) {
-  return http.put("/portfolio", data);
+  return http.put(`/portfolio/${data.id}`, data);
 }
 
 export function addPortfolio(data) {
@@ -36,8 +37,9 @@ export function savePortfoliosOrder(data) {
   return http.put("/portfolio", data);
 }
 
-export function deletePortfolio(id) {
-  return http.delete(`/portfolio/${id}`);
+export function deletePortfolio(id, token) {
+  const data = { data: token };
+  return http.delete(`/portfolio/${id}`, data);
 }
 
 export function getClientsList() {
@@ -53,9 +55,10 @@ export function saveClientsOrder(data) {
 }
 
 export function updateClient(data) {
-  return http.put("/client ", data);
+  return http.put(`/client/${data.id}`, data);
 }
 
-export function deleteClient(id) {
-  return http.delete(`/client/${id}`);
+export function deleteClient(id, token) {
+  const data = { data: token };
+  return http.delete(`/client/${id}`, data);
 }
