@@ -12,7 +12,7 @@ const PortfolioCard = ({
   const [isEditing, setIsEditing] = React.useState(false);
   const classes = useStyles();
 
-  const { name, description, url } = formState;
+  const { name, description, img } = formState;
 
   const handleChange = React.useCallback(
     ({ target: { name, value } }) => {
@@ -35,7 +35,7 @@ const PortfolioCard = ({
       handleEdit={handleEdit}
     >
       <Box display="flex">
-        <Avatar src={url} />
+        <Avatar src={img} />
         <Box ml="10px" display="flex" flexDirection="column">
           {isEditing ? (
             <Box display="flex" alignItems="center">

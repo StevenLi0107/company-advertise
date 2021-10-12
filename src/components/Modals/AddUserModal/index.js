@@ -115,7 +115,7 @@ export const AddUserModal = memo(({ open, handleClose, handleAddUser }) => {
   const [formState, setFormstate] = React.useState(initialFormState);
   const imgRef = React.useRef();
 
-  const { name, role, url } = formState;
+  const { name, role, url, img } = formState;
 
   const handleChange = React.useCallback(
     ({ target: { name, value } }) => {
@@ -129,7 +129,7 @@ export const AddUserModal = memo(({ open, handleClose, handleAddUser }) => {
       // id: Date.now(),
       name: formState.name,
       role: formState.role,
-      url: "",
+      url: formState.url,
       img: formState.img.split(",")[1],
     };
     onClose();
@@ -144,10 +144,10 @@ export const AddUserModal = memo(({ open, handleClose, handleAddUser }) => {
     const _file = imgRef.current.files[0];
     getBase64(_file)
       .then((res) => {
-        const file = URL.createObjectURL(_file);
+        // const file = URL.createObjectURL(_file);
         setFormstate({
           ...formState,
-          url: file,
+          // url: file,
           img: res,
         });
       })
@@ -193,11 +193,22 @@ export const AddUserModal = memo(({ open, handleClose, handleAddUser }) => {
               name="role"
               onChange={handleChange}
               value={role}
-              placeholder="role"
+              placeholder="SurName"
             />
           </FormControl>
           <FormControl className={classes.formControl}>
-            <Avatar className={classes.avatar} src={url} />
+            <TextField
+              className={classes.textField}
+              variant="outlined"
+              size="medium"
+              name="url"
+              onChange={handleChange}
+              value={url}
+              placeholder="Rate"
+            />
+          </FormControl>
+          <FormControl className={classes.formControl}>
+            <Avatar className={classes.avatar} src={img} />
             <input
               type="file"
               ref={imgRef}
