@@ -37,7 +37,6 @@ export default function (state = initialState, action) {
       };
 
     case TYPES.CHANGE_STATUS_OF_LOGOS_SECTION:
-      console.log("state---", state);
       return {
         ...state,
         loading: false,
