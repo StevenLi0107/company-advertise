@@ -44,6 +44,7 @@ const Portfolios = () => {
 
   const handleCloseModal = React.useCallback(() => {
     setOpenUpload(false);
+    setOpenModal(false);
   }, [openModal]);
 
   const handleDeletePortfolio = React.useCallback((id) => {
