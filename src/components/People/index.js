@@ -15,10 +15,14 @@ import {
   updateUser,
   changeUsersOrder,
   uploadImage,
+  changeStatusOfPeopleSection,
 } from "../../redux/actions/adminAction";
 import { checkTokenValid } from "../../redux/actions/authAction";
 
 const People = () => {
+  const isActivePeopleSection = useSelector(
+    (state) => state.adminReducer.isActivePeopleSection
+  );
   const usersList = useSelector((state) => state.adminReducer.usersList);
   const initialState = React.useRef();
   const [openModal, setOpenModal] = React.useState(false);
@@ -99,21 +103,33 @@ const People = () => {
     return JSON.stringify(initialState.current) === JSON.stringify(usersList);
   }, [usersList]);
 
+  const handleStatusPeopleSection = () => {
+    dispatch(changeStatusOfPeopleSection(!isActivePeopleSection));
+  };
   return (
     <>
       <Box display="flex" justifyContent="space-between">
-        <IconButton onClick={handleOpenModal} aria-label="add">
-          <AddCircleOutlineIcon />
-          Add
-        </IconButton>
         <Button
-          disabled={isDisabledButton()}
-          onClick={handleSave}
+          onClick={handleStatusPeopleSection}
           variant="contained"
           color="primary"
         >
-          Save
+          {isActivePeopleSection ? "Off Logos Section" : "On Logos Section"}
         </Button>
+        <Box width="20%" display="flex" justifyContent="space-around  ">
+          <IconButton onClick={handleOpenModal} aria-label="add">
+            <AddCircleOutlineIcon />
+            Add
+          </IconButton>
+          <Button
+            disabled={isDisabledButton()}
+            onClick={handleSave}
+            variant="contained"
+            color="primary"
+          >
+            Save
+          </Button>
+        </Box>
       </Box>
 
       <hr />

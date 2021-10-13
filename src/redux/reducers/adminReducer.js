@@ -2,6 +2,7 @@ import * as TYPES from "../actions/types";
 
 const initialState = {
   isActiveLogosSection: true,
+  isActivePeopleSection: true,
   usersList: [],
   clientsList: [],
   portfoliosList: [],
@@ -36,12 +37,22 @@ export default function (state = initialState, action) {
       };
 
     case TYPES.CHANGE_STATUS_OF_LOGOS_SECTION:
+      console.log("state---", state);
       return {
         ...state,
         loading: false,
         error: null,
         success: true,
         isActiveLogosSection: action.payload,
+      };
+
+    case TYPES.CHANGE_STATUS_OF_PEOPLE_SECTION:
+      return {
+        ...state,
+        loading: false,
+        error: null,
+        success: true,
+        isActivePeopleSection: action.payload,
       };
 
     case TYPES.GET_USERS_LIST_SUCCESS:

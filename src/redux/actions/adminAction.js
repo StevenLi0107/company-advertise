@@ -7,6 +7,13 @@ export const changeStatusOfLogosSection = (payload) => {
     payload,
   };
 };
+
+export const changeStatusOfPeopleSection = (payload) => {
+  return {
+    type: TYPES.CHANGE_STATUS_OF_PEOPLE_SECTION,
+    payload,
+  };
+};
 // User actions
 export const getUserList = (payload) => async (dispatch) => {
   dispatch({ type: TYPES.GET_USERS_LIST_REQUEST, payload: null });
