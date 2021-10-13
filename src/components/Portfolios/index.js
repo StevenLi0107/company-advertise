@@ -95,8 +95,7 @@ const Portfolios = () => {
     return (
       JSON.stringify(initialState.current) === JSON.stringify(portfoliosList)
     );
-  }, [portfoliosList]);
-
+  }, []);
   return (
     <>
       <Box display="flex" justifyContent="space-between">

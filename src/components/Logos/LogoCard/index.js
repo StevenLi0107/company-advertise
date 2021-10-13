@@ -49,7 +49,7 @@ const LogoCard = ({
           </Box>
         ) : (
           <Box display="flex" alignItems="center">
-            <img className={classes.companyLogo} src={url} />
+            <img className={classes.companyLogo} src={url} alt="" />
             <Typography>{name}</Typography>
           </Box>
         )}
