@@ -37,7 +37,7 @@ const UserCard = ({
       handleUpload={handleUpload}
     >
       <Box display="flex">
-        <Avatar src={img} />
+        <Avatar src={`https://api.cowork.dev/data/img/${img}`} />
         <Box ml="10px" display="flex" flexDirection="column">
           {isEditing ? (
             <Box display="flex" alignItems="center">

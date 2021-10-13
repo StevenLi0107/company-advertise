@@ -73,7 +73,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export const UploadImageModal = memo(
-  ({ open, handleClose, handleUploadImage }) => {
+  ({ open, handleClose, handleUploadImage, uploadId, selectKey }) => {
     const classes = useStyles();
 
     const initialFormState = {
@@ -87,6 +87,8 @@ export const UploadImageModal = memo(
 
     const onSubmit = () => {
       const newImage = {
+        selectKey,
+        id: uploadId,
         img: formState.img.split(",")[1],
       };
       onClose();
@@ -102,6 +104,7 @@ export const UploadImageModal = memo(
       getBase64(_file)
         .then((res) => {
           const file = URL.createObjectURL(_file);
+          console.log("imageurl--", file);
           setFormstate({
             ...formState,
             url: file,

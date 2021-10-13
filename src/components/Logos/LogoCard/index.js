@@ -13,7 +13,7 @@ const LogoCard = ({
   const [isEditing, setIsEditing] = React.useState(false);
   const classes = useStyles();
 
-  const { name, url } = formState;
+  const { name, img } = formState;
 
   const handleChange = React.useCallback(
     ({ target: { name, value } }) => {
@@ -49,7 +49,11 @@ const LogoCard = ({
           </Box>
         ) : (
           <Box display="flex" alignItems="center">
-            <img className={classes.companyLogo} src={url} alt="" />
+            <img
+              className={classes.companyLogo}
+              src={`https://api.cowork.dev/data/img/${img}`}
+              alt=""
+            />
             <Typography>{name}</Typography>
           </Box>
         )}

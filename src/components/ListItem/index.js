@@ -10,7 +10,9 @@ const ListItem = ({ children, id, handleEdit, handleDelete, handleUpload }) => {
   const onDeleteClick = () => {
     handleDelete(id);
   };
-
+  const handleUploadClick = () => {
+    handleUpload(id);
+  };
   return (
     <Box
       className={classes.root}
@@ -20,7 +22,7 @@ const ListItem = ({ children, id, handleEdit, handleDelete, handleUpload }) => {
     >
       {children}
       <Box>
-        <Button onClick={handleUpload}>Upload</Button>
+        <Button onClick={handleUploadClick}>Upload</Button>
         <IconButton onClick={handleEdit} aria-label="edit">
           <EditIcon />
         </IconButton>

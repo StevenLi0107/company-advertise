@@ -111,6 +111,7 @@ export const updatePortfolio = (payload) => async (dispatch, getState) => {
   try {
     const token = getState().auth.token;
     const { data } = await adminService.updatePortfolio({ token, ...payload });
+
     await dispatch({
       type: TYPES.UPDATE_PORTFOLIO_SUCCESS,
       payload: data,
@@ -248,13 +249,20 @@ export const deleteClient = (payload) => async (dispatch, getState) => {
 };
 
 export const uploadImage = (payload) => async (dispatch, getState) => {
-  dispatch({ type: TYPES.UPDATE_USER_REQUEST, payload: null });
-
-  // try {
-  //   const token = getState().auth.token;
-  //   await adminService.updateUser({ token, ...payload });
-  //   await dispatch({ type: TYPES.UPDATE_USER_SUCCESS, payload });
-  // } catch (error) {
-  //   dispatch({ type: TYPES.UPDATE_USER_ERROR, payload: error });
-  // }
+  console.log("uploadImage-payload", payload);
+  dispatch({ type: TYPES.UPDATE_PORTFOLIO_REQUEST, payload: null });
+  try {
+    const token = getState().auth.token;
+    const { data } = await adminService.updatePortfolio({
+      token,
+      ...payload,
+    });
+    console.log("uploadImagereturnvalue--", payload);
+    await dispatch({
+      type: TYPES.UPDATE_PORTFOLIO_SUCCESS,
+      payload: data,
+    });
+  } catch (error) {
+    dispatch({ type: TYPES.UPDATE_PORTFOLIO_ERROR, payload: error });
+  }
 };

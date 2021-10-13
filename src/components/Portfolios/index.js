@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { IconButton, Box, Button } from "@material-ui/core";
 import AddCircleOutlineIcon from "@material-ui/icons/AddCircleOutline";
 import PortfolioCard from "./PortfolioCard";
@@ -28,7 +28,7 @@ const Portfolios = () => {
   const [openUpload, setOpenUpload] = React.useState(false);
   const dispatch = useDispatch();
   const classes = useStyles();
-
+  const [uploadId, setUploadId] = useState();
   React.useEffect(() => {
     dispatch(checkTokenValid());
     initialState.current = portfoliosList;
@@ -36,7 +36,8 @@ const Portfolios = () => {
   const handleOpenModal = () => {
     setOpenModal(true);
   };
-  const handleUpload = () => {
+  const handleUpload = (id) => {
+    setUploadId(id);
     setOpenUpload(true);
   };
   const handleCloseModal = React.useCallback(() => {
@@ -51,6 +52,7 @@ const Portfolios = () => {
     },
     [dispatch]
   );
+
   const handleAddPortfolio = React.useCallback(
     (newPortfolio) => {
       dispatch(addPortfolio(newPortfolio));
@@ -59,7 +61,7 @@ const Portfolios = () => {
   );
   const handleUploadImage = React.useCallback(
     (newImage) => {
-      dispatch(uploadImage(newImage));
+      dispatch(uploadImage(newImage, uploadId));
     },
     [dispatch]
   );
@@ -140,6 +142,8 @@ const Portfolios = () => {
           open={openUpload}
           handleClose={handleCloseUploadModal}
           handleUploadImage={handleUploadImage}
+          uploadId={uploadId}
+          selectKey={"Portfolio"}
         />
       </Box>
     </>
