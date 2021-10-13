@@ -3,7 +3,12 @@ import { useStyles } from "./styles";
 import { Typography, Box, TextField } from "@material-ui/core";
 import ListItem from "../../ListItem";
 
-const LogoCard = ({ company, handleDeleteCompany, handleChangeClientInfo }) => {
+const LogoCard = ({
+  company,
+  handleDeleteCompany,
+  handleChangeClientInfo,
+  handleUpload,
+}) => {
   const [formState, setFormstate] = React.useState(company);
   const [isEditing, setIsEditing] = React.useState(false);
   const classes = useStyles();
@@ -26,8 +31,9 @@ const LogoCard = ({ company, handleDeleteCompany, handleChangeClientInfo }) => {
   return (
     <ListItem
       id={company.id}
-      handleDelete={handleDeleteCompany}
       handleEdit={handleEdit}
+      handleDelete={handleDeleteCompany}
+      handleUpload={handleUpload}
     >
       <Box display="flex" flexDirection="column">
         {isEditing ? (

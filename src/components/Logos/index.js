@@ -1,11 +1,12 @@
 import React from "react";
 import { Box, Button, IconButton } from "@material-ui/core";
 import AddCircleOutlineIcon from "@material-ui/icons/AddCircleOutline";
-import { useStyles } from "./styles";
-import { mock } from "./mock";
+// import { useStyles } from "./styles";
+// import { mock } from "./mock";
 import { CardDnd } from "../CardDnd";
 import LogoCard from "./LogoCard";
 import { useDispatch, useSelector } from "react-redux";
+import { UploadImageModal } from "../Modals/UploadImageModal";
 import {
   addClient,
   changeClientsOrder,
@@ -13,6 +14,7 @@ import {
   deleteClient,
   saveClientsOrder,
   updateClient,
+  uploadImage,
 } from "../../redux/actions/adminAction";
 import { AddClientModal } from "../Modals/AddClientModal";
 import { checkTokenValid } from "../../redux/actions/authAction";
@@ -25,34 +27,53 @@ export default function Logos() {
   const clientsList = useSelector((state) => state.adminReducer.clientsList);
   const initialState = React.useRef();
   const [openModal, setOpenModal] = React.useState(false);
+  const [openUpload, setOpenUpload] = React.useState(false);
   const dispatch = useDispatch();
-  const classes = useStyles();
+  // const classes = useStyles();
 
   React.useEffect(() => {
     dispatch(checkTokenValid());
     initialState.current = clientsList;
-  }, []);
+  }, [clientsList, dispatch]);
 
   const handleOpenModal = () => {
     setOpenModal(true);
   };
-
+  const handleUpload = () => {
+    setOpenUpload(true);
+  };
   const handleCloseModal = React.useCallback(() => {
     setOpenModal(false);
-  }, [openModal]);
-
-  const handleAddClient = React.useCallback((newClient) => {
-    console.log(newClient);
-    dispatch(addClient(newClient));
   }, []);
-
-  const handleChangeClientInfo = React.useCallback((client) => {
-    dispatch(updateClient(client));
+  const handleCloseUploadModal = React.useCallback(() => {
+    setOpenUpload(false);
   }, []);
+  const handleAddClient = React.useCallback(
+    (newClient) => {
+      console.log(newClient);
+      dispatch(addClient(newClient));
+    },
+    [dispatch]
+  );
+  const handleUploadImage = React.useCallback(
+    (newImage) => {
+      dispatch(uploadImage(newImage));
+    },
+    [dispatch]
+  );
+  const handleChangeClientInfo = React.useCallback(
+    (client) => {
+      dispatch(updateClient(client));
+    },
+    [dispatch]
+  );
 
-  const handleDeleteCompany = React.useCallback((id) => {
-    dispatch(deleteClient(id));
-  }, []);
+  const handleDeleteCompany = React.useCallback(
+    (id) => {
+      dispatch(deleteClient(id));
+    },
+    [dispatch]
+  );
 
   const moveCard = React.useCallback(
     (dragIndex, hoverIndex) => {
@@ -66,7 +87,7 @@ export default function Logos() {
 
       dispatch(changeClientsOrder(coppiedStateArray));
     },
-    [clientsList]
+    [clientsList, dispatch]
   );
 
   const handleStatusLogosSection = () => {
@@ -120,6 +141,7 @@ export default function Logos() {
               company={company}
               handleDeleteCompany={handleDeleteCompany}
               handleChangeClientInfo={handleChangeClientInfo}
+              handleUpload={handleUpload}
             />
           </CardDnd>
         ))}
@@ -127,6 +149,11 @@ export default function Logos() {
         open={openModal}
         handleClose={handleCloseModal}
         handleAddClient={handleAddClient}
+      />
+      <UploadImageModal
+        open={openUpload}
+        handleClose={handleCloseUploadModal}
+        handleUploadImage={handleUploadImage}
       />
     </>
   );

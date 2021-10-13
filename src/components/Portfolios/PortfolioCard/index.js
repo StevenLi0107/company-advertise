@@ -32,8 +32,8 @@ const PortfolioCard = ({
   return (
     <ListItem
       id={portfolio.id}
-      handleDelete={handleDeletePortfolio}
       handleEdit={handleEdit}
+      handleDelete={handleDeletePortfolio}
       handleUpload={handleUpload}
     >
       <Box display="flex">

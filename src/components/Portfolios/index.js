@@ -3,7 +3,7 @@ import { IconButton, Box, Button } from "@material-ui/core";
 import AddCircleOutlineIcon from "@material-ui/icons/AddCircleOutline";
 import PortfolioCard from "./PortfolioCard";
 import { useStyles } from "./styles";
-import { mock } from "./mock";
+// import { mock } from "./mock";
 import { CardDnd } from "../CardDnd";
 import { useSelector, useDispatch } from "react-redux";
 import { AddPortfolioModal } from "../Modals/AddPortfolioModal";
@@ -32,36 +32,44 @@ const Portfolios = () => {
   React.useEffect(() => {
     dispatch(checkTokenValid());
     initialState.current = portfoliosList;
-  }, []);
-
+  }, [dispatch, portfoliosList]);
   const handleOpenModal = () => {
     setOpenModal(true);
   };
-
   const handleUpload = () => {
     setOpenUpload(true);
   };
-
   const handleCloseModal = React.useCallback(() => {
-    setOpenUpload(false);
     setOpenModal(false);
-  }, [openModal]);
-
-  const handleDeletePortfolio = React.useCallback((id) => {
-    dispatch(deletePortfolio(id));
   }, []);
-
-  const handleAddPortfolio = React.useCallback((newPortfolio) => {
-    dispatch(addPortfolio(newPortfolio));
+  const handleCloseUploadModal = React.useCallback(() => {
+    setOpenUpload(false);
   }, []);
+  const handleDeletePortfolio = React.useCallback(
+    (id) => {
+      dispatch(deletePortfolio(id));
+    },
+    [dispatch]
+  );
+  const handleAddPortfolio = React.useCallback(
+    (newPortfolio) => {
+      dispatch(addPortfolio(newPortfolio));
+    },
+    [dispatch]
+  );
+  const handleUploadImage = React.useCallback(
+    (newImage) => {
+      dispatch(uploadImage(newImage));
+    },
+    [dispatch]
+  );
 
-  const handleUploadImage = React.useCallback((newImage) => {
-    dispatch(uploadImage(newImage));
-  }, []);
-
-  const handleChangePortfolioInfo = React.useCallback((portfolio) => {
-    dispatch(updatePortfolio(portfolio));
-  }, []);
+  const handleChangePortfolioInfo = React.useCallback(
+    (portfolio) => {
+      dispatch(updatePortfolio(portfolio));
+    },
+    [dispatch]
+  );
 
   const moveCard = React.useCallback(
     (dragIndex, hoverIndex) => {
@@ -75,7 +83,7 @@ const Portfolios = () => {
 
       dispatch(changePortfoliosOrder(coppiedStateArray));
     },
-    [portfoliosList]
+    [dispatch, portfoliosList]
   );
 
   const handleSave = () => {
@@ -131,7 +139,7 @@ const Portfolios = () => {
         />
         <UploadImageModal
           open={openUpload}
-          handleClose={handleCloseModal}
+          handleClose={handleCloseUploadModal}
           handleUploadImage={handleUploadImage}
         />
       </Box>

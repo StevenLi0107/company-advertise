@@ -3,7 +3,12 @@ import { useStyles } from "./styles";
 import { Typography, Avatar, Box, TextField } from "@material-ui/core";
 import ListItem from "../../ListItem";
 
-const UserCard = ({ user, handleDeleteUser, handleChangeUserInfo }) => {
+const UserCard = ({
+  user,
+  handleDeleteUser,
+  handleChangeUserInfo,
+  handleUpload,
+}) => {
   const [formState, setFormstate] = React.useState(user);
   const [isEditing, setIsEditing] = React.useState(false);
   const classes = useStyles();
@@ -26,9 +31,10 @@ const UserCard = ({ user, handleDeleteUser, handleChangeUserInfo }) => {
 
   return (
     <ListItem
+      id={user.id}
       handleEdit={handleEdit}
       handleDelete={handleDeleteUser}
-      id={user.id}
+      handleUpload={handleUpload}
     >
       <Box display="flex">
         <Avatar src={img} />
