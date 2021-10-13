@@ -114,7 +114,9 @@ const People = () => {
           variant="contained"
           color="primary"
         >
-          {isActivePeopleSection ? "Off Logos Section" : "On Logos Section"}
+          {isActivePeopleSection
+            ? "Off Developers Section"
+            : "On Developers Section"}
         </Button>
         <Box width="20%" display="flex" justifyContent="space-around  ">
           <IconButton onClick={handleOpenModal} aria-label="add">
