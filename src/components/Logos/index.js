@@ -1,11 +1,11 @@
-import React from 'react';
-import { Box, Button, IconButton } from '@material-ui/core';
-import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline';
-import { useStyles } from './styles';
-import { mock } from './mock';
-import { CardDnd } from '../CardDnd';
-import LogoCard from './LogoCard';
-import { useDispatch, useSelector } from 'react-redux';
+import React from "react";
+import { Box, Button, IconButton } from "@material-ui/core";
+import AddCircleOutlineIcon from "@material-ui/icons/AddCircleOutline";
+import { useStyles } from "./styles";
+import { mock } from "./mock";
+import { CardDnd } from "../CardDnd";
+import LogoCard from "./LogoCard";
+import { useDispatch, useSelector } from "react-redux";
 import {
   addClient,
   changeClientsOrder,
@@ -13,14 +13,14 @@ import {
   deleteClient,
   saveClientsOrder,
   updateClient,
-} from '../../redux/actions/adminAction';
-import { AddClientModal } from '../Modals/AddClientModal';
-import { checkTokenValid } from '../../redux/actions/authAction';
+} from "../../redux/actions/adminAction";
+import { AddClientModal } from "../Modals/AddClientModal";
+import { checkTokenValid } from "../../redux/actions/authAction";
 
 export default function Logos() {
   // const [formState, setFormState] = React.useState(mock);
   const isActiveLogosSection = useSelector(
-    (state) => state.adminReducer.isActiveLogosSection,
+    (state) => state.adminReducer.isActiveLogosSection
   );
   const clientsList = useSelector((state) => state.adminReducer.clientsList);
   const initialState = React.useRef();
@@ -66,7 +66,7 @@ export default function Logos() {
 
       dispatch(changeClientsOrder(coppiedStateArray));
     },
-    [clientsList],
+    [clientsList]
   );
 
   const handleStatusLogosSection = () => {
@@ -81,15 +81,15 @@ export default function Logos() {
     if (!clientsList?.length || !initialState?.current?.length) return true;
     return JSON.stringify(initialState.current) === JSON.stringify(clientsList);
   }, [clientsList]);
-
   return (
     <>
       <Box display="flex" justifyContent="space-between" height="40px">
         <Button
           onClick={handleStatusLogosSection}
           variant="contained"
-          color="primary">
-          {isActiveLogosSection ? 'Off Logos Section' : 'On Logos Section'}
+          color="primary"
+        >
+          {isActiveLogosSection ? "Off Logos Section" : "On Logos Section"}
         </Button>
         <Box width="20%" display="flex" justifyContent="space-around  ">
           <IconButton onClick={handleOpenModal} aria-label="add">
@@ -100,7 +100,8 @@ export default function Logos() {
             disabled={isDisabledButton()}
             onClick={handleSave}
             variant="contained"
-            color="primary">
+            color="primary"
+          >
             Save
           </Button>
         </Box>
@@ -110,10 +111,11 @@ export default function Logos() {
       {clientsList &&
         clientsList.map((company, index) => (
           <CardDnd
-            key={company.id + company.companyName}
+            key={company.id + company.name}
             id={company.id}
             index={index}
-            moveCard={moveCard}>
+            moveCard={moveCard}
+          >
             <LogoCard
               company={company}
               handleDeleteCompany={handleDeleteCompany}

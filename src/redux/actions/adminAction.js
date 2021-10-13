@@ -239,3 +239,15 @@ export const deleteClient = (payload) => async (dispatch, getState) => {
     dispatch({ type: TYPES.DELETE_CLIENT_ERROR, payload: error });
   }
 };
+
+export const uploadImage = (payload) => async (dispatch, getState) => {
+  dispatch({ type: TYPES.UPDATE_USER_REQUEST, payload: null });
+
+  // try {
+  //   const token = getState().auth.token;
+  //   await adminService.updateUser({ token, ...payload });
+  //   await dispatch({ type: TYPES.UPDATE_USER_SUCCESS, payload });
+  // } catch (error) {
+  //   dispatch({ type: TYPES.UPDATE_USER_ERROR, payload: error });
+  // }
+};

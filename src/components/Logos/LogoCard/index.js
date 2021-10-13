@@ -38,7 +38,7 @@ const LogoCard = ({ company, handleDeleteCompany, handleChangeClientInfo }) => {
               name="name"
               onChange={handleChange}
               value={name}
-              placeholder="companyName"
+              placeholder="CompanyName"
             />
           </Box>
         ) : (

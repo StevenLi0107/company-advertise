@@ -7,12 +7,15 @@ import { mock } from "./mock";
 import { CardDnd } from "../CardDnd";
 import { useSelector, useDispatch } from "react-redux";
 import { AddPortfolioModal } from "../Modals/AddPortfolioModal";
+import { UploadImageModal } from "../Modals/UploadImageModal";
+
 import {
   addPortfolio,
   changePortfoliosOrder,
   deletePortfolio,
   savePortfoliosOrder,
   updatePortfolio,
+  uploadImage,
 } from "../../redux/actions/adminAction";
 import { checkTokenValid } from "../../redux/actions/authAction";
 
@@ -22,6 +25,7 @@ const Portfolios = () => {
   );
   const initialState = React.useRef();
   const [openModal, setOpenModal] = React.useState(false);
+  const [openUpload, setOpenUpload] = React.useState(false);
   const dispatch = useDispatch();
   const classes = useStyles();
 
@@ -34,8 +38,12 @@ const Portfolios = () => {
     setOpenModal(true);
   };
 
+  const handleUpload = () => {
+    setOpenUpload(true);
+  };
+
   const handleCloseModal = React.useCallback(() => {
-    setOpenModal(false);
+    setOpenUpload(false);
   }, [openModal]);
 
   const handleDeletePortfolio = React.useCallback((id) => {
@@ -44,6 +52,10 @@ const Portfolios = () => {
 
   const handleAddPortfolio = React.useCallback((newPortfolio) => {
     dispatch(addPortfolio(newPortfolio));
+  }, []);
+
+  const handleUploadImage = React.useCallback((newImage) => {
+    dispatch(uploadImage(newImage));
   }, []);
 
   const handleChangePortfolioInfo = React.useCallback((portfolio) => {
@@ -107,6 +119,7 @@ const Portfolios = () => {
                 portfolio={portfolio}
                 handleDeletePortfolio={handleDeletePortfolio}
                 handleChangePortfolioInfo={handleChangePortfolioInfo}
+                handleUpload={handleUpload}
               />
             </CardDnd>
           ))}
@@ -114,6 +127,11 @@ const Portfolios = () => {
           open={openModal}
           handleClose={handleCloseModal}
           handleAddPortfolio={handleAddPortfolio}
+        />
+        <UploadImageModal
+          open={openUpload}
+          handleClose={handleCloseModal}
+          handleUploadImage={handleUploadImage}
         />
       </Box>
     </>

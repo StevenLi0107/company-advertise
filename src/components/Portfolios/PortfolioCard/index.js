@@ -7,6 +7,7 @@ const PortfolioCard = ({
   portfolio,
   handleDeletePortfolio,
   handleChangePortfolioInfo,
+  handleUpload,
 }) => {
   const [formState, setFormstate] = React.useState(portfolio);
   const [isEditing, setIsEditing] = React.useState(false);
@@ -33,6 +34,7 @@ const PortfolioCard = ({
       id={portfolio.id}
       handleDelete={handleDeletePortfolio}
       handleEdit={handleEdit}
+      handleUpload={handleUpload}
     >
       <Box display="flex">
         <Avatar src={img} />
