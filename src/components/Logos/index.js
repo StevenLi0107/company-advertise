@@ -50,7 +50,6 @@ export default function Logos() {
   }, []);
   const handleAddClient = React.useCallback(
     (newClient) => {
-      console.log(newClient);
       dispatch(addClient(newClient));
     },
     [dispatch]
