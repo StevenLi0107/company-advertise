@@ -13,13 +13,19 @@ const LogoCard = ({
   const [isEditing, setIsEditing] = React.useState(false);
   const classes = useStyles();
 
-  const { name, img } = formState;
+  const { name } = formState;
+  const [img, setImg] = React.useState(company.img);
+
+  React.useEffect(() => {
+    setImg(company.img);
+    setFormstate({ ...formState, img: company.img });
+  }, [company.img]);
 
   const handleChange = React.useCallback(
     ({ target: { name, value } }) => {
-      setFormstate({ ...formState, [name]: value });
+      setFormstate({ ...formState, [name]: value, img });
     },
-    [formState]
+    [formState, img]
   );
   const handleEdit = () => {
     if (isEditing) {

@@ -37,7 +37,13 @@ export const updateUser = (payload) => async (dispatch, getState) => {
   dispatch({ type: TYPES.UPDATE_USER_REQUEST, payload: null });
   try {
     const token = getState().auth.token;
-    await adminService.updateUser({ token, ...payload });
+    await adminService.updateUser({
+      token,
+      id: payload.id,
+      name: payload.name,
+      role: payload.role,
+      url: payload.url,
+    });
     await dispatch({ type: TYPES.UPDATE_USER_SUCCESS, payload });
   } catch (error) {
     dispatch({ type: TYPES.UPDATE_USER_ERROR, payload: error });
@@ -196,7 +202,11 @@ export const updateClient = (payload) => async (dispatch, getState) => {
   dispatch({ type: TYPES.UPDATE_CLIENT_REQUEST, payload: null });
   try {
     const token = getState().auth.token;
-    await adminService.updateClient({ token, ...payload });
+    await adminService.updateClient({
+      token,
+      id: payload.id,
+      name: payload.name,
+    });
     await dispatch({
       type: TYPES.UPDATE_CLIENT_SUCCESS,
       payload,
@@ -282,6 +292,20 @@ export const uploadImage = (payload) => async (dispatch, getState) => {
           dispatch({
             type: TYPES.GET_USERS_LIST_SUCCESS,
             payload: responseUser.data,
+          });
+        }
+        break;
+      case "Client":
+        await adminService.updateClient({
+          token,
+          id: payload.id,
+          img: payload.img,
+        });
+        const responseCelient = await dispatch(getClientsList());
+        if (responseCelient?.status === 200) {
+          dispatch({
+            type: TYPES.GET_CLIENTS_LIST_SUCCESS,
+            payload: responseCelient.data,
           });
         }
         break;
