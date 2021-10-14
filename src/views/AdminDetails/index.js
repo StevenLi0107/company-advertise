@@ -5,7 +5,7 @@ import Portfolios from "../../components/Portfolios";
 import VerticalTabs from "../../components/VerticalTabs";
 import People from "../../components/People";
 import Logos from "../../components/Logos";
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 import {
   getClientsList,
   getPortfoliosList,

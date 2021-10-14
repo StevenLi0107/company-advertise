@@ -1,8 +1,8 @@
-import React from 'react';
-import { contactUs } from '../../redux/actions/formsActions';
-import { getBase64 } from '../../utils/base64';
-import { useDispatch } from 'react-redux';
-import { isEmpty } from '../../utils/stringUtils';
+import React from "react";
+import { contactUs } from "../../redux/actions/formsActions";
+import { getBase64 } from "../../utils/base64";
+import { useDispatch } from "react-redux";
+import { isEmpty } from "../../utils/stringUtils";
 
 const ContactUs = ({ ref }) => {
   const [activeButtons, setActiveButtons] = React.useState([]);
@@ -10,24 +10,24 @@ const ContactUs = ({ ref }) => {
   const fileRef = React.useRef();
   const [form, setForm] = React.useState({
     companyName: {
-      text: '',
+      text: "",
       error: false,
     },
     email: {
-      text: '',
+      text: "",
       error: false,
     },
     phoneNumber: {
-      text: '',
+      text: "",
       error: false,
     },
     projectDetails: {
-      text: '',
+      text: "",
       error: false,
     },
     attachment: {
-      name: '',
-      body: '',
+      name: "",
+      body: "",
     },
   });
   const dispatch = useDispatch();
@@ -40,7 +40,7 @@ const ContactUs = ({ ref }) => {
   };
 
   const handleChangeForm = (e) => {
-    if (e.target.name === 'phoneNumber' && isNaN(e.target.value)) return;
+    if (e.target.name === "phoneNumber" && isNaN(e.target.value)) return;
     setForm({
       ...form,
       [e.target.name]: {
@@ -51,7 +51,7 @@ const ContactUs = ({ ref }) => {
   };
 
   const handleActiveInput = (num, e) => {
-    if (activeInputs.some((n) => n === num) && form[e.target.name] === '') {
+    if (activeInputs.some((n) => n === num) && form[e.target.name] === "") {
       return setActiveInputs((prev) => prev.filter((n) => n !== num));
     }
     setActiveInputs([...activeInputs, num]);
@@ -60,7 +60,7 @@ const ContactUs = ({ ref }) => {
   const handleAttachOnChange = () => {
     const _file = fileRef.current.files[0];
     if (_file && _file.size > 26000000) {
-      return alert('Размер файла должен быть меньше 25МБ');
+      return alert("Размер файла должен быть меньше 25МБ");
     }
     getBase64(_file)
       .then((res) =>
@@ -72,7 +72,7 @@ const ContactUs = ({ ref }) => {
               body: res,
             },
           };
-        }),
+        })
       )
       .catch((e) => console.log(e));
   };
@@ -89,7 +89,7 @@ const ContactUs = ({ ref }) => {
             ...value,
             error: true,
             key,
-          },
+          }
     );
     if (a.some((el) => el.error)) {
       const b = a.reduce((acum, item) => {
@@ -108,7 +108,7 @@ const ContactUs = ({ ref }) => {
       phoneNumber: form.phoneNumber.text,
       projectDetails: form.projectDetails.text,
       attachment: {
-        body: form.attachment.body.split(',')[1],
+        body: form.attachment.body.split(",")[1],
         name: form.attachment.name,
       },
     };
@@ -118,7 +118,8 @@ const ContactUs = ({ ref }) => {
   return (
     <div
       ref={ref}
-      class="WriteToUs-ColorContainer-module--cls2--1yHxW WriteToUs-ColorContainer-module--cls1--1WAkb">
+      class="WriteToUs-ColorContainer-module--cls2--1yHxW WriteToUs-ColorContainer-module--cls1--1WAkb"
+    >
       <div class="WidthContainer-OuterContainer-module--cls2--2akaW WidthContainer-OuterContainer-module--cls1--1qDQ4">
         <div class="WidthContainer-InnerContainer-module--cls2--32dv6 WidthContainer-InnerContainer-module--cls1--1Ms9D">
           <div class="WriteToUs-ContentContainer-module--cls2--34jXv WriteToUs-ContentContainer-module--cls1--2T6EL">
@@ -144,54 +145,60 @@ const ContactUs = ({ ref }) => {
                     onClick={handleActiveButtons.bind(null, 0)}
                     class={`ChipSelectGroup-Chip-module--cls2--2tjD1 ChipSelectGroup-Chip-module--cls1--336ll ${
                       activeButtons.some((num) => num === 0)
-                        ? 'ChipSelectGroup-Chip-module--active--1El6c'
-                        : ''
-                    }`}>
+                        ? "ChipSelectGroup-Chip-module--active--1El6c"
+                        : ""
+                    }`}
+                  >
                     Mobile
                   </div>
                   <div
                     onClick={handleActiveButtons.bind(null, 1)}
                     class={`ChipSelectGroup-Chip-module--cls2--2tjD1 ChipSelectGroup-Chip-module--cls1--336ll ${
                       activeButtons.some((num) => num === 1)
-                        ? 'ChipSelectGroup-Chip-module--active--1El6c'
-                        : ''
-                    }`}>
+                        ? "ChipSelectGroup-Chip-module--active--1El6c"
+                        : ""
+                    }`}
+                  >
                     Web
                   </div>
                   <div
                     onClick={handleActiveButtons.bind(null, 2)}
                     class={`ChipSelectGroup-Chip-module--cls2--2tjD1 ChipSelectGroup-Chip-module--cls1--336ll ${
                       activeButtons.some((num) => num === 2)
-                        ? 'ChipSelectGroup-Chip-module--active--1El6c'
-                        : ''
-                    }`}>
+                        ? "ChipSelectGroup-Chip-module--active--1El6c"
+                        : ""
+                    }`}
+                  >
                     Backend
                   </div>
                   <div
                     onClick={handleActiveButtons.bind(null, 3)}
                     class={`ChipSelectGroup-Chip-module--cls2--2tjD1 ChipSelectGroup-Chip-module--cls1--336ll ${
                       activeButtons.some((num) => num === 3)
-                        ? 'ChipSelectGroup-Chip-module--active--1El6c'
-                        : ''
-                    }`}>
+                        ? "ChipSelectGroup-Chip-module--active--1El6c"
+                        : ""
+                    }`}
+                  >
                     Дизайн
                   </div>
                   <div
                     onClick={handleActiveButtons.bind(null, 4)}
                     class={`ChipSelectGroup-Chip-module--cls2--2tjD1 ChipSelectGroup-Chip-module--cls1--336ll ${
                       activeButtons.some((num) => num === 4)
-                        ? 'ChipSelectGroup-Chip-module--active--1El6c'
-                        : ''
-                    }`}>
+                        ? "ChipSelectGroup-Chip-module--active--1El6c"
+                        : ""
+                    }`}
+                  >
                     Аналитика
                   </div>
                   <div
                     onClick={handleActiveButtons.bind(null, 5)}
                     class={`ChipSelectGroup-Chip-module--cls2--2tjD1 ChipSelectGroup-Chip-module--cls1--336ll ${
                       activeButtons.some((num) => num === 5)
-                        ? 'ChipSelectGroup-Chip-module--active--1El6c'
-                        : ''
-                    }`}>
+                        ? "ChipSelectGroup-Chip-module--active--1El6c"
+                        : ""
+                    }`}
+                  >
                     Тестирование
                   </div>
                 </div>
@@ -200,8 +207,9 @@ const ContactUs = ({ ref }) => {
                     <label class="Input-Label-module--cls2--yfK5D Input-Label-module--cls1--3_McV">
                       <span
                         class={`${
-                          activeInputs.some((num) => num === 0) ? 'active' : ''
-                        }`}>
+                          activeInputs.some((num) => num === 0) ? "active" : ""
+                        }`}
+                      >
                         Имя Компании
                       </span>
                       <input
@@ -216,9 +224,10 @@ const ContactUs = ({ ref }) => {
                     <div
                       className={`WriteToUsForm-Error-module--cls2--3DVeU WriteToUsForm-Error-module--cls1--38RV1 ${
                         form.companyName.error
-                          ? 'WriteToUsForm-Error-module--active--1KhNh'
-                          : ''
-                      }`}>
+                          ? "WriteToUsForm-Error-module--active--1KhNh"
+                          : ""
+                      }`}
+                    >
                       Пожалуйста, введите Ваше имя
                     </div>
                   </div>
@@ -226,8 +235,9 @@ const ContactUs = ({ ref }) => {
                     <label class="Input-Label-module--cls2--yfK5D Input-Label-module--cls1--3_McV">
                       <span
                         class={`${
-                          activeInputs.some((num) => num === 1) ? 'active' : ''
-                        }`}>
+                          activeInputs.some((num) => num === 1) ? "active" : ""
+                        }`}
+                      >
                         Почта
                       </span>
                       <input
@@ -243,9 +253,10 @@ const ContactUs = ({ ref }) => {
                     <div
                       className={`WriteToUsForm-Error-module--cls2--3DVeU WriteToUsForm-Error-module--cls1--38RV1 ${
                         form.email.error
-                          ? 'WriteToUsForm-Error-module--active--1KhNh'
-                          : ''
-                      }`}>
+                          ? "WriteToUsForm-Error-module--active--1KhNh"
+                          : ""
+                      }`}
+                    >
                       Пожалуйста, вашу почту
                     </div>
                   </div>
@@ -253,8 +264,9 @@ const ContactUs = ({ ref }) => {
                     <label class="Input-Label-module--cls2--yfK5D Input-Label-module--cls1--3_McV">
                       <span
                         class={`${
-                          activeInputs.some((num) => num === 2) ? 'active' : ''
-                        }`}>
+                          activeInputs.some((num) => num === 2) ? "active" : ""
+                        }`}
+                      >
                         Телефон
                       </span>
                       <input
@@ -271,9 +283,10 @@ const ContactUs = ({ ref }) => {
                     <div
                       className={`WriteToUsForm-Error-module--cls2--3DVeU WriteToUsForm-Error-module--cls1--38RV1 ${
                         form.phoneNumber.error
-                          ? 'WriteToUsForm-Error-module--active--1KhNh'
-                          : ''
-                      }`}>
+                          ? "WriteToUsForm-Error-module--active--1KhNh"
+                          : ""
+                      }`}
+                    >
                       Пожалуйста, заполните поле
                     </div>
                   </div>
@@ -282,8 +295,9 @@ const ContactUs = ({ ref }) => {
                   <label class="InputArea-Label-module--cls2--186Xi InputArea-Label-module--cls1--27RWN">
                     <span
                       class={`${
-                        activeInputs.some((num) => num === 3) ? 'active' : ''
-                      }`}>
+                        activeInputs.some((num) => num === 3) ? "active" : ""
+                      }`}
+                    >
                       Текст сообщения
                     </span>
                     <input
@@ -298,9 +312,10 @@ const ContactUs = ({ ref }) => {
                   <div
                     className={`WriteToUsForm-Error-module--cls2--3DVeU WriteToUsForm-Error-module--cls1--38RV1 ${
                       form.projectDetails.error
-                        ? 'WriteToUsForm-Error-module--active--1KhNh'
-                        : ''
-                    }`}>
+                        ? "WriteToUsForm-Error-module--active--1KhNh"
+                        : ""
+                    }`}
+                  >
                     Пожалуйста, заполните поле
                   </div>
                   <img
@@ -318,8 +333,10 @@ const ContactUs = ({ ref }) => {
                 </div>
               </div>
               <a
+                href="/developers"
                 onClick={handleSubmit}
-                class="WriteToUsForm-SendButton-module--cls2--3aCUc WriteToUsForm-SendButton-module--cls1--3XEGZ Buttons-BigWhiteButton-module--cls2--g05zN Buttons-BigWhiteButton-module--cls1--2H7YS">
+                class="WriteToUsForm-SendButton-module--cls2--3aCUc WriteToUsForm-SendButton-module--cls1--3XEGZ Buttons-BigWhiteButton-module--cls2--g05zN Buttons-BigWhiteButton-module--cls1--2H7YS"
+              >
                 Отправить
               </a>
             </form>

@@ -1,11 +1,11 @@
-import React, { memo, useRef } from 'react';
-import { useDrag, useDrop } from 'react-dnd';
+import React, { memo, useRef } from "react";
+import { useDrag, useDrop } from "react-dnd";
 
 export const CardDnd = memo(({ moveCard, children, index, id }) => {
   const dragRef = useRef(null);
 
   const [, drop] = useDrop({
-    accept: 'Card',
+    accept: "Card",
     hover(item, monitor) {
       if (!dragRef.current) {
         return;
@@ -40,8 +40,9 @@ export const CardDnd = memo(({ moveCard, children, index, id }) => {
     },
   });
 
-  const [{ isDragging }, drag] = useDrag({
-    type: 'Card',
+  const [drag] = useDrag({
+    //const [{ isDragging }, drag] = useDrag({
+    type: "Card",
     item: { id, index },
     collect: (monitor) => ({
       isDragging: monitor.isDragging(),

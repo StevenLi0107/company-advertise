@@ -65,7 +65,7 @@ const Portfolios = () => {
     (newImage) => {
       dispatch(uploadImage(newImage, uploadId));
     },
-    [dispatch]
+    [dispatch, uploadId]
   );
 
   const handleChangePortfolioInfo = React.useCallback(

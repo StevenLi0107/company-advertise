@@ -1,15 +1,15 @@
-import React from 'react';
-import { useSelector } from 'react-redux';
+import React from "react";
+import { useSelector } from "react-redux";
 import {
   Box,
-  Card,
-  CardActionArea,
-  CardMedia,
-  CardContent,
+  // Card,
+  // CardActionArea,
+  // CardMedia,
+  // CardContent,
   Typography,
   Avatar,
-} from '@material-ui/core';
-import { useStyles } from './styles';
+} from "@material-ui/core";
+import { useStyles } from "./styles";
 
 const DevelopersPage = () => {
   const usersList = useSelector((state) => state.adminReducer.usersList);
