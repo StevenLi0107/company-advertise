@@ -110,11 +110,11 @@ export const updatePortfolio = (payload) => async (dispatch, getState) => {
   dispatch({ type: TYPES.UPDATE_PORTFOLIO_REQUEST, payload: null });
   try {
     const token = getState().auth.token;
-    const { data } = await adminService.updatePortfolio({ token, ...payload });
+    await adminService.updatePortfolio({ token, ...payload });
 
     await dispatch({
       type: TYPES.UPDATE_PORTFOLIO_SUCCESS,
-      payload: data,
+      payload,
     });
   } catch (error) {
     dispatch({ type: TYPES.UPDATE_PORTFOLIO_ERROR, payload: error });
@@ -192,10 +192,10 @@ export const updateClient = (payload) => async (dispatch, getState) => {
   dispatch({ type: TYPES.UPDATE_CLIENT_REQUEST, payload: null });
   try {
     const token = getState().auth.token;
-    const { data } = await adminService.updateClient({ token, ...payload });
+    await adminService.updateClient({ token, ...payload });
     await dispatch({
       type: TYPES.UPDATE_CLIENT_SUCCESS,
-      payload: data,
+      payload,
     });
   } catch (error) {
     dispatch({ type: TYPES.UPDATE_CLIENT_ERROR, payload: error });
