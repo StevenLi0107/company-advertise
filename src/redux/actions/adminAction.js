@@ -1,5 +1,6 @@
 import * as TYPES from "./types";
 import * as adminService from "../../services/admin";
+import { PlayArrow, PlaylistAddOutlined } from "@material-ui/icons";
 
 export const changeStatusOfLogosSection = (payload) => {
   return {
@@ -37,7 +38,13 @@ export const updateUser = (payload) => async (dispatch, getState) => {
   dispatch({ type: TYPES.UPDATE_USER_REQUEST, payload: null });
   try {
     const token = getState().auth.token;
-    await adminService.updateUser({ token, ...payload });
+    await adminService.updateUser({
+      token,
+      id: payload.id,
+      name: payload.name,
+      role: payload.role,
+      url: payload.url,
+    });
     await dispatch({ type: TYPES.UPDATE_USER_SUCCESS, payload });
   } catch (error) {
     dispatch({ type: TYPES.UPDATE_USER_ERROR, payload: error });
@@ -110,11 +117,15 @@ export const updatePortfolio = (payload) => async (dispatch, getState) => {
   dispatch({ type: TYPES.UPDATE_PORTFOLIO_REQUEST, payload: null });
   try {
     const token = getState().auth.token;
-    const { data } = await adminService.updatePortfolio({ token, ...payload });
-
+    await adminService.updatePortfolio({
+      token,
+      id: payload.id,
+      name: payload.name,
+      description: payload.description,
+    });
     await dispatch({
       type: TYPES.UPDATE_PORTFOLIO_SUCCESS,
-      payload: data,
+      payload,
     });
   } catch (error) {
     dispatch({ type: TYPES.UPDATE_PORTFOLIO_ERROR, payload: error });
@@ -192,10 +203,14 @@ export const updateClient = (payload) => async (dispatch, getState) => {
   dispatch({ type: TYPES.UPDATE_CLIENT_REQUEST, payload: null });
   try {
     const token = getState().auth.token;
-    const { data } = await adminService.updateClient({ token, ...payload });
+    await adminService.updateClient({
+      token,
+      id: payload.id,
+      name: payload.name,
+    });
     await dispatch({
       type: TYPES.UPDATE_CLIENT_SUCCESS,
-      payload: data,
+      payload,
     });
   } catch (error) {
     dispatch({ type: TYPES.UPDATE_CLIENT_ERROR, payload: error });
@@ -249,19 +264,55 @@ export const deleteClient = (payload) => async (dispatch, getState) => {
 };
 
 export const uploadImage = (payload) => async (dispatch, getState) => {
-  console.log("uploadImage-payload", payload);
   dispatch({ type: TYPES.UPDATE_PORTFOLIO_REQUEST, payload: null });
   try {
     const token = getState().auth.token;
-    const { data } = await adminService.updatePortfolio({
-      token,
-      ...payload,
-    });
-    console.log("uploadImagereturnvalue--", payload);
-    await dispatch({
-      type: TYPES.UPDATE_PORTFOLIO_SUCCESS,
-      payload: data,
-    });
+    switch (payload.selectKey) {
+      case "Portfolio":
+        await adminService.updatePortfolio({
+          token,
+          id: payload.id,
+          img: payload.img,
+        });
+        const response = await dispatch(getPortfoliosList());
+        if (response?.status === 200) {
+          dispatch({
+            type: TYPES.GET_PORTFOLIOS_LIST_SUCCESS,
+            payload: response.data,
+          });
+        }
+        break;
+      case "People":
+        await adminService.updateUser({
+          token,
+          id: payload.id,
+          img: payload.img,
+        });
+        const responseUser = await dispatch(getUserList());
+        if (responseUser?.status === 200) {
+          dispatch({
+            type: TYPES.GET_USERS_LIST_SUCCESS,
+            payload: responseUser.data,
+          });
+        }
+        break;
+      case "Client":
+        await adminService.updateClient({
+          token,
+          id: payload.id,
+          img: payload.img,
+        });
+        const responseCelient = await dispatch(getClientsList());
+        if (responseCelient?.status === 200) {
+          dispatch({
+            type: TYPES.GET_CLIENTS_LIST_SUCCESS,
+            payload: responseCelient.data,
+          });
+        }
+        break;
+      default:
+        dispatch({ type: TYPES.UPDATE_PORTFOLIO_ERROR, payload });
+    }
   } catch (error) {
     dispatch({ type: TYPES.UPDATE_PORTFOLIO_ERROR, payload: error });
   }

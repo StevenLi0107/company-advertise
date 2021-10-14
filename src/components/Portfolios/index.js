@@ -29,10 +29,12 @@ const Portfolios = () => {
   const dispatch = useDispatch();
   const classes = useStyles();
   const [uploadId, setUploadId] = useState();
+
   React.useEffect(() => {
     dispatch(checkTokenValid());
     initialState.current = portfoliosList;
   }, [dispatch, portfoliosList]);
+
   const handleOpenModal = () => {
     setOpenModal(true);
   };
@@ -97,7 +99,7 @@ const Portfolios = () => {
     return (
       JSON.stringify(initialState.current) === JSON.stringify(portfoliosList)
     );
-  }, []);
+  }, [portfoliosList]);
   return (
     <>
       <Box display="flex" justifyContent="space-between">

@@ -1,4 +1,4 @@
-import React from "react";
+import { useEffect, useState, useCallback } from "react";
 import { useStyles } from "./styles";
 import { Typography, Box, TextField, Avatar } from "@material-ui/core";
 import ListItem from "../../ListItem";
@@ -9,17 +9,22 @@ const PortfolioCard = ({
   handleChangePortfolioInfo,
   handleUpload,
 }) => {
-  const [formState, setFormstate] = React.useState(portfolio);
-  const [isEditing, setIsEditing] = React.useState(false);
+  const [formState, setFormstate] = useState(portfolio);
+  const [isEditing, setIsEditing] = useState(false);
+  const [img, setImg] = useState(portfolio.img);
   const classes = useStyles();
+  const { name, description } = formState;
 
-  const { name, description, img } = formState;
+  useEffect(() => {
+    setImg(portfolio.img);
+    setFormstate({ ...formState, img: portfolio.img });
+  }, [portfolio.img]);
 
-  const handleChange = React.useCallback(
+  const handleChange = useCallback(
     ({ target: { name, value } }) => {
-      setFormstate({ ...formState, [name]: value });
+      setFormstate({ ...formState, [name]: value, img });
     },
-    [formState]
+    [formState, img]
   );
 
   const handleEdit = () => {
@@ -28,6 +33,7 @@ const PortfolioCard = ({
     }
     setIsEditing(!isEditing);
   };
+
   return (
     <ListItem
       id={portfolio.id}

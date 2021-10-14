@@ -1,4 +1,4 @@
-import React from "react";
+import { useState, useEffect, useCallback } from "react";
 import { useStyles } from "./styles";
 import { Typography, Avatar, Box, TextField } from "@material-ui/core";
 import ListItem from "../../ListItem";
@@ -9,17 +9,22 @@ const UserCard = ({
   handleChangeUserInfo,
   handleUpload,
 }) => {
-  const [formState, setFormstate] = React.useState(user);
-  const [isEditing, setIsEditing] = React.useState(false);
+  const [formState, setFormstate] = useState(user);
+  const [isEditing, setIsEditing] = useState(false);
+  const [img, setImg] = useState(user.img);
   const classes = useStyles();
+  const { name, role, url } = formState;
 
-  const { name, role, img, url } = formState;
+  useEffect(() => {
+    setImg(user.img);
+    setFormstate({ ...formState, img: user.img });
+  }, [user.img]);
 
-  const handleChange = React.useCallback(
+  const handleChange = useCallback(
     ({ target: { name, value } }) => {
-      setFormstate({ ...formState, [name]: value });
+      setFormstate({ ...formState, [name]: value, img });
     },
-    [formState]
+    [formState, img]
   );
 
   const handleEdit = () => {
