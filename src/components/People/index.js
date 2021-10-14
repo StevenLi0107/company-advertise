@@ -33,7 +33,7 @@ const People = () => {
   React.useEffect(() => {
     dispatch(checkTokenValid());
     initialState.current = usersList;
-  }, []);
+  }, [dispatch, usersList]);
 
   const handleOpenModal = () => {
     setOpenModal(true);
