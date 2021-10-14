@@ -104,7 +104,6 @@ export const UploadImageModal = memo(
       getBase64(_file)
         .then((res) => {
           const file = URL.createObjectURL(_file);
-          console.log("imageurl--", file);
           setFormstate({
             ...formState,
             url: file,

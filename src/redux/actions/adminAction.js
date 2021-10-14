@@ -110,8 +110,12 @@ export const updatePortfolio = (payload) => async (dispatch, getState) => {
   dispatch({ type: TYPES.UPDATE_PORTFOLIO_REQUEST, payload: null });
   try {
     const token = getState().auth.token;
-    await adminService.updatePortfolio({ token, ...payload });
-
+    await adminService.updatePortfolio({
+      token,
+      id: payload.id,
+      name: payload.name,
+      description: payload.description,
+    });
     await dispatch({
       type: TYPES.UPDATE_PORTFOLIO_SUCCESS,
       payload,
@@ -249,19 +253,27 @@ export const deleteClient = (payload) => async (dispatch, getState) => {
 };
 
 export const uploadImage = (payload) => async (dispatch, getState) => {
-  console.log("uploadImage-payload", payload);
   dispatch({ type: TYPES.UPDATE_PORTFOLIO_REQUEST, payload: null });
   try {
     const token = getState().auth.token;
-    const { data } = await adminService.updatePortfolio({
-      token,
-      ...payload,
-    });
-    console.log("uploadImagereturnvalue--", payload);
-    await dispatch({
-      type: TYPES.UPDATE_PORTFOLIO_SUCCESS,
-      payload: data,
-    });
+    switch (payload.selectKey) {
+      case "Portfolio":
+        await adminService.updatePortfolio({
+          token,
+          id: payload.id,
+          img: payload.img,
+        });
+        const response = await dispatch(getPortfoliosList());
+        if (response?.status === 200) {
+          dispatch({
+            type: TYPES.GET_PORTFOLIOS_LIST_SUCCESS,
+            payload: response.data,
+          });
+        }
+        break;
+      default:
+        dispatch({ type: TYPES.UPDATE_PORTFOLIO_ERROR, payload });
+    }
   } catch (error) {
     dispatch({ type: TYPES.UPDATE_PORTFOLIO_ERROR, payload: error });
   }

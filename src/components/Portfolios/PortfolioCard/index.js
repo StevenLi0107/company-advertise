@@ -11,15 +11,20 @@ const PortfolioCard = ({
 }) => {
   const [formState, setFormstate] = React.useState(portfolio);
   const [isEditing, setIsEditing] = React.useState(false);
+  const [img, setImg] = React.useState(portfolio.img);
   const classes = useStyles();
+  const { name, description } = formState;
 
-  const { name, description, img } = formState;
+  React.useEffect(() => {
+    setImg(portfolio.img);
+    setFormstate({ ...formState, img: portfolio.img });
+  }, [portfolio.img]);
 
   const handleChange = React.useCallback(
     ({ target: { name, value } }) => {
-      setFormstate({ ...formState, [name]: value });
+      setFormstate({ ...formState, [name]: value, img });
     },
-    [formState]
+    [formState, img]
   );
 
   const handleEdit = () => {
