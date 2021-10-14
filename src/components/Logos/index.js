@@ -30,6 +30,7 @@ export default function Logos() {
   const [openUpload, setOpenUpload] = React.useState(false);
   const dispatch = useDispatch();
   // const classes = useStyles();
+  const [uploadId, setUploadId] = React.useState();
 
   React.useEffect(() => {
     dispatch(checkTokenValid());
@@ -39,7 +40,8 @@ export default function Logos() {
   const handleOpenModal = () => {
     setOpenModal(true);
   };
-  const handleUpload = () => {
+  const handleUpload = (id) => {
+    setUploadId(id);
     setOpenUpload(true);
   };
   const handleCloseModal = React.useCallback(() => {
@@ -56,7 +58,7 @@ export default function Logos() {
   );
   const handleUploadImage = React.useCallback(
     (newImage) => {
-      dispatch(uploadImage(newImage));
+      dispatch(uploadImage(newImage, uploadId));
     },
     [dispatch]
   );
@@ -153,6 +155,8 @@ export default function Logos() {
         open={openUpload}
         handleClose={handleCloseUploadModal}
         handleUploadImage={handleUploadImage}
+        uploadId={uploadId}
+        selectKey={"Client"}
       />
     </>
   );
