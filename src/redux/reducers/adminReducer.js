@@ -55,12 +55,14 @@ export default function (state = initialState, action) {
       };
 
     case TYPES.GET_USERS_LIST_SUCCESS:
+      const userLists = [...action.payload];
+      userLists.sort((a, b) => a.id - b.id);
       return {
         ...state,
         loading: false,
         error: null,
         success: true,
-        usersList: action.payload,
+        usersList: userLists,
       };
     case TYPES.UPDATE_USER_SUCCESS:
       return {
@@ -107,14 +109,15 @@ export default function (state = initialState, action) {
         success: true,
         usersList: state.usersList.filter((user) => user.id !== action.payload),
       };
-
     case TYPES.GET_PORTFOLIOS_LIST_SUCCESS:
+      const portfolioLists = [...action.payload];
+      portfolioLists.sort((a, b) => a.id - b.id);
       return {
         ...state,
         loading: false,
         error: null,
         success: true,
-        portfoliosList: action.payload,
+        portfoliosList: portfolioLists,
       };
     case TYPES.UPDATE_PORTFOLIO_SUCCESS:
       return {
@@ -164,12 +167,14 @@ export default function (state = initialState, action) {
         ),
       };
     case TYPES.GET_CLIENTS_LIST_SUCCESS:
+      const clientLists = [...action.payload];
+      clientLists.sort((a, b) => a.id - b.id);
       return {
         ...state,
         loading: false,
         error: null,
         success: true,
-        clientsList: action.payload,
+        clientsList: clientLists,
       };
     case TYPES.UPDATE_CLIENT_SUCCESS:
       return {
