@@ -271,6 +271,20 @@ export const uploadImage = (payload) => async (dispatch, getState) => {
           });
         }
         break;
+      case "People":
+        await adminService.updateUser({
+          token,
+          id: payload.id,
+          img: payload.img,
+        });
+        const responseUser = await dispatch(getUserList());
+        if (responseUser?.status === 200) {
+          dispatch({
+            type: TYPES.GET_USERS_LIST_SUCCESS,
+            payload: responseUser.data,
+          });
+        }
+        break;
       default:
         dispatch({ type: TYPES.UPDATE_PORTFOLIO_ERROR, payload });
     }

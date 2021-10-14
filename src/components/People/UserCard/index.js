@@ -11,15 +11,20 @@ const UserCard = ({
 }) => {
   const [formState, setFormstate] = React.useState(user);
   const [isEditing, setIsEditing] = React.useState(false);
+  const [img, setImg] = React.useState(user.img);
   const classes = useStyles();
+  const { name, role, url } = formState;
 
-  const { name, role, img, url } = formState;
+  React.useEffect(() => {
+    setImg(user.img);
+    setFormstate({ ...formState, img: user.img });
+  }, [user.img]);
 
   const handleChange = React.useCallback(
     ({ target: { name, value } }) => {
-      setFormstate({ ...formState, [name]: value });
+      setFormstate({ ...formState, [name]: value, img });
     },
-    [formState]
+    [formState, img]
   );
 
   const handleEdit = () => {

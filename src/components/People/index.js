@@ -29,6 +29,7 @@ const People = () => {
   const [openUpload, setOpenUpload] = React.useState(false);
   const dispatch = useDispatch();
   // const classes = useStyles();
+  const [uploadId, setUploadId] = React.useState();
 
   React.useEffect(() => {
     dispatch(checkTokenValid());
@@ -39,7 +40,8 @@ const People = () => {
     setOpenModal(true);
   };
 
-  const handleUpload = () => {
+  const handleUpload = (id) => {
+    setUploadId(id);
     setOpenUpload(true);
   };
 
@@ -74,7 +76,7 @@ const People = () => {
 
   const handleUploadImage = React.useCallback(
     (newImage) => {
-      dispatch(uploadImage(newImage));
+      dispatch(uploadImage(newImage, uploadId));
     },
     [dispatch]
   );
@@ -160,6 +162,8 @@ const People = () => {
         open={openUpload}
         handleClose={handleCloseUploadModal}
         handleUploadImage={handleUploadImage}
+        uploadId={uploadId}
+        selectKey={"People"}
       />
     </>
   );
