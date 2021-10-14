@@ -110,7 +110,7 @@ export const AddPortfolioModal = memo(
       title: "",
       desc: "",
       url: "",
-      img: null,
+      img: "",
     };
 
     const [formState, setFormstate] = React.useState(initialFormState);
