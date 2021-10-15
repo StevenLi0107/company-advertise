@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { useStyles } from "./styles";
 import { Typography, Box, TextField } from "@material-ui/core";
 import ListItem from "../../ListItem";
@@ -9,16 +9,17 @@ const LogoCard = ({
   handleChangeClientInfo,
   handleUpload,
 }) => {
-  const [formState, setFormstate] = useState(company);
-  const [isEditing, setIsEditing] = useState(false);
+  const [formState, setFormstate] = React.useState(company);
+  const [isEditing, setIsEditing] = React.useState(false);
   const classes = useStyles();
 
   const { name } = formState;
-  const [img, setImg] = useState(company.img);
+  const [img, setImg] = React.useState(company.img);
 
-  useEffect(() => {
+  React.useEffect(() => {
     setImg(company.img);
     setFormstate({ ...formState, img: company.img });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [company.img]);
 
   const handleChange = React.useCallback(

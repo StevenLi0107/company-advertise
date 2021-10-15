@@ -18,6 +18,7 @@ const PortfolioCard = ({
   useEffect(() => {
     setImg(portfolio.img);
     setFormstate({ ...formState, img: portfolio.img });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [portfolio.img]);
 
   const handleChange = useCallback(

@@ -40,8 +40,8 @@ export const CardDnd = memo(({ moveCard, children, index, id }) => {
     },
   });
 
+  // eslint-disable-next-line no-unused-vars
   const [{ isDragging }, drag] = useDrag({
-
     type: "Card",
     item: { id, index },
     collect: (monitor) => ({

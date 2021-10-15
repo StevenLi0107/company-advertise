@@ -18,6 +18,7 @@ const UserCard = ({
   useEffect(() => {
     setImg(user.img);
     setFormstate({ ...formState, img: user.img });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [user.img]);
 
   const handleChange = useCallback(

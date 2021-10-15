@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { Box, Button, IconButton } from "@material-ui/core";
 import AddCircleOutlineIcon from "@material-ui/icons/AddCircleOutline";
 // import { useStyles } from "./styles";
@@ -30,7 +30,7 @@ export default function Logos() {
   const [openUpload, setOpenUpload] = React.useState(false);
   const dispatch = useDispatch();
   // const classes = useStyles();
-  const [uploadId, setUploadId] = useState();
+  const [uploadId, setUploadId] = React.useState();
 
   React.useEffect(() => {
     dispatch(checkTokenValid());
@@ -60,7 +60,7 @@ export default function Logos() {
     (newImage) => {
       dispatch(uploadImage(newImage, uploadId));
     },
-    [dispatch]
+    [dispatch, uploadId]
   );
   const handleChangeClientInfo = React.useCallback(
     (client) => {
