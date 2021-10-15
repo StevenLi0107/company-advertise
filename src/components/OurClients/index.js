@@ -4,10 +4,7 @@ const OurClients = () => {
   return (
     <div className="OurClients-Container-module--cls2--2-EVq OurClients-Container-module--cls1--1kJDZ">
       <div className="OurClients-InnerContainer-module--cls2--2z1fX OurClients-InnerContainer-module--cls1--18V7B">
-        <a
-          href="tel:+74993481107"
-          className="OurClients-Company-module--cls2--3coqY OurClients-Company-module--cls1--1coVO"
-        >
+        <a className="OurClients-Company-module--cls2--3coqY OurClients-Company-module--cls1--1coVO">
           <div className="gatsby-image-wrapper">
             <div
               aria-hidden="true"
@@ -21,10 +18,7 @@ const OurClients = () => {
             />
           </div>
         </a>
-        <a
-          href="tel:+74993481107"
-          className="OurClients-Company-module--cls2--3coqY OurClients-Company-module--cls1--1coVO"
-        >
+        <a className="OurClients-Company-module--cls2--3coqY OurClients-Company-module--cls1--1coVO">
           <div className="gatsby-image-wrapper">
             <div
               aria-hidden="true"
@@ -38,10 +32,7 @@ const OurClients = () => {
             />
           </div>
         </a>
-        <a
-          href="tel:+74993481107"
-          className="OurClients-Company-module--cls2--3coqY OurClients-Company-module--cls1--1coVO"
-        >
+        <a className="OurClients-Company-module--cls2--3coqY OurClients-Company-module--cls1--1coVO">
           <div className="gatsby-image-wrapper">
             <div
               aria-hidden="true"
@@ -55,10 +46,7 @@ const OurClients = () => {
             />
           </div>
         </a>
-        <a
-          href="tel:+74993481107"
-          className="OurClients-Company-module--cls2--3coqY OurClients-Company-module--cls1--1coVO"
-        >
+        <a className="OurClients-Company-module--cls2--3coqY OurClients-Company-module--cls1--1coVO">
           <div className="gatsby-image-wrapper">
             <div
               aria-hidden="true"
@@ -72,10 +60,7 @@ const OurClients = () => {
             />
           </div>
         </a>
-        <a
-          href="tel:+74993481107"
-          className="OurClients-Company-module--cls2--3coqY OurClients-Company-module--cls1--1coVO"
-        >
+        <a className="OurClients-Company-module--cls2--3coqY OurClients-Company-module--cls1--1coVO">
           <div className="gatsby-image-wrapper">
             <div
               aria-hidden="true"
@@ -89,10 +74,7 @@ const OurClients = () => {
             />
           </div>
         </a>
-        <a
-          href="tel:+74993481107"
-          className="OurClients-Company-module--cls2--3coqY OurClients-Company-module--cls1--1coVO"
-        >
+        <a className="OurClients-Company-module--cls2--3coqY OurClients-Company-module--cls1--1coVO">
           <div className="gatsby-image-wrapper">
             <div
               aria-hidden="true"
@@ -106,10 +88,7 @@ const OurClients = () => {
             />
           </div>
         </a>
-        <a
-          href="tel:+74993481107"
-          className="OurClients-Company-module--cls2--3coqY OurClients-Company-module--cls1--1coVO"
-        >
+        <a className="OurClients-Company-module--cls2--3coqY OurClients-Company-module--cls1--1coVO">
           <div className="gatsby-image-wrapper">
             <div
               aria-hidden="true"
@@ -123,10 +102,7 @@ const OurClients = () => {
             />
           </div>
         </a>
-        <a
-          href="tel:+74993481107"
-          className="OurClients-Company-module--cls2--3coqY OurClients-Company-module--cls1--1coVO"
-        >
+        <a className="OurClients-Company-module--cls2--3coqY OurClients-Company-module--cls1--1coVO">
           <div className="gatsby-image-wrapper">
             <div
               aria-hidden="true"
@@ -140,10 +116,7 @@ const OurClients = () => {
             />
           </div>
         </a>
-        <a
-          href="tel:+74993481107"
-          className="OurClients-Company-module--cls2--3coqY OurClients-Company-module--cls1--1coVO"
-        >
+        <a className="OurClients-Company-module--cls2--3coqY OurClients-Company-module--cls1--1coVO">
           <div className="gatsby-image-wrapper">
             <div
               aria-hidden="true"
