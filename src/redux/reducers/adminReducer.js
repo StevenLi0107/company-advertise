@@ -57,6 +57,7 @@ export default function (state = initialState, action) {
     case TYPES.GET_USERS_LIST_SUCCESS:
       const userLists = [...action.payload];
       userLists.sort((a, b) => a.id - b.id);
+
       return {
         ...state,
         loading: false,
@@ -109,6 +110,7 @@ export default function (state = initialState, action) {
         success: true,
         usersList: state.usersList.filter((user) => user.id !== action.payload),
       };
+
     case TYPES.GET_PORTFOLIOS_LIST_SUCCESS:
       const portfolioLists = [...action.payload];
       portfolioLists.sort((a, b) => a.id - b.id);
