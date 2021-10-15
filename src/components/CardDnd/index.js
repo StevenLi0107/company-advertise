@@ -40,8 +40,8 @@ export const CardDnd = memo(({ moveCard, children, index, id }) => {
     },
   });
 
-  const [drag] = useDrag({
-    //const [{ isDragging }, drag] = useDrag({
+  const [{ isDragging }, drag] = useDrag({
+
     type: "Card",
     item: { id, index },
     collect: (monitor) => ({

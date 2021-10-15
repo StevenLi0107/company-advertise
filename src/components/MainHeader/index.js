@@ -268,14 +268,7 @@ l48.64-48.64C517.581,425.6,517.581,394.88,499.66,376.96z"
                 >
                   <path
                     fill="#E37B00"
-                    d="M548 1213 c-21 -2 -38 -7 -38 -11 0 -4 -13 -7 -29 -8 -48 -2 -139
--52 -195 -108 -97 -98 -140 -222 -140 -410 0 -75 4 -121 11 -123 5 -2 8 -15 5
--30 -4 -19 -2 -24 8 -18 8 5 11 4 6 -3 -10 -16 4 -63 17 -55 5 3 7 1 3 -5 -9
--15 25 -83 38 -75 6 3 8 3 4 -2 -11 -11 11 -47 24 -39 6 4 8 3 5 -3 -8 -13 47
--66 58 -56 4 5 5 3 1 -4 -8 -14 47 -46 59 -35 5 4 5 2 2 -4 -7 -13 77 -49 92
--40 5 4 11 1 13 -6 5 -14 228 -25 228 -12 0 5 17 9 37 10 20 0 39 6 41 12 2 7
-8 10 13 6 26 -16 198 113 183 138 -4 6 -3 8 4 4 12 -7 67 98 58 113 -3 5 -2
-11 3 13 5 1 12 20 16 41 l7 37 -111 0 c-87 0 -111 -3 -111 -14 0 -7 -11 -34
+                    d="M548 1213 c-21 -2 -38 -7 -38 -11 0 -4 -13 -7 -29 -8 -48 -2 -139 -52 -195 -108 -97 -98 -140 -222 -140 -410 0 -75 4 -121 11 -123 5 -2 8 -15 5 -30 -4 -19 -2 -24 8 -18 8 5 11 4 6 -3 -10 -16 4 -63 17 -55 5 3 7 1 3 -5 -9 -15 25 -83 38 -75 6 3 8 3 4 -2 -11 -11 11 -47 24 -39 6 4 8 3 5 -3 -8 -13 47 -66 58 -56 4 5 5 3 1 -4 -8 -14 47 -46 59 -35 5 4 5 2 2 -4 -7 -13 77 -49 92 -40 5 4 11 1 13 -6 5 -14 228 -25 228 -12 0 5 17 9 37 10 20 0 39 6 41 12 2 7 8 10 13 6 26 -16 198 113 183 138 -4 6 -3 8 4 4 12 -7 67 98 58 113 -3 5 -2 11 3 13 5 1 12 20 16 41 l7 37 -111 0 c-87 0 -111 -3 -111 -14 0 -7 -11 -34
 -25 -60 -13 -25 -22 -46 -18 -46 3 0 0 -7 -7 -15 -6 -8 -15 -14 -18 -13 -8 2
 -86 -35 -90 -42 -1 -3 -35 -3 -75 1 -79 6 -143 33 -175 73 -11 14 -23 22 -27
 18 -3 -4 -5 -2 -4 3 4 13 -23 85 -30 80 -3 -1 -7 16 -8 39 -2 22 -6 42 -11 44
@@ -487,7 +480,6 @@ c-42 0 -73 5 -77 12 -4 7 -3 8 4 4 7 -4 12 -2 12 3 0 6 9 20 21 32 15 15 30
             <div className="HeaderLink-RightContainer-module--cls2--GsD5t HeaderLink-RightContainer-module--cls1--1pFNp">
               <nav className="HeaderLink-LinkContainer-module--cls2--3driM HeaderLink-LinkContainer-module--cls1--1eSmk HeaderLink-LinkContainer-module--hide--2t9x1">
                 <a
-                  href="/developers"
                   onClick={scrollToElement}
                   id="main"
                   className="HeaderLink-Link-module--cls2--vzGtU HeaderLink-Link-module--cls1--McJKF HeaderLink-Link-module--active--3vJNl"
@@ -495,7 +487,6 @@ c-42 0 -73 5 -77 12 -4 7 -3 8 4 4 7 -4 12 -2 12 3 0 6 9 20 21 32 15 15 30
                   Главная
                 </a>
                 <a
-                  href="/developers"
                   onClick={scrollToElement}
                   id="portfolio"
                   className="HeaderLink-Link-module--cls2--vzGtU HeaderLink-Link-module--cls1--McJKF"
@@ -513,7 +504,6 @@ c-42 0 -73 5 -77 12 -4 7 -3 8 4 4 7 -4 12 -2 12 3 0 6 9 20 21 32 15 15 30
                 <div className="HeaderLink-IconBurger-module--cls2--1k4-B HeaderLink-IconBurger-module--cls1--1fSrp"></div>
               </span>
               <a
-                href="/developers"
                 onClick={scrollToElement}
                 id="contactUs"
                 className="HeaderLink-WhiteButton-module--cls2--1a7Fg HeaderLink-WhiteButton-module--cls1--2kzxS"
