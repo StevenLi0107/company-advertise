@@ -17,10 +17,7 @@ const HeaderContainer = () => {
                 <br />
                 мобильных приложений
               </h2>
-              <a
-                href="/developers"
-                className="Buttons-BigWhiteButton-module--cls2--g05zN Buttons-BigWhiteButton-module--cls1--2H7YS"
-              >
+              <a className="Buttons-BigWhiteButton-module--cls2--g05zN Buttons-BigWhiteButton-module--cls1--2H7YS">
                 Оставить заявку
               </a>
             </div>

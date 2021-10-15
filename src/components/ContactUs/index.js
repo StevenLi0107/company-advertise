@@ -333,7 +333,6 @@ const ContactUs = ({ ref }) => {
                 </div>
               </div>
               <a
-                href="/developers"
                 onClick={handleSubmit}
                 class="WriteToUsForm-SendButton-module--cls2--3aCUc WriteToUsForm-SendButton-module--cls1--3XEGZ Buttons-BigWhiteButton-module--cls2--g05zN Buttons-BigWhiteButton-module--cls1--2H7YS"
               >
