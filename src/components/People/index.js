@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { IconButton, Box, Button } from "@material-ui/core";
 import AddCircleOutlineIcon from "@material-ui/icons/AddCircleOutline";
 // import { useStyles } from './styles';
@@ -29,7 +29,7 @@ const People = () => {
   const [openUpload, setOpenUpload] = React.useState(false);
   const dispatch = useDispatch();
   // const classes = useStyles();
-  const [uploadId, setUploadId] = React.useState();
+  const [uploadId, setUploadId] = useState();
 
   React.useEffect(() => {
     dispatch(checkTokenValid());

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useStyles } from "./styles";
 import { Typography, Box, TextField } from "@material-ui/core";
 import ListItem from "../../ListItem";
@@ -9,14 +9,14 @@ const LogoCard = ({
   handleChangeClientInfo,
   handleUpload,
 }) => {
-  const [formState, setFormstate] = React.useState(company);
-  const [isEditing, setIsEditing] = React.useState(false);
+  const [formState, setFormstate] = useState(company);
+  const [isEditing, setIsEditing] = useState(false);
   const classes = useStyles();
 
   const { name } = formState;
-  const [img, setImg] = React.useState(company.img);
+  const [img, setImg] = useState(company.img);
 
-  React.useEffect(() => {
+  useEffect(() => {
     setImg(company.img);
     setFormstate({ ...formState, img: company.img });
   }, [company.img]);
