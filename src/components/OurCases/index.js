@@ -8,7 +8,7 @@ const OurCases = ({ ref }) => {
       <div className="WidthContainer-InnerContainer-module--cls2--32dv6 WidthContainer-InnerContainer-module--cls1--1Ms9D">
         <div className="OurCases-Container-module--cls2--3r3Xq OurCases-Container-module--cls1--13szu">
           <h2 className="OurCases-CustomTitle-module--cls2--344Ju OurCases-CustomTitle-module--cls1--13kNv commonStyles-Title-module--cls2--34psA commonStyles-Title-module--cls1--2d40n">
-            Наши кейсы
+            Our cases
           </h2>
           <div className="OurCases-Column-module--cls2--3e6eD OurCases-Column-module--cls1--be_Sc">
             <a
@@ -250,7 +250,7 @@ const OurCases = ({ ref }) => {
             href="/Ru/Page/InDevelopment"
             aria-label="Dex"
             className="OurCases-MoreCases-module--cls2--2_V1z OurCases-MoreCases-module--cls1--PlPfy">
-            <div>Больше кейсов</div>
+            <div>More cases</div>
             <img
               src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNTEiIGhlaWdodD0iMTgiIHZpZXdCb3g9IjAgMCA1MSAxOCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4NCjxwYXRoIGQ9Ik00MSAxTDQ5IDlMNDEgMTciIHN0cm9rZT0iIzI2NjlDQyIgc3Ryb2tlLXdpZHRoPSIyIi8+DQo8cGF0aCBkPSJNNDguNSA5SDAuNSIgc3Ryb2tlPSIjMjY2OUNDIiBzdHJva2Utd2lkdGg9IjIiLz4NCjwvc3ZnPg0K"
               alt="Больше кейсов"
