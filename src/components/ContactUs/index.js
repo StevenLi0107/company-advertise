@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
 import React from "react";
 import { contactUs } from "../../redux/actions/formsActions";
 import { getBase64 } from "../../utils/base64";
