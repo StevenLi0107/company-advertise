@@ -126,16 +126,16 @@ const ContactUs = ({ ref }) => {
           <div class="WriteToUs-ContentContainer-module--cls2--34jXv WriteToUs-ContentContainer-module--cls1--2T6EL">
             <div class="WriteToUs-TitleContainer-module--cls2--XfiLy WriteToUs-TitleContainer-module--cls1--1mizr">
               <h2 class="WriteToUs-Title-module--cls2--2lz11 WriteToUs-Title-module--cls1--eAm0h">
-                Напишите нам
+                Contact us
               </h2>
               <div class="WriteToUs-SubTitleDesktop-module--cls2--1zXJu WriteToUs-SubTitleDesktop-module--cls1--2fNo5 WriteToUs-SubTitle-module--cls2--aoEkH WriteToUs-SubTitle-module--cls1--h_gez">
-                Мы поможем с оценкой
-                <br />и планированием Вашего
-                <br /> проекта
+                We will help you with the evaluation
+                <br />and planning of your
+                <br /> project
               </div>
               <div class="WriteToUs-SubTitleMobile-module--cls2--2eWgk WriteToUs-SubTitleMobile-module--cls1--bs1RI WriteToUs-SubTitle-module--cls2--aoEkH WriteToUs-SubTitle-module--cls1--h_gez">
-                Мы поможем с оценкой
-                <br />и планированием Вашего проекта
+              We will help you with the evaluation
+                <br />and planning of your project
               </div>
             </div>
             <form class="WriteToUsForm-Container-module--cls2--3wH_r WriteToUsForm-Container-module--cls1--1VBKW">
@@ -180,7 +180,7 @@ const ContactUs = ({ ref }) => {
                         : ""
                     }`}
                   >
-                    Дизайн
+                    Design
                   </div>
                   <div
                     onClick={handleActiveButtons.bind(null, 4)}
@@ -190,7 +190,7 @@ const ContactUs = ({ ref }) => {
                         : ""
                     }`}
                   >
-                    Аналитика
+                    Analytics
                   </div>
                   <div
                     onClick={handleActiveButtons.bind(null, 5)}
@@ -200,7 +200,7 @@ const ContactUs = ({ ref }) => {
                         : ""
                     }`}
                   >
-                    Тестирование
+                    Testing
                   </div>
                 </div>
                 <div class="WriteToUsForm-ContactsRow-module--cls2--2CbOv WriteToUsForm-ContactsRow-module--cls1--3o4RM">
@@ -211,7 +211,7 @@ const ContactUs = ({ ref }) => {
                           activeInputs.some((num) => num === 0) ? "active" : ""
                         }`}
                       >
-                        Имя Компании
+                        Company name
                       </span>
                       <input
                         value={form.companyName.text}
@@ -229,7 +229,7 @@ const ContactUs = ({ ref }) => {
                           : ""
                       }`}
                     >
-                      Пожалуйста, введите Ваше имя
+                      Please type your name
                     </div>
                   </div>
                   <div class="WriteToUsForm-InputWrapper-module--cls2--3HVds WriteToUsForm-InputWrapper-module--cls1--3XTyl">
@@ -239,7 +239,7 @@ const ContactUs = ({ ref }) => {
                           activeInputs.some((num) => num === 1) ? "active" : ""
                         }`}
                       >
-                        Почта
+                        E-mail
                       </span>
                       <input
                         type="email"
@@ -258,7 +258,7 @@ const ContactUs = ({ ref }) => {
                           : ""
                       }`}
                     >
-                      Пожалуйста, вашу почту
+                      Please type your e-mail
                     </div>
                   </div>
                   <div class="WriteToUsForm-InputWrapper-module--cls2--3HVds WriteToUsForm-InputWrapper-module--cls1--3XTyl">
@@ -268,7 +268,7 @@ const ContactUs = ({ ref }) => {
                           activeInputs.some((num) => num === 2) ? "active" : ""
                         }`}
                       >
-                        Телефон
+                        Phone number
                       </span>
                       <input
                         type="text"
@@ -288,7 +288,7 @@ const ContactUs = ({ ref }) => {
                           : ""
                       }`}
                     >
-                      Пожалуйста, заполните поле
+                      Plese fill in the field
                     </div>
                   </div>
                 </div>
@@ -299,7 +299,7 @@ const ContactUs = ({ ref }) => {
                         activeInputs.some((num) => num === 3) ? "active" : ""
                       }`}
                     >
-                      Текст сообщения
+                      Message text
                     </span>
                     <input
                       value={form.projectDetails.text}
@@ -317,7 +317,7 @@ const ContactUs = ({ ref }) => {
                         : ""
                     }`}
                   >
-                    Пожалуйста, заполните поле
+                    Please fill in the field
                   </div>
                   <img
                     onClick={handleAttachClick}
@@ -337,7 +337,7 @@ const ContactUs = ({ ref }) => {
                 onClick={handleSubmit}
                 class="WriteToUsForm-SendButton-module--cls2--3aCUc WriteToUsForm-SendButton-module--cls1--3XEGZ Buttons-BigWhiteButton-module--cls2--g05zN Buttons-BigWhiteButton-module--cls1--2H7YS"
               >
-                Отправить
+                Send
               </a>
             </form>
           </div>
