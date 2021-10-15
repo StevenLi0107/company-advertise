@@ -9,17 +9,17 @@ const HeaderContainer = () => {
           <div className="WidthContainer-InnerContainer-module--cls2--32dv6 WidthContainer-InnerContainer-module--cls1--1Ms9D">
             <div className="HeaderVideo-Content-module--cls2--3oAQo HeaderVideo-Content-module--cls1--egqd9">
               <h1 className="HeaderVideo-Title-module--cls2--2wzlm HeaderVideo-Title-module--cls1--JyoI9">
-                Кроссплатформенная
+                Crossplatform
                 <br />
-                мобильная разработка
+                mobile development
               </h1>
               <h2 className="HeaderVideo-SubTitle-module--cls2--jtKtQ HeaderVideo-SubTitle-module--cls1--3gq7t">
-                Снимем с вас все заботы по дизайну, разработке и поддержке
+                We will spare you from all design issues, development and maintenance 
                 <br />
-                мобильных приложений
+                of a mobile application
               </h2>
               <a className="Buttons-BigWhiteButton-module--cls2--g05zN Buttons-BigWhiteButton-module--cls1--2H7YS">
-                Оставить заявку
+                Leave a request
               </a>
             </div>
           </div>
