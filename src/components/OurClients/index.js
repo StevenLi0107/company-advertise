@@ -12,15 +12,16 @@ const OurClients = () => {
           clientsList.map((client) => (
             <a className="OurClients-Company-module--cls2--3coqY OurClients-Company-module--cls1--1coVO">
               <div className="gatsby-image-wrapper">
-                {/* <div
+                <div
                   aria-hidden="true"
-                  style={{ width: "100%", paddingBottom: "30%" }}
-                ></div> */}
+                  style={{ width: "100%", paddingBottom: "10%" }}
+                ></div>
                 <img
-                  // className="img"
+                  //className="img"
                   aria-hidden="true"
                   src={`https://api.cowork.dev/data/img/${client.img}`}
                   alt={client.name}
+                  style={{ width: 150 }}
                 />
               </div>
             </a>
