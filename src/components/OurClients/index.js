@@ -23,9 +23,45 @@ const OurClients = () => {
     <div className="OurClients-Container-module--cls2--2-EVq OurClients-Container-module--cls1--1kJDZ">
       <div
         className="OurClients-InnerContainer-module--cls2--2z1fX "
-        style={{ marginLeft: 250 - scrollY }}
+        style={{ marginLeft: 150 - scrollY }}
       >
         {clientsList &&
+          clientsList.map((client) => (
+            <a className="OurClients-Company-module--cls2--3coqY">
+              <div className="gatsby-image-wrapper">
+                <div
+                  aria-hidden="true"
+                  style={{ width: "100%", paddingBottom: "10%" }}
+                ></div>
+                <img
+                  //className="img"
+                  aria-hidden="true"
+                  src={`https://api.cowork.dev/data/img/${client.img}`}
+                  alt={client.name}
+                  style={{ width: 150 }}
+                />
+              </div>
+            </a>
+          ))}
+        {clientsList.length < 10 &&
+          clientsList.map((client) => (
+            <a className="OurClients-Company-module--cls2--3coqY">
+              <div className="gatsby-image-wrapper">
+                <div
+                  aria-hidden="true"
+                  style={{ width: "100%", paddingBottom: "10%" }}
+                ></div>
+                <img
+                  //className="img"
+                  aria-hidden="true"
+                  src={`https://api.cowork.dev/data/img/${client.img}`}
+                  alt={client.name}
+                  style={{ width: 150 }}
+                />
+              </div>
+            </a>
+          ))}
+        {clientsList.length < 5 &&
           clientsList.map((client) => (
             <a className="OurClients-Company-module--cls2--3coqY">
               <div className="gatsby-image-wrapper">
