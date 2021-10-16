@@ -4,13 +4,30 @@ import { useSelector } from "react-redux";
 
 const OurClients = () => {
   const clientsList = useSelector((state) => state.adminReducer.clientsList);
-  console.log("clientsList=", clientsList);
+  const [scrollY, setScrollY] = React.useState(0);
+  const handleFollow = () => {
+    setScrollY(window.pageYOffset);
+  };
+
+  React.useEffect(() => {
+    const watch = () => {
+      window.addEventListener("scroll", handleFollow);
+    };
+    watch();
+    return () => {
+      window.removeEventListener("scroll", handleFollow);
+    };
+  });
+
   return (
     <div className="OurClients-Container-module--cls2--2-EVq OurClients-Container-module--cls1--1kJDZ">
-      <div className="OurClients-InnerContainer-module--cls2--2z1fX OurClients-InnerContainer-module--cls1--18V7B">
+      <div
+        className="OurClients-InnerContainer-module--cls2--2z1fX "
+        style={{ marginLeft: 250 - scrollY }}
+      >
         {clientsList &&
           clientsList.map((client) => (
-            <a className="OurClients-Company-module--cls2--3coqY OurClients-Company-module--cls1--1coVO">
+            <a className="OurClients-Company-module--cls2--3coqY">
               <div className="gatsby-image-wrapper">
                 <div
                   aria-hidden="true"
