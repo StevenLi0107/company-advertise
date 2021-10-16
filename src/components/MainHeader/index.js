@@ -14,7 +14,6 @@ const MainHeader = ({ scrollToElement }) => {
     if (window.pageYOffset > 0) return setScrollPosition(true);
     setScrollPosition(false);
   }, []);
-
   return (
     <div className="header_hor l-body state_defaul no-touch">
       <header
