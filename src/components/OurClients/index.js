@@ -31,14 +31,15 @@ const OurClients = () => {
               <div className="gatsby-image-wrapper">
                 <div
                   aria-hidden="true"
-                  style={{ width: "100%", paddingBottom: "10%" }}
+                  style={{ width: "100%", paddingBottom: "20%" }}
                 ></div>
                 <img
                   //className="img"
+                  className="logo-image"
                   aria-hidden="true"
                   src={`https://api.cowork.dev/data/img/${client.img}`}
                   alt={client.name}
-                  style={{ width: 150 }}
+                  // style={{ width: 150 }}
                 />
               </div>
             </a>
@@ -49,14 +50,13 @@ const OurClients = () => {
               <div className="gatsby-image-wrapper">
                 <div
                   aria-hidden="true"
-                  style={{ width: "100%", paddingBottom: "10%" }}
+                  style={{ width: "100%", paddingBottom: "20%" }}
                 ></div>
                 <img
-                  //className="img"
+                  className="logo-image"
                   aria-hidden="true"
                   src={`https://api.cowork.dev/data/img/${client.img}`}
                   alt={client.name}
-                  style={{ width: 150 }}
                 />
               </div>
             </a>
@@ -67,14 +67,13 @@ const OurClients = () => {
               <div className="gatsby-image-wrapper">
                 <div
                   aria-hidden="true"
-                  style={{ width: "100%", paddingBottom: "10%" }}
+                  style={{ width: "100%", paddingBottom: "20%" }}
                 ></div>
                 <img
-                  //className="img"
+                  className="logo-image"
                   aria-hidden="true"
                   src={`https://api.cowork.dev/data/img/${client.img}`}
                   alt={client.name}
-                  style={{ width: 150 }}
                 />
               </div>
             </a>

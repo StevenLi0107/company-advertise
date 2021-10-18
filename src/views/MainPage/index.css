@@ -5222,3 +5222,7 @@ ul.slick-dots > li {
   overflow: hidden;
   background: aqua;
 }
+.logo-image {
+  height: 50px;
+  opacity: 0.6;
+}

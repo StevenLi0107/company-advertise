@@ -1,7 +1,6 @@
-/* eslint-disable jsx-a11y/anchor-is-valid */
 import React from "react";
 
-const HeaderContainer = () => {
+const HeaderContainer = ({ scrollToElement }) => {
   return (
     <div className="HeaderVideo-Container-module--cls2--1tf72 HeaderVideo-Container-module--cls1--LiG7J">
       <div className="HeaderVideo-TextContainer-module--cls2--p_n47 HeaderVideo-TextContainer-module--cls1--f5A-C">
@@ -14,11 +13,16 @@ const HeaderContainer = () => {
                 mobile development
               </h1>
               <h2 className="HeaderVideo-SubTitle-module--cls2--jtKtQ HeaderVideo-SubTitle-module--cls1--3gq7t">
-                We will spare you from all design issues, development and maintenance 
+                We will spare you from all design issues, development and
+                maintenance
                 <br />
                 of a mobile application
               </h2>
-              <a className="Buttons-BigWhiteButton-module--cls2--g05zN Buttons-BigWhiteButton-module--cls1--2H7YS">
+              <a
+                onClick={scrollToElement}
+                id="contactUs"
+                className="Buttons-BigWhiteButton-module--cls2--g05zN Buttons-BigWhiteButton-module--cls1--2H7YS"
+              >
                 Leave a request
               </a>
             </div>

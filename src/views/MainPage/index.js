@@ -41,7 +41,7 @@ const MainPage = () => {
   return (
     <div ref={mainRef}>
       <MainHeader scrollToElement={scrollToElement} />
-      <HeaderContainer />
+      <HeaderContainer scrollToElement={scrollToElement} />
       {isActiveLogosSection && <OurClients />}
       <Box ref={portfolioRef}>
         <OurCases />

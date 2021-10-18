@@ -104,7 +104,7 @@ const OurCases = ({ ref }) => {
               </div>
             </a> */}
           </div>
-          <a
+          {/* <a
             href="/Ru/Page/InDevelopment"
             aria-label="Dex"
             className="OurCases-MoreCases-module--cls2--2_V1z OurCases-MoreCases-module--cls1--PlPfy"
@@ -115,7 +115,7 @@ const OurCases = ({ ref }) => {
               alt="Больше кейсов"
               className="OurCases-MoreCasesIcon-module--cls2--fdyV8 OurCases-MoreCasesIcon-module--cls1--3H5Pg"
             />
-          </a>
+          </a> */}
         </div>
       </div>
     </div>
