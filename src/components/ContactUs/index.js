@@ -47,6 +47,7 @@ const ContactUs = ({ ref }) => {
   const [activeButtons, setActiveButtons] = React.useState([]);
   const [activeInputs, setActiveInputs] = React.useState([]);
   const [attachFile, setAttachFile] = React.useState(false);
+  const [containA, setContainA] = React.useState(false);
   const fileRef = React.useRef();
   const isSendSuccess = useSelector((state) => state.adminReducer.sendSuccess);
   const [open, setOpen] = React.useState(false);
@@ -62,7 +63,7 @@ const ContactUs = ({ ref }) => {
 
   const handleChangeForm = (e) => {
     if (e.target.name === "phoneNumber" && isNaN(e.target.value)) return;
-    console.log("form->", form);
+    if (e.target.name === "email") setContainA(false);
     setForm({
       ...form,
       [e.target.name]: {
@@ -125,6 +126,10 @@ const ContactUs = ({ ref }) => {
         };
       }, {});
       setForm(b);
+    }
+    if (!form.email.text.includes("@")) {
+      setContainA(true);
+      return;
     }
     let projectDetailText = form.projectDetails.text;
     if (activeButtons) {
@@ -313,6 +318,15 @@ const ContactUs = ({ ref }) => {
                       }`}
                     >
                       Please type your e-mail
+                    </div>
+                    <div
+                      className={`WriteToUsForm-Error-module--cls2--3DVeU WriteToUsForm-Error-module--cls1--38RV1 ${
+                        containA
+                          ? "WriteToUsForm-Error-module--active--1KhNh"
+                          : ""
+                      }`}
+                    >
+                      The email requires @ symbol
                     </div>
                   </div>
                   <div className="WriteToUsForm-InputWrapper-module--cls2--3HVds WriteToUsForm-InputWrapper-module--cls1--3XTyl">
