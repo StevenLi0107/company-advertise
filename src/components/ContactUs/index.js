@@ -147,7 +147,6 @@ const ContactUs = ({ ref }) => {
         name: form.attachment.name,
       },
     };
-    console.log("query-", query);
     dispatch(contactUs(query));
   };
   const handleClose = () => {
@@ -160,8 +159,6 @@ const ContactUs = ({ ref }) => {
       setAttachFile(false);
     }
   }, [isSendSuccess]);
-
-  console.log("isSendSuccess=", isSendSuccess);
 
   return (
     <div
