@@ -593,7 +593,7 @@ input::-webkit-contacts-auto-fill-button {
 .Buttons-BigWhiteButton-module--cls2--g05zN {
   cursor: pointer;
   height: 60px;
-  background: #fff;
+  background: #ff8c1a;
   border-radius: 30px;
   color: #102037;
   padding: 0 60px;
@@ -4239,12 +4239,12 @@ input::-webkit-contacts-auto-fill-button {
   }
 }
 .HeaderLink-WhiteButton-module--cls2--1a7Fg {
-  background-color: #fff;
+  background-color: #ff8c1a;
   color: #212121;
   border-radius: 28px;
   transition: 0.3s;
   transition-timing-function: cubic-bezier(0.78, 0.13, 0.15, 0.86);
-  border: 1px solid #fff;
+  border: 1px solid #ff8c1a;
   font-size: 15px;
   font-weight: 500;
   line-height: 2.3;
@@ -4361,7 +4361,7 @@ input::-webkit-contacts-auto-fill-button {
   cursor: pointer;
 }
 .HeaderLink-Link-module--cls2--vzGtU.HeaderLink-Link-module--active--3vJNl {
-  color: #fc336f;
+  color: #ff8000;
 }
 .HeaderLink-Link-module--cls2--vzGtU:before {
   display: block;
