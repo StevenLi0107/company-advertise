@@ -18,16 +18,16 @@ const OurClients = () => {
       window.removeEventListener("scroll", handleFollow);
     };
   });
-
+  const listLen = clientsList.length;
   return (
     <div className="OurClients-Container-module--cls2--2-EVq OurClients-Container-module--cls1--1kJDZ">
       <div
         className="OurClients-InnerContainer-module--cls2--2z1fX "
         style={{ marginLeft: 150 - scrollY }}
       >
-        {clientsList &&
-          clientsList.map((client) => (
-            <a className="OurClients-Company-module--cls2--3coqY">
+        {listLen &&
+          clientsList.map((client, index) => (
+            <a className="OurClients-Company-module--cls2--3coqY" key={index}>
               <div className="gatsby-image-wrapper">
                 <div
                   aria-hidden="true"
@@ -44,9 +44,12 @@ const OurClients = () => {
               </div>
             </a>
           ))}
-        {clientsList.length < 10 &&
-          clientsList.map((client) => (
-            <a className="OurClients-Company-module--cls2--3coqY">
+        {listLen < 10 &&
+          clientsList.map((client, index) => (
+            <a
+              className="OurClients-Company-module--cls2--3coqY"
+              key={listLen + index}
+            >
               <div className="gatsby-image-wrapper">
                 <div
                   aria-hidden="true"
@@ -61,9 +64,12 @@ const OurClients = () => {
               </div>
             </a>
           ))}
-        {clientsList.length < 5 &&
-          clientsList.map((client) => (
-            <a className="OurClients-Company-module--cls2--3coqY">
+        {listLen < 5 &&
+          clientsList.map((client, index) => (
+            <a
+              className="OurClients-Company-module--cls2--3coqY"
+              key={2 * listLen + index}
+            >
               <div className="gatsby-image-wrapper">
                 <div
                   aria-hidden="true"

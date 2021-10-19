@@ -9,6 +9,7 @@ const initialState = {
   loading: false,
   success: false,
   error: null,
+  sendSuccess: false,
 };
 
 // eslint-disable-next-line import/no-anonymous-default-export
@@ -29,11 +30,13 @@ export default function (state = initialState, action) {
     case TYPES.SAVE_PORTFOLIOS_ORDER_REQUEST:
     case TYPES.ADD_CLIENT_REQUEST:
     case TYPES.SAVE_CLIENTS_ORDER_REQUEST:
+    case TYPES.SEND_MSG_REQUEST:
       return {
         ...state,
         loading: true,
         error: null,
         success: false,
+        sendSuccess: false,
       };
 
     case TYPES.CHANGE_STATUS_OF_LOGOS_SECTION:
@@ -57,7 +60,6 @@ export default function (state = initialState, action) {
     case TYPES.GET_USERS_LIST_SUCCESS:
       const userLists = [...action.payload];
       userLists.sort((a, b) => a.id - b.id);
-
       return {
         ...state,
         loading: false,
@@ -225,6 +227,14 @@ export default function (state = initialState, action) {
           (user) => user.id !== action.payload
         ),
       };
+    case TYPES.SEND_MSG_SUCCESS:
+      return {
+        ...state,
+        loading: false,
+        error: null,
+        success: true,
+        sendSuccess: true,
+      };
 
     case TYPES.GET_USERS_LIST_ERROR:
     case TYPES.UPDATE_USER_ERROR:
@@ -241,6 +251,7 @@ export default function (state = initialState, action) {
     case TYPES.SAVE_PORTFOLIOS_ORDER_ERROR:
     case TYPES.ADD_CLIENT_ERROR:
     case TYPES.SAVE_CLIENTS_ORDER_ERROR:
+    case TYPES.SEND_MSG_ERROR:
       return {
         ...state,
         loading: false,

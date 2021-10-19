@@ -18,10 +18,11 @@ const OurCases = ({ ref }) => {
           </h2>
           <div className="OurCases-Column-module--cls2--3e6eD OurCases-Column-module--cls1--be_Sc">
             {portfoliosList &&
-              portfoliosList.map((portfolio) => (
+              portfoliosList.map((portfolio, index) => (
                 <a
                   href="/Page/PortfolioMobile/big3"
                   className="OurCase-Container-module--cls2--1dWUN OurCase-Container-module--cls1--2MZpC"
+                  key={index}
                 >
                   <div className="OurCase-Image-module--cls2--2XuQ0 OurCase-Image-module--cls1--1HAll">
                     <div className="gatsby-image-wrapper position-image">

@@ -1,12 +1,15 @@
-// import * as TYPES from './types';
+import * as TYPES from "./types";
 import * as formService from "../../services/forms";
 
 export const contactUs = (payload) => async (dispatch) => {
+  dispatch({ type: TYPES.SEND_MSG_REQUEST, payload: null });
   try {
-    await formService.contactUs(payload);
-    alert("Форма отправлена");
+    const response = await formService.contactUs(payload);
+    if (response?.status === 200) {
+      dispatch({ type: TYPES.SEND_MSG_SUCCESS, payload: null });
+    }
   } catch (error) {
-    alert("Error");
+    dispatch({ type: TYPES.SEND_MSG_ERROR, payload: error });
   }
 };
 
