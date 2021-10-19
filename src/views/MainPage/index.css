@@ -903,8 +903,8 @@ input::-webkit-contacts-auto-fill-button {
 }
 .OurClients-Container-module--cls2--2-EVq {
   z-index: 1;
-  padding: 50px 0;
-  background-color: #f4f7fc;
+  padding: 35px 0;
+  background-color: #fff;
   overflow: hidden;
 }
 @media screen and (max-width: 1199px) {
@@ -5224,5 +5224,5 @@ ul.slick-dots > li {
 }
 .logo-image {
   height: 50px;
-  opacity: 0.6;
+  opacity: 0.7;
 }

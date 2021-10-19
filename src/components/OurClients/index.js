@@ -99,7 +99,7 @@ const OurClients = () => {
             />
           </div>
         </a> */}
-        <a className="OurClients-Company-module--cls2--3coqY OurClients-Company-module--cls1--1coVO">
+        {/* <a className="OurClients-Company-module--cls2--3coqY OurClients-Company-module--cls1--1coVO">
           <div className="gatsby-image-wrapper">
             <div
               aria-hidden="true"
@@ -112,7 +112,7 @@ const OurClients = () => {
               alt="логотип ПИК"
             />
           </div>
-        </a>
+        </a> */}
       </div>
     </div>
   );
