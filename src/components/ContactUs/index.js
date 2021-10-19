@@ -436,7 +436,11 @@ const ContactUs = ({ ref }) => {
                 Send
               </a>
               {isLoading && (
-                <Loader type="spin" color="#aaaaaa" message="Laoding..." />
+                <Loader
+                  type="spinningBubbles"
+                  color="#aaaaaa"
+                  message="Laoding..."
+                />
               )}
             </form>
           </div>
