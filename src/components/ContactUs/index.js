@@ -7,6 +7,7 @@ import { contactUs } from "../../redux/actions/formsActions";
 import { getBase64 } from "../../utils/base64";
 import { useDispatch, useSelector } from "react-redux";
 import { isEmpty } from "../../utils/stringUtils";
+import Loader from "./Loader";
 
 const buttonText = [
   "Mobile",
@@ -48,6 +49,7 @@ const ContactUs = ({ ref }) => {
   const [activeInputs, setActiveInputs] = React.useState([]);
   const [attachFile, setAttachFile] = React.useState(false);
   const [containA, setContainA] = React.useState(false);
+  const [isLoading, setIsLoading] = React.useState(false);
   const fileRef = React.useRef();
   const isSendSuccess = useSelector((state) => state.adminReducer.sendSuccess);
   const [open, setOpen] = React.useState(false);
@@ -147,6 +149,7 @@ const ContactUs = ({ ref }) => {
         name: form.attachment.name,
       },
     };
+    setIsLoading(true);
     dispatch(contactUs(query));
   };
   const handleClose = () => {
@@ -157,9 +160,9 @@ const ContactUs = ({ ref }) => {
     if (isSendSuccess) {
       setForm(initForm);
       setAttachFile(false);
+      setIsLoading(false);
     }
   }, [isSendSuccess]);
-
   return (
     <div
       ref={ref}
@@ -432,6 +435,9 @@ const ContactUs = ({ ref }) => {
               >
                 Send
               </a>
+              {isLoading && (
+                <Loader type="spin" color="#aaaaaa" message="Laoding..." />
+              )}
             </form>
           </div>
         </div>
