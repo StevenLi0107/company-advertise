@@ -21,6 +21,9 @@ const MainPage = () => {
   const isActiveLogosSection = useSelector(
     (state) => state.adminReducer.isActiveLogosSection
   );
+  const isActiveDevelopersSection = useSelector(
+    (state) => state.adminReducer.isActivePeopleSection
+  );
 
   const scrollToElement = React.useCallback(({ currentTarget: { id } }) => {
     const refs = {
@@ -40,7 +43,10 @@ const MainPage = () => {
 
   return (
     <div ref={mainRef}>
-      <MainHeader scrollToElement={scrollToElement} />
+      <MainHeader
+        scrollToElement={scrollToElement}
+        isActiveDevelopersSection={isActiveDevelopersSection}
+      />
       <HeaderContainer scrollToElement={scrollToElement} />
       {isActiveLogosSection && <OurClients />}
       <Box ref={portfolioRef}>

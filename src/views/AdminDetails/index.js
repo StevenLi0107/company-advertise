@@ -29,6 +29,11 @@ const configureTab = () => [
     component: <Logos />,
   },
   {
+    label: "MainPage",
+    link: `/`,
+    component: <Logos />,
+  },
+  {
     label: "Log out",
     link: `/login`,
     component: <></>,

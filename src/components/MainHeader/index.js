@@ -1,6 +1,6 @@
 import React from "react";
 
-const MainHeader = ({ scrollToElement }) => {
+const MainHeader = ({ scrollToElement, isActiveDevelopersSection }) => {
   const [scrollPosition, setScrollPosition] = React.useState(false);
 
   React.useEffect(() => {
@@ -289,12 +289,14 @@ const MainHeader = ({ scrollToElement }) => {
                 >
                   Portfolio
                 </a>
-                <a
-                  href="/developers"
-                  className="HeaderLink-Link-module--cls2--vzGtU HeaderLink-Link-module--cls1--McJKF"
-                >
-                  Developers
-                </a>
+                {isActiveDevelopersSection && (
+                  <a
+                    href="/developers"
+                    className="HeaderLink-Link-module--cls2--vzGtU HeaderLink-Link-module--cls1--McJKF"
+                  >
+                    Developers
+                  </a>
+                )}
               </nav>
               <span>
                 <div className="HeaderLink-IconBurger-module--cls2--1k4-B HeaderLink-IconBurger-module--cls1--1fSrp"></div>
