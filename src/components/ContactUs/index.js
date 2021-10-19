@@ -141,13 +141,13 @@ const ContactUs = ({ ref }) => {
       companyName: form.companyName.text,
       email: form.email.text,
       phoneNumber: form.phoneNumber.text,
-      projectDetails: form.projectDetails.text,
+      projectDetails: projectDetailText,
       attachment: {
         body: form.attachment.body,
         name: form.attachment.name,
       },
     };
-
+    console.log("query-", query);
     dispatch(contactUs(query));
   };
   const handleClose = () => {
