@@ -39,6 +39,9 @@ export default function Login() {
       username: name,
       password: password,
     };
+
+    console.log("newUser:", newUser);
+
     await dispatch(loginUser(newUser));
     setFormstate({
       name: "",

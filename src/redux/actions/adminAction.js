@@ -20,6 +20,9 @@ export const getUserList = (payload) => async (dispatch) => {
   dispatch({ type: TYPES.GET_USERS_LIST_REQUEST, payload: null });
   try {
     const response = await adminService.getUserList();
+
+    console.log("getUserList: response", response);
+
     if (response?.status === 200) {
       dispatch({ type: TYPES.GET_USERS_LIST_SUCCESS, payload: response.data });
     }

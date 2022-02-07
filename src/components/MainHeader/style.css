@@ -1,0 +1,148 @@
+.navBar {
+  height: 3.5em;
+  width: 100%;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-left: 122px;
+  padding-right: 122px;
+
+  backdrop-filter: blur(2px);
+
+  box-shadow: 0 3px 3px rgba(106, 105, 105, 0.15);
+  position: fixed;
+  top: 0;
+  box-sizing: border-box;
+  overflow: hidden;
+  z-index: 5;
+}
+
+.header-left {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 34px;
+  height: 34px;
+  margin-right: 8px;
+}
+
+.logo-text {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  letter-spacing: 0.1em;
+  font-size: 22px;
+  /* font-family: "Telegrafico"; */
+  font-style: normal;
+
+  color: #d9d9d9;
+}
+
+.logo-name {
+  line-height: 16.42px;
+  margin-bottom: 4px;
+}
+
+.logo-service-text {
+  font-size: 10px;
+  line-height: 7.46px;
+  letter-spacing: 0.2em;
+  color: #8d8d8d;
+}
+
+.navBar .Link-Container {
+  display: flex;
+  align-items: center;
+  gap: 64px;
+}
+
+.navBar a {
+  text-decoration: none;
+
+  font-size: 16px;
+  text-transform: uppercase;
+  font-family: "tommy-light";
+  font-weight: 400;
+  line-height: 20px;
+
+  color: #e2e2e1;
+  opacity: 0.7;
+}
+
+.navBar a:hover {
+  color: #f3963a;
+  border-bottom: 1px solid #f3963a;
+  opacity: 1;
+}
+
+/* #link:hover {
+  color: #f3963a;
+  border-bottom: 1px solid #f3963a;
+  opacity: 1;
+} */
+
+.active {
+  color: #f3963a !important;
+  border-bottom: 1px solid #f3963a;
+  opacity: 1;
+}
+
+/* .special {
+  color: #e37b00 !important;
+  border: 2px solid #e37b00;
+  border-radius: 4px;
+  opacity: 1;
+  padding: 0.2em 1em 0.2em 1em;
+  backdrop-filter: blur(10px);
+  font-family: "tommy-light";
+  font-weight: 400;
+  line-height: 20px;
+} */
+
+.header-special {
+  width: 120px;
+  height: 32px;
+  color: #f09236;
+
+  border: none;
+  outline: none;
+  border-radius: 4px;
+
+  color: #f3963a;
+  border: 2px solid #e37b00;
+  background-color: transparent;
+
+  opacity: 1;
+
+  text-align: center;
+  font-size: 16px;
+  font-weight: 400;
+  font-family: "tommy-regular";
+  line-height: 20px;
+}
+
+.header-special:hover {
+  border: none;
+  color: #161616;
+  width: 120px;
+  height: 32px;
+  background: linear-gradient(
+    137.83deg,
+    #dec8a7 15.11%,
+    #f3963a 37.03%,
+    #e37b00 62.01%,
+    #b03b31 87.72%
+  );
+  border-radius: 4px;
+  text-align: center;
+  cursor: pointer;
+}

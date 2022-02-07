@@ -127,12 +127,12 @@ const Portfolios = () => {
               index={index}
               moveCard={moveCard}
             >
-              <PortfolioCard
+              {/* <PortfolioCard
                 portfolio={portfolio}
                 handleDeletePortfolio={handleDeletePortfolio}
                 handleChangePortfolioInfo={handleChangePortfolioInfo}
                 handleUpload={handleUpload}
-              />
+              /> */}
             </CardDnd>
           ))}
         <AddPortfolioModal
