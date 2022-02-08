@@ -36,6 +36,7 @@ const MainPage = () => {
   const [scrollPosition, setScrollPosition] = useState(false);
 
   const mainRef = useRef();
+  const expertiseRef = useRef();
   const portfolioRef = useRef();
   const contactUsRef = useRef();
   const mainFooterRef = useRef();
@@ -51,27 +52,31 @@ const MainPage = () => {
     // console.log(
     //   "window.pageYoffset:",
     //   window.pageYOffset,
-    //   window.scrollY,
     //   mainRef.current.offsetTop,
+    //   expertiseRef.current.offsetTop,
     //   contactUsRef.current.offsetTop,
     //   mainFooterRef.current.offsetTop
     // );
     if (
       window.pageYOffset > mainRef.current.offsetTop &&
-      window.pageYOffset < 640
+      window.pageYOffset < expertiseRef.current.offsetTop - 56
     ) {
       setActive("Main");
     }
-
     if (
-      window.pageYOffset > 640 &&
-      window.pageYOffset < contactUsRef.current.offsetTop
+      window.pageYOffset > expertiseRef.current.offsetTop - 60 &&
+      window.pageYOffset < contactUsRef.current.offsetTop - 60
+    ) {
+      setActive("Expertise");
+    }
+    if (
+      window.pageYOffset > contactUsRef.current.offsetTop - 60 &&
+      window.pageYOffset < contactUsRef.current.offsetTop + 60
     ) {
       setActive("contactUs");
     }
-
     if (
-      window.pageYOffset > contactUsRef.current.offsetTop &&
+      window.pageYOffset > contactUsRef.current.offsetTop + 100 &&
       window.pageYOffset < mainFooterRef.current.offsetTop
     ) {
       setActive("About");
@@ -83,7 +88,7 @@ const MainPage = () => {
     event.preventDefault();
     const refs = {
       main: mainRef,
-      expertise: mainRef,
+      expertise: expertiseRef,
       portfolio: mainRef,
       contactUs: contactUsRef,
       footer: mainFooterRef,
@@ -115,9 +120,10 @@ const MainPage = () => {
       {/* <Box ref={portfolioRef}>
         <OurCases />
       </Box> */}
-      <Box>
+      <Box ref={expertiseRef}>
         <OurExpertise />
       </Box>
+      {true && <OurClients />}
       <Box ref={contactUsRef}>
         <ContactUs />
       </Box>
