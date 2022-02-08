@@ -6,6 +6,7 @@ import ContactUs from "../../components/ContactUs";
 import MainContainer from "../../components/MainContainer";
 import MainHeader from "../../components/MainHeader";
 import MainFooter from "../../components/MainFooter";
+import OurExpertise from "../../components/OurExpertise";
 import OurCases from "../../components/OurCases";
 import OurClients from "../../components/OurClients";
 
@@ -114,6 +115,9 @@ const MainPage = () => {
       {/* <Box ref={portfolioRef}>
         <OurCases />
       </Box> */}
+      <Box>
+        <OurExpertise />
+      </Box>
       <Box ref={contactUsRef}>
         <ContactUs />
       </Box>

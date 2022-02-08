@@ -1,0 +1,106 @@
+.expertise-container {
+  width: 100%;
+  min-width: 1200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  margin-top: 130px;
+  font-family: "tommy-light";
+  font-style: normal;
+  font-weight: 400;
+}
+
+.expertise-title {
+  font-size: 14px;
+  line-height: 17px;
+  letter-spacing: 0.2em;
+  text-transform: capitalize;
+
+  color: rgba(86, 86, 86, 1);
+
+  margin-left: 130px;
+}
+
+.expertise-description {
+  margin-top: 20px;
+
+  font-size: 24px;
+  line-height: 130%;
+
+  color: rgba(226, 226, 225, 1);
+  margin-left: 130px;
+}
+
+.expertise-logo-wrapper {
+  width: 100%;
+  display: grid;
+  grid-template-rows: repeat(2, 1fr);
+  grid-template-columns: repeat(4, 0fr);
+  place-content: center;
+  row-gap: 45px;
+  column-gap: 65px;
+  margin-top: 59px;
+
+  color: rgba(255, 255, 255, 1);
+}
+
+.expertise-logo-item-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+
+  width: 180px;
+  height: 206px;
+  background: rgba(34, 34, 34, 1);
+  filter: drop-shadow(6px 6px 10px rgba(0, 0, 0, 0.15));
+  box-shadow: 6px 6px 10px 0px rgba(0, 0, 0, 0.15);
+
+  font-size: 16px;
+  line-height: 36px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+
+  box-sizing: border-box;
+}
+
+.expertise-logo-img {
+  height: 147px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.expertise-logo-text {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding-bottom: 23px;
+  box-sizing: border-box;
+}
+
+.expertise-line {
+  width: auto;
+  height: 1px;
+  margin-top: 151px;
+  margin-left: 140px;
+  margin-right: 140px;
+  /* border: 1px solid; */
+
+  background: linear-gradient(
+    90deg,
+    rgba(176, 59, 49, 0.25) 0%,
+    rgba(176, 59, 49, 0.4) 9.4%,
+    rgba(227, 123, 0, 0.5) 19.3%,
+    rgba(243, 150, 58, 0.7) 29.69%,
+    rgba(238, 162, 86, 0.8) 42.06%,
+    #dec8a7 49.97%,
+    rgba(238, 162, 86, 0.8) 56.9%,
+    rgba(243, 150, 58, 0.7) 64.82%,
+    rgba(227, 123, 0, 0.5) 76.2%,
+    rgba(176, 59, 49, 0.4) 87.08%,
+    rgba(176, 59, 49, 0.25) 95%
+  );
+}
