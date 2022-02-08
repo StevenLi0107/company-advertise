@@ -225,6 +225,32 @@
   font-family: "tommy-light";
 }
 
+.contact-service div:hover {
+  background: -webkit-linear-gradient(
+    300.83deg,
+    #dec8a7 15.11%,
+    #f3963a 37.03%,
+    #e37b00 62.01%,
+    #b03b31 87.72%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  cursor: pointer;
+}
+
+.contact-service-item-active {
+  background: -webkit-linear-gradient(
+    300.83deg,
+    #dec8a7 15.11%,
+    #f3963a 37.03%,
+    #e37b00 62.01%,
+    #b03b31 87.72%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  cursor: pointer;
+}
+
 .contact-info-label {
   width: 430px;
   display: flex;

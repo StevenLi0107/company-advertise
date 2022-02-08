@@ -198,8 +198,16 @@ const ContactUs = ({ ref }) => {
               Fill out the form and we'll be in touch as soon as possible
             </div>
             <div className="contact-service">
-              {CONTACT_SERVICE_LIST.map((item) => (
-                <div>{item.label}</div>
+              {CONTACT_SERVICE_LIST.map((item, index) => (
+                <div
+                  onClick={handleActiveButtons.bind(null, index)}
+                  className={
+                    activeButtons.some((num) => num === index) &&
+                    "contact-service-item-active"
+                  }
+                >
+                  {item.label}
+                </div>
               ))}
             </div>
             <div className="contact-info-label">

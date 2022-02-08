@@ -2,21 +2,29 @@ import { useState, useEffect, useCallback } from "react";
 import logo from "../../assets/logo.svg";
 import "./style.css";
 
-const MainHeader = ({ scrollToElement }) => {
-  const [scrollPosition, setScrollPosition] = useState(false);
-  const [active, setactive] = useState("Main");
+const MainHeader = ({ scrollToElement, onScrollChange, active }) => {
+  // const [active, setActive] = useState("");
 
-  // useEffect(() => {
-  //   window.addEventListener("scroll", handleScroll);
-  //   return () => {
-  //     window.removeEventListener("scroll", handleScroll);
-  //   };
-  // }, []);
+  useEffect(() => {
+    window.addEventListener("scroll", onScrollChange);
+    return () => {
+      window.removeEventListener("scroll", onScrollChange);
+    };
+  });
 
   // const handleScroll = useCallback(() => {
   //   if (window.pageYOffset > 0) return setScrollPosition(true);
   //   setScrollPosition(false);
   // }, []);
+
+  const handleNavBarClick = (event, navActive) => {
+    console.log("navActive:", navActive);
+    // setActive(navActive);
+    scrollToElement(event, navActive);
+  };
+
+  console.log("MainHeader");
+  console.log("active:", active);
 
   return (
     <>
@@ -33,7 +41,7 @@ const MainHeader = ({ scrollToElement }) => {
         <div className="Link-Container">
           <a
             id="main"
-            onClick={scrollToElement}
+            onClick={(event) => handleNavBarClick(event, "Main")}
             className={active === "Main" && "active"}
             href="/"
           >
@@ -41,7 +49,7 @@ const MainHeader = ({ scrollToElement }) => {
           </a>
           <a
             id="expertise"
-            onClick={scrollToElement}
+            onClick={(event) => handleNavBarClick(event, "Expertise")}
             className={active === "Expertise" && "active"}
             href="/"
           >
@@ -49,7 +57,7 @@ const MainHeader = ({ scrollToElement }) => {
           </a>
           <a
             id="portfolio"
-            onClick={scrollToElement}
+            onClick={(event) => handleNavBarClick(event, "Portfolio")}
             className={active === "Portfolio" && "active"}
             href="/"
           >
@@ -57,7 +65,7 @@ const MainHeader = ({ scrollToElement }) => {
           </a>
           <a
             id="footer"
-            onClick={scrollToElement}
+            onClick={(event) => handleNavBarClick(event, "About")}
             className={active === "About" && "active"}
             href="/"
           >
@@ -70,11 +78,6 @@ const MainHeader = ({ scrollToElement }) => {
           >
             Contact us
           </button>
-          {/* <div className="special">
-            <a onClick={() => setactive("")} href="#Contact">
-              Contact us
-            </a>
-          </div> */}
         </div>
       </div>
     </>

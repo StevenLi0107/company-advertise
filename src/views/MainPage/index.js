@@ -1,4 +1,4 @@
-import React from "react";
+import { useState, useRef, useCallback, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Box, makeStyles } from "@material-ui/core";
 
@@ -17,10 +17,11 @@ import {
 
 const useStyles = makeStyles({
   mainContainer: {
+    width: "100%",
+    minWidth: "1200px",
     display: "flex",
     flexDirection: "column",
     background: "#1d1d1d",
-    minWidth: "1200px",
     overflowX: "auto",
     position: "relative",
   },
@@ -28,12 +29,15 @@ const useStyles = makeStyles({
 
 const MainPage = () => {
   const classes = useStyles();
-
   const dispatch = useDispatch();
-  const mainRef = React.useRef();
-  const portfolioRef = React.useRef();
-  const contactUsRef = React.useRef();
-  const mainFooterRef = React.useRef();
+
+  const [active, setActive] = useState("");
+  const [scrollPosition, setScrollPosition] = useState(false);
+
+  const mainRef = useRef();
+  const portfolioRef = useRef();
+  const contactUsRef = useRef();
+  const mainFooterRef = useRef();
 
   const isActiveLogosSection = useSelector(
     (state) => state.adminReducer.isActiveLogosSection
@@ -42,7 +46,38 @@ const MainPage = () => {
     (state) => state.adminReducer.isActivePeopleSection
   );
 
-  const scrollToElement = React.useCallback((event) => {
+  const handleScroll = useCallback(() => {
+    console.log(
+      "window.pageYoffset:",
+      window.pageYOffset,
+      window.scrollY,
+      mainRef.current.offsetTop,
+      contactUsRef.current.offsetTop,
+      mainFooterRef.current.offsetTop
+    );
+    if (
+      window.pageYOffset > mainRef.current.offsetTop &&
+      window.pageYOffset < 640
+    ) {
+      setActive("Main");
+    }
+
+    if (
+      window.pageYOffset > 640 &&
+      window.pageYOffset < contactUsRef.current.offsetTop
+    ) {
+      setActive("contactUs");
+    }
+
+    if (
+      window.pageYOffset > contactUsRef.current.offsetTop &&
+      window.pageYOffset < mainFooterRef.current.offsetTop
+    ) {
+      setActive("About");
+    }
+  }, []);
+
+  const scrollToElement = useCallback((event, navActive) => {
     console.log("scroll id:", event.target.id);
     event.preventDefault();
     const refs = {
@@ -56,10 +91,12 @@ const MainPage = () => {
       behavior: "smooth",
       top: refs[event.target.id].current.offsetTop - 56,
     });
+
+    setActive(navActive);
   }, []);
 
-  React.useEffect(() => {
-    dispatch(getPortfoliosList());
+  useEffect(() => {
+    // dispatch(getPortfoliosList());
     // dispatch(getClientsList());
     // dispatch(getUserList());
   }, [dispatch]);
@@ -67,7 +104,11 @@ const MainPage = () => {
   console.log("isActiveDevelopersSection:", isActiveDevelopersSection);
   return (
     <div ref={mainRef} className={classes.mainContainer}>
-      <MainHeader scrollToElement={scrollToElement} />
+      <MainHeader
+        scrollToElement={scrollToElement}
+        onScrollChange={handleScroll}
+        active={active}
+      />
       <MainContainer scrollToElement={scrollToElement} />
       {/* {isActiveLogosSection && <OurClients />} */}
       {/* <Box ref={portfolioRef}>

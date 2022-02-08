@@ -5,9 +5,9 @@ import "./styles.css";
 
 const MainContainer = ({ scrollToElement }) => {
   return (
-    <div style={{ position: "relative" }}>
+    <div style={{ width: "100%", position: "relative" }}>
       <div className="main-bottom-gradient"></div>
-      <div className="Main-Section">
+      <div className="main-Section">
         <div className="main-container">
           <div className="main-title">
             Crossplatform&nbsp;
@@ -19,16 +19,22 @@ const MainContainer = ({ scrollToElement }) => {
             company offering robust Frontend and Backend solutions
             <br /> on Mobile, Web and Cloud platforms.
           </div>
-          <button className="contact-btn">Contact us</button>
+          <button
+            className="contact-btn"
+            id="contactUs"
+            onClick={scrollToElement}
+          >
+            Contact us
+          </button>
           <div className="main-social-wrapper">
             {SOCIAL_LIST.map((item) => (
               <div className="main-social-item">{item.label}</div>
             ))}
           </div>
-          <div className="arrow-button-wrapper">
-            <img className="arrow-button" src={ArrowDown} alt="" />
-          </div>
         </div>
+      </div>
+      <div className="arrow-button-wrapper">
+        <img className="arrow-button" src={ArrowDown} alt="" />
       </div>
     </div>
 

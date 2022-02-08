@@ -1,6 +1,7 @@
 .navBar {
   height: 3.5em;
   width: 100%;
+  min-width: 1200px;
 
   display: flex;
   justify-content: space-between;
@@ -14,8 +15,7 @@
   position: fixed;
   top: 0;
   box-sizing: border-box;
-  overflow: hidden;
-  z-index: 5;
+  z-index: 1000;
 }
 
 .header-left {
@@ -65,7 +65,7 @@
   gap: 64px;
 }
 
-.navBar a {
+.Link-Container a {
   text-decoration: none;
 
   font-size: 16px;
@@ -78,20 +78,16 @@
   opacity: 0.7;
 }
 
-.navBar a:hover {
+.Link-Container a:hover {
   color: #f3963a;
+  font-family: "tommy-regular";
   border-bottom: 1px solid #f3963a;
   opacity: 1;
 }
 
-/* #link:hover {
-  color: #f3963a;
-  border-bottom: 1px solid #f3963a;
-  opacity: 1;
-} */
-
-.active {
+.Link-Container .active {
   color: #f3963a !important;
+  font-family: "tommy-regular";
   border-bottom: 1px solid #f3963a;
   opacity: 1;
 }

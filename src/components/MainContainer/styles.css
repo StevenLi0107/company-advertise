@@ -1,4 +1,4 @@
-.Main-Section {
+.main-Section {
   /* height: calc(100vh - 3.5em); */
   height: auto;
   width: auto;
@@ -162,22 +162,24 @@
   display: flex;
   width: 100%;
   height: 73px;
-  justify-content: end;
+  justify-content: center;
   margin-top: 24px;
   padding-right: 10px;
+  z-index: 3 !important;
 }
 
 .arrow-button {
   padding-top: 5px;
   padding-bottom: 5px;
   cursor: pointer;
+  z-index: 3 !important;
 }
 
 .main-bottom-gradient {
   height: 200px;
   width: 100%;
   position: absolute;
-  top: 560px;
+  top: 440px;
   left: 360px;
   background: linear-gradient(
     180deg,
