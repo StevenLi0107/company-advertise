@@ -18,13 +18,8 @@ const MainHeader = ({ scrollToElement, onScrollChange, active }) => {
   // }, []);
 
   const handleNavBarClick = (event, navActive) => {
-    console.log("navActive:", navActive);
-    // setActive(navActive);
     scrollToElement(event, navActive);
   };
-
-  console.log("MainHeader");
-  console.log("active:", active);
 
   return (
     <>

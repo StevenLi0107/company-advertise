@@ -40,7 +40,7 @@ export default function Login() {
       password: password,
     };
 
-    console.log("newUser:", newUser);
+    // console.log("newUser:", newUser);
 
     await dispatch(loginUser(newUser));
     setFormstate({

@@ -80,6 +80,7 @@
 
 .Link-Container a:hover {
   color: #f3963a;
+  font-weight: bold;
   font-family: "tommy-regular";
   border-bottom: 1px solid #f3963a;
   opacity: 1;
@@ -87,6 +88,7 @@
 
 .Link-Container .active {
   color: #f3963a !important;
+  font-weight: bold;
   font-family: "tommy-regular";
   border-bottom: 1px solid #f3963a;
   opacity: 1;

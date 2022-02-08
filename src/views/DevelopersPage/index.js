@@ -23,7 +23,7 @@ const DevelopersPage = () => {
     dispatch(getUserList());
   }, [dispatch]);
 
-  console.log("usersList:", usersList);
+  // console.log("usersList:", usersList);
   return (
     <Box className={classes.root}>
       <Typography className={classes.title}>OUR DEVELOPERS:</Typography>

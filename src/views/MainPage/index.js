@@ -47,14 +47,14 @@ const MainPage = () => {
   );
 
   const handleScroll = useCallback(() => {
-    console.log(
-      "window.pageYoffset:",
-      window.pageYOffset,
-      window.scrollY,
-      mainRef.current.offsetTop,
-      contactUsRef.current.offsetTop,
-      mainFooterRef.current.offsetTop
-    );
+    // console.log(
+    //   "window.pageYoffset:",
+    //   window.pageYOffset,
+    //   window.scrollY,
+    //   mainRef.current.offsetTop,
+    //   contactUsRef.current.offsetTop,
+    //   mainFooterRef.current.offsetTop
+    // );
     if (
       window.pageYOffset > mainRef.current.offsetTop &&
       window.pageYOffset < 640
@@ -78,7 +78,7 @@ const MainPage = () => {
   }, []);
 
   const scrollToElement = useCallback((event, navActive) => {
-    console.log("scroll id:", event.target.id);
+    // console.log("scroll id:", event.target.id);
     event.preventDefault();
     const refs = {
       main: mainRef,
@@ -101,7 +101,7 @@ const MainPage = () => {
     // dispatch(getUserList());
   }, [dispatch]);
 
-  console.log("isActiveDevelopersSection:", isActiveDevelopersSection);
+  // console.log("isActiveDevelopersSection:", isActiveDevelopersSection);
   return (
     <div ref={mainRef} className={classes.mainContainer}>
       <MainHeader

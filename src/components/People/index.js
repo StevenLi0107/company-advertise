@@ -31,7 +31,7 @@ const People = () => {
   // const classes = useStyles();
   const [uploadId, setUploadId] = React.useState();
 
-  console.log("People: usersList:", usersList);
+  // console.log("People: usersList:", usersList);
 
   React.useEffect(() => {
     dispatch(checkTokenValid());
