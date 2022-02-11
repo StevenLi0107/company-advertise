@@ -1,48 +1,9 @@
 .main-Section {
-  /* height: calc(100vh - 3.5em); */
-  height: 890px;
+  min-height: 885px;
   width: 100%;
   display: flex;
   flex-direction: column;
   position: relative;
-  /* justify-content: flex-start; */
-  /* align-items: start; */
-
-  /* padding-left: 10em; */
-
-  /* border: 2px solid red; */
-
-  /* background: rgba(255, 255, 255, 0.01),
-    url("../../assets/background-img.svg") no-repeat,
-    -moz-linear-gradient(82.51deg, #1d1d1d 42.02%, rgba(27, 29, 32, 0.94) 52.11%, rgba(
-            26,
-            29,
-            34,
-            0.74
-          )
-          68.71%, rgba(0, 0, 0, 0) 92.74%);
-  background: rgba(255, 255, 255, 0.01),
-    url("../../assets/background-img.svg") no-repeat,
-    -webkit-linear-gradient(82.51deg, #1d1d1d 42.02%, rgba(27, 29, 32, 0.94)
-          52.11%, rgba(26, 29, 34, 0.74) 68.71%, rgba(0, 0, 0, 0) 92.74%);
-  background: rgba(255, 255, 255, 0.01),
-    url("../../assets/background-img.svg") no-repeat,
-    -o-linear-gradient(82.51deg, #1d1d1d 42.02%, rgba(27, 29, 32, 0.94) 52.11%, rgba(
-            26,
-            29,
-            34,
-            0.74
-          )
-          68.71%, rgba(0, 0, 0, 0) 92.74%);
-  background: rgba(255, 255, 255, 0.01),
-    url("../../assets/background-img.svg") no-repeat,
-    -ms-linear-gradient(82.51deg, #1d1d1d 42.02%, rgba(27, 29, 32, 0.94) 52.11%, rgba(
-            26,
-            29,
-            34,
-            0.74
-          )
-          68.71%, rgba(0, 0, 0, 0) 92.74%); */
 
   background: linear-gradient(
     82.51deg,
@@ -51,17 +12,15 @@
     rgba(26, 29, 34, 0.74) 68.71%,
     rgba(0, 0, 0, 0) 92.74%
   );
-  /* url("../../assets/background-img.svg") no-repeat; */
 
   background-size: cover;
-  /* box-sizing: border-box; */
   z-index: 1;
 }
 
 .main-background-img {
   position: absolute;
-  min-width: 968px;
-  min-height: 885px;
+  width: 968px;
+  /* height: 885px; */
 
   -o-object-fit: contain;
   object-fit: contain;
@@ -196,7 +155,7 @@
   height: 200px;
   width: 100%;
   position: absolute;
-  top: 440px;
+  top: calc(100% - 200px);
   left: 360px;
   background: linear-gradient(
     180deg,

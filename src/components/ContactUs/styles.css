@@ -9,6 +9,8 @@
   width: 100%;
   display: flex;
   flex-direction: row;
+  justify-content: center;
+  /* gap: 150px; */
 }
 
 .contact-big-pattern {
@@ -29,9 +31,11 @@
 
 .contact-description {
   width: 50%;
+  display: flex;
   flex-direction: column;
-  align-items: start;
-  margin-left: 122px;
+  align-items: center;
+  justify-content: center;
+  /* margin-left: 122px; */
   margin-top: 115px;
 }
 
@@ -61,6 +65,7 @@
 .contact-body {
   display: flex;
   flex-direction: row;
+  justify-content: center;
   width: 450px;
   /* margin-left: 50px; */
 }
@@ -73,7 +78,7 @@
   -webkit-background-clip: text;
   color: transparent;
 
-  margin-left: 40px;
+  /* margin-left: 40px; */
 
   font-size: 24px;
   line-height: 30px;
@@ -94,7 +99,7 @@
     #e37b00 62.01%,
     #b03b31 87.72%
   );
-  text-align: center;
+  /* text-align: center; */
   background-clip: text;
   -webkit-background-clip: text;
   color: transparent;
@@ -108,6 +113,7 @@
 }
 
 .contact-logo-wrapper {
+  width: 511px;
   display: flex;
   flex-direction: row;
   align-items: center;

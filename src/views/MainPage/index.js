@@ -16,26 +16,7 @@ import {
   getUserList,
 } from "../../redux/actions/adminAction";
 
-const useStyles = makeStyles({
-  mainContainer: {
-    width: "100%",
-    minWidth: "1200px",
-    display: "flex",
-    flexDirection: "column",
-    background: "#1d1d1d",
-    overflow: "auto",
-    position: "relative",
-  },
-
-  boxContainer: {
-    width: "100%",
-    padding: "0",
-    margin: "0",
-  },
-});
-
 const MainPage = () => {
-  const classes = useStyles();
   const dispatch = useDispatch();
 
   const [active, setActive] = useState("");
@@ -113,27 +94,26 @@ const MainPage = () => {
     // dispatch(getUserList());
   }, [dispatch]);
 
-  // console.log("isActiveDevelopersSection:", isActiveDevelopersSection);
   return (
-    <div ref={mainRef} className={classes.mainContainer}>
+    <div
+      ref={mainRef}
+      style={{ width: "100%", background: "#1d1d1d", overflowX: "none" }}
+    >
       <MainHeader
         scrollToElement={scrollToElement}
         onScrollChange={handleScroll}
         active={active}
       />
       <MainContainer scrollToElement={scrollToElement} />
-      {/* {isActiveLogosSection && <OurClients />} */}
-      {/* <Box ref={portfolioRef}>
-        <OurCases />
-      </Box> */}
-      <div className={classes.boxContainer} ref={expertiseRef}>
+      <Box ref={expertiseRef}>
         <OurExpertise />
-      </div>
-      {isActiveLogosSection && <OurClients />}
-      <div className={classes.boxContainer} ref={contactUsRef}>
+        {isActiveLogosSection && <OurClients />}
+      </Box>
+
+      <div ref={contactUsRef}>
         <ContactUs />
       </div>
-      <div className={classes.boxContainer} ref={mainFooterRef}>
+      <div ref={mainFooterRef}>
         <MainFooter />
       </div>
     </div>

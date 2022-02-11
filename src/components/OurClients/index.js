@@ -78,6 +78,7 @@ const OurClients = () => {
   });
   const listLen = clientsList.length;
 
+  console.log("listLen:", listLen);
   return (
     <div className="client-container">
       <div className="client-title">our clients</div>
@@ -86,17 +87,13 @@ const OurClients = () => {
         <br />
         that we’ve had a chance to cooperate with
       </div>
-      {/* <div className="client-logo-list"> */}
-      {/* {CLIENT_LIST.map((item) => (
-          <img src={item.logoImg} alt="" />
-        ))} */}
-      <div
-        className="client-logo-img-scroll-wrapper"
-        style={{ marginLeft: 1800 - scrollY }}
-      >
-        <div className="client-logo-list">
-          {listLen &&
-            clientsList.map((client, index) => (
+      {listLen > 0 && (
+        <div
+          className="client-logo-img-scroll-wrapper"
+          style={{ marginLeft: 1800 - scrollY }}
+        >
+          <div className="client-logo-list">
+            {clientsList.map((client, index) => (
               <img
                 className="logo-image"
                 aria-hidden="true"
@@ -104,20 +101,20 @@ const OurClients = () => {
                 alt={client.name}
               />
             ))}
+          </div>
+          <div className="client-logo-list">
+            {listLen < 3 &&
+              clientsList.map((client, index) => (
+                <img
+                  className="logo-image"
+                  aria-hidden="true"
+                  src={`https://api.cowork.dev/data/img/${client.img}`}
+                  alt={client.name}
+                />
+              ))}
+          </div>
         </div>
-        <div className="client-logo-list">
-          {listLen < 3 &&
-            clientsList.map((client, index) => (
-              <img
-                className="logo-image"
-                aria-hidden="true"
-                src={`https://api.cowork.dev/data/img/${client.img}`}
-                alt={client.name}
-              />
-            ))}
-        </div>
-      </div>
-      {/* </div> */}
+      )}
       <div className="client-information-wrapper">
         <div className="client-solution-description">
           <img src={Pattern} alt="" className="client-solution-pattern-img" />

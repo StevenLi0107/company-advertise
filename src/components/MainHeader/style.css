@@ -1,18 +1,19 @@
 .navBar {
   height: 3.5em;
   width: 100%;
-  min-width: 1200px;
 
   display: flex;
+  flex-direction: row;
   justify-content: space-between;
   align-items: center;
   padding-left: 122px;
   padding-right: 122px;
 
-  backdrop-filter: blur(10px);
+  background: rgba(255, 255, 255, 0.01);
+  border: 1px solid #161616;
+  backdrop-filter: blur(23.094px);
 
-  box-shadow: 0 3px 3px rgba(106, 105, 105, 0.15);
-  /* position: fixed; */
+  position: fixed;
   top: 0;
   box-sizing: border-box;
   z-index: 1000;

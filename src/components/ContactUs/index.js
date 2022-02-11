@@ -214,7 +214,9 @@ const ContactUs = ({ ref }) => {
               Ideas Into Reality
             </span>
           </div>
-          <p className="quote">“</p>
+          <div style={{ display: "flex", width: "511px" }}>
+            <p className="quote">“</p>
+          </div>
           <div className="contact-body">
             <span className="contact-text">
               It has many landing page variations

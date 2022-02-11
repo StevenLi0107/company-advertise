@@ -7,8 +7,8 @@
   font-family: "tommy-light";
   font-weight: 400;
 
-  margin-top: 70px;
-  margin-bottom: 100px;
+  padding-top: 70px;
+  padding-bottom: 100px;
   position: relative;
 }
 
@@ -28,7 +28,6 @@
   color: #e2e2e1;
 
   margin-top: 20px;
-  margin-bottom: 110px;
   padding-left: 310px;
   padding-right: 310px;
 }
@@ -39,6 +38,7 @@
   flex-direction: row;
   align-items: center;
   /* justify-content: center; */
+  margin-bottom: 110px;
   gap: 150px;
   box-sizing: border-box;
 }
