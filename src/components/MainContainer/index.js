@@ -12,8 +12,9 @@ const MainContainer = ({ scrollToElement }) => {
         position: "relative",
       }}
     >
-      {/* <div className="main-bottom-gradient"></div> */}
       <img src={BackImg} alt="background" className="main-background-img" />
+      <div className="main-background-gradient"></div>
+      {/* <div className="main-bottom-gradient"></div> */}
       <div className="main-Section">
         <div className="main-container">
           <div className="main-title">

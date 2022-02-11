@@ -78,7 +78,7 @@ const OurClients = () => {
   });
   const listLen = clientsList.length;
 
-  console.log("listLen:", listLen);
+  console.log("listLen:", listLen, scrollY);
   return (
     <div className="client-container">
       <div className="client-title">our clients</div>
@@ -90,10 +90,10 @@ const OurClients = () => {
       {listLen > 0 && (
         <div
           className="client-logo-img-scroll-wrapper"
-          style={{ marginLeft: 1800 - scrollY }}
+          style={{ marginLeft: 0 - scrollY }}
         >
-          <div className="client-logo-list">
-            {clientsList.map((client, index) => (
+          {listLen > 0 &&
+            clientsList.map((client, index) => (
               <img
                 className="logo-image"
                 aria-hidden="true"
@@ -101,9 +101,39 @@ const OurClients = () => {
                 alt={client.name}
               />
             ))}
-          </div>
-          <div className="client-logo-list">
-            {listLen < 3 &&
+
+          {listLen < 5 &&
+            clientsList.map((client, index) => (
+              <img
+                className="logo-image"
+                aria-hidden="true"
+                src={`https://api.cowork.dev/data/img/${client.img}`}
+                alt={client.name}
+              />
+            ))}
+
+          {listLen < 10 &&
+            clientsList.map((client, index) => (
+              <img
+                className="logo-image"
+                aria-hidden="true"
+                src={`https://api.cowork.dev/data/img/${client.img}`}
+                alt={client.name}
+              />
+            ))}
+
+          {listLen < 15 &&
+            clientsList.map((client, index) => (
+              <img
+                className="logo-image"
+                aria-hidden="true"
+                src={`https://api.cowork.dev/data/img/${client.img}`}
+                alt={client.name}
+              />
+            ))}
+
+          {/* <div className="client-logo-list">
+            {listLen > 0 &&
               clientsList.map((client, index) => (
                 <img
                   className="logo-image"
@@ -113,6 +143,17 @@ const OurClients = () => {
                 />
               ))}
           </div>
+          <div className="client-logo-list">
+            {listLen < 5 &&
+              clientsList.map((client, index) => (
+                <img
+                  className="logo-image"
+                  aria-hidden="true"
+                  src={`https://api.cowork.dev/data/img/${client.img}`}
+                  alt={client.name}
+                />
+              ))}
+          </div> */}
         </div>
       )}
       <div className="client-information-wrapper">

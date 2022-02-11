@@ -38,7 +38,7 @@
   flex-direction: row;
   align-items: center;
   /* justify-content: center; */
-  margin-bottom: 110px;
+  margin-top: 110px;
   gap: 150px;
   box-sizing: border-box;
 }
