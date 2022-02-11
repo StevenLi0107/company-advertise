@@ -1,6 +1,6 @@
 .main-Section {
   /* height: calc(100vh - 3.5em); */
-  height: 900px;
+  height: 890px;
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -54,7 +54,7 @@
   /* url("../../assets/background-img.svg") no-repeat; */
 
   background-size: cover;
-  box-sizing: border-box;
+  /* box-sizing: border-box; */
   z-index: 1;
 }
 
@@ -66,6 +66,8 @@
   -o-object-fit: contain;
   object-fit: contain;
 
+  top: 0;
+  right: 0;
   z-index: 0;
 }
 

@@ -12,7 +12,7 @@
   backdrop-filter: blur(10px);
 
   box-shadow: 0 3px 3px rgba(106, 105, 105, 0.15);
-  position: fixed;
+  /* position: fixed; */
   top: 0;
   box-sizing: border-box;
   z-index: 1000;

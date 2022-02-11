@@ -1,6 +1,6 @@
 .expertise-container {
   width: 100%;
-  min-width: 1200px;
+  /* min-width: 1200px; */
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -19,7 +19,7 @@
 
   color: rgba(86, 86, 86, 1);
 
-  margin-left: 130px;
+  padding-left: 130px;
 }
 
 .expertise-description {
@@ -29,7 +29,7 @@
   line-height: 130%;
 
   color: rgba(226, 226, 225, 1);
-  margin-left: 130px;
+  padding-left: 130px;
 }
 
 .expertise-logo-wrapper {
@@ -41,6 +41,7 @@
   row-gap: 45px;
   column-gap: 65px;
   margin-top: 59px;
+  margin-bottom: 151px;
 
   color: rgba(255, 255, 255, 1);
 }
@@ -54,8 +55,6 @@
   width: 180px;
   height: 206px;
   background: rgba(34, 34, 34, 1);
-  /* filter: drop-shadow(6px 6px 10px rgba(0, 0, 0, 0.15));
-  box-shadow: 6px 6px 10px 0px rgba(0, 0, 0, 0.15); */
 
   font-size: 16px;
   line-height: 36px;
@@ -67,7 +66,6 @@
 }
 
 .expertise-logo-item-wrapper:hover {
-  /* filter: drop-shadow(6px 6px 10px rgba(0, 0, 0, 0.15)); */
   box-shadow: 6px 6px 10px 0px rgba(0, 0, 0, 0.15);
   margin-left: -4px;
   margin-top: -4px;
@@ -91,12 +89,19 @@
 }
 
 .expertise-line {
-  width: auto;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.expertise-line div {
+  width: 100%;
   height: 1px;
-  margin-top: 151px;
+
   margin-left: 140px;
   margin-right: 140px;
-  /* border: 1px solid; */
 
   background: linear-gradient(
     90deg,

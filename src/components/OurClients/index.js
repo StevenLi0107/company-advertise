@@ -92,7 +92,7 @@ const OurClients = () => {
         ))} */}
       <div
         className="client-logo-img-scroll-wrapper"
-        style={{ marginLeft: 1100 - scrollY }}
+        style={{ marginLeft: 1800 - scrollY }}
       >
         <div className="client-logo-list">
           {listLen &&
@@ -106,19 +106,7 @@ const OurClients = () => {
             ))}
         </div>
         <div className="client-logo-list">
-          {listLen < 15 &&
-            clientsList.map((client, index) => (
-              <img
-                className="logo-image"
-                aria-hidden="true"
-                src={`https://api.cowork.dev/data/img/${client.img}`}
-                alt={client.name}
-              />
-            ))}
-        </div>
-
-        <div className="client-logo-list">
-          {listLen < 8 &&
+          {listLen < 3 &&
             clientsList.map((client, index) => (
               <img
                 className="logo-image"

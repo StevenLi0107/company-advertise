@@ -6,111 +6,66 @@ import "./styles.css";
 
 const MainContainer = ({ scrollToElement }) => {
   return (
-    <div style={{ width: "100%", position: "relative" }}>
-      {/* <div className="main-bottom-gradient"></div> */}
-      <div
-        style={{
-          width: "100%",
-          display: "flex",
-          flexDirection: "row",
-          justifyContent: "end",
-          position: "relative",
-        }}
-      >
+    <>
+      <div style={{ width: "100%", position: "relative" }}>
+        {/* <div className="main-bottom-gradient"></div> */}
+        {/* <div
+          style={{
+            width: "100%",
+            display: "flex",
+            flexDirection: "row",
+            justifyContent: "end",
+            position: "relative",
+          }}
+        >
+          
+        </div> */}
         <img src={BackImg} alt="background" className="main-background-img" />
-      </div>
-      <div className="main-Section">
-        <div className="main-container">
-          <div className="main-title">
-            Crossplatform&nbsp;
-            <span className="main-title-span">software development</span>
+        <div className="main-Section">
+          <div className="main-container">
+            <div className="main-title">
+              Crossplatform&nbsp;
+              <span className="main-title-span">software development</span>
+            </div>
+            <div className="main-content-text">
+              We are a multinational creative software development
+              <br />
+              company offering robust Frontend and Backend solutions
+              <br /> on Mobile, Web and Cloud platforms.
+            </div>
+            <button
+              className="contact-btn"
+              id="contactUs"
+              onClick={scrollToElement}
+            >
+              Contact us
+            </button>
+            <div className="main-social-wrapper">
+              {SOCIAL_LIST.map((item) => (
+                <a
+                  className="main-social-item"
+                  href={item.href}
+                  target="_blank"
+                  aria-label={item.label}
+                  rel="noopener noreferrer"
+                >
+                  {item.label}
+                </a>
+              ))}
+            </div>
           </div>
-          <div className="main-content-text">
-            We are a multinational creative software development
-            <br />
-            company offering robust Frontend and Backend solutions
-            <br /> on Mobile, Web and Cloud platforms.
-          </div>
-          <button
-            className="contact-btn"
-            id="contactUs"
-            onClick={scrollToElement}
-          >
-            Contact us
-          </button>
-          <div className="main-social-wrapper">
-            {SOCIAL_LIST.map((item) => (
-              <a
-                className="main-social-item"
-                href={item.href}
-                target="_blank"
-                aria-label={item.label}
-                rel="noopener noreferrer"
-              >
-                {item.label}
-              </a>
-            ))}
+          <div className="arrow-button-wrapper">
+            <img
+              className="arrow-button"
+              id="expertise"
+              src={ArrowDown}
+              alt=""
+              onClick={(event) => scrollToElement(event, "Expertise")}
+            />
           </div>
         </div>
-        <div className="arrow-button-wrapper">
-          <img
-            className="arrow-button"
-            id="expertise"
-            src={ArrowDown}
-            alt=""
-            onClick={(event) => scrollToElement(event, "Expertise")}
-          />
-        </div>
       </div>
-    </div>
-
-    // <div className="HeaderVideo-Container-module--cls2--1tf72 HeaderVideo-Container-module--cls1--LiG7J">
-    //   <div className="HeaderVideo-TextContainer-module--cls2--p_n47 HeaderVideo-TextContainer-module--cls1--f5A-C">
-    //     <div className="WidthContainer-OuterContainer-module--cls2--2akaW WidthContainer-OuterContainer-module--cls1--1qDQ4">
-    //       <div className="WidthContainer-InnerContainer-module--cls2--32dv6 WidthContainer-InnerContainer-module--cls1--1Ms9D">
-    //         <div className="HeaderVideo-Content-module--cls2--3oAQo HeaderVideo-Content-module--cls1--egqd9">
-    //           <h1 className="HeaderVideo-Title-module--cls2--2wzlm HeaderVideo-Title-module--cls1--JyoI9">
-    //             Crossplatform
-    //             <br />
-    //             mobile development
-    //           </h1>
-    //           <h2 className="HeaderVideo-SubTitle-module--cls2--jtKtQ HeaderVideo-SubTitle-module--cls1--3gq7t">
-    //             We will spare you from all design issues, development and
-    //             maintenance
-    //             <br />
-    //             of a mobile application
-    //           </h2>
-    //           <a
-    //             onClick={scrollToElement}
-    //             id="contactUs"
-    //             className="Buttons-BigWhiteButton-module--cls2--g05zN Buttons-BigWhiteButton-module--cls1--2H7YS"
-    //           >
-    //             Leave a request
-    //           </a>
-    //         </div>
-    //       </div>
-    //     </div>
-    //     <div className="WidthContainer-OuterContainer-module--cls2--2akaW WidthContainer-OuterContainer-module--cls1--1qDQ4">
-    //       <div className="WidthContainer-InnerContainer-module--cls2--32dv6 WidthContainer-InnerContainer-module--cls1--1Ms9D">
-    //         <div className="HeaderVideo-ContentSecondPart-module--cls2--3dPze HeaderVideo-ContentSecondPart-module--cls1--1Uj6j">
-    //           <div className="HeaderVideo-RatingsRow-module--cls2--yLL7j HeaderVideo-RatingsRow-module--cls1--2K50O">
-    //             <div style={{ height: 104 }}></div>
-    //             {/* <img
-    //                 src="/static/rating-developers-108c9458fdd28012cdcd1d93570c0aa0.svg"
-    //                 alt="рейтинг мобильных разработчиков"
-    //                 className="HeaderVideo-RatingDevelopersImage-module--cls2--zZC5K HeaderVideo-RatingDevelopersImage-module--cls1--hIYUv"
-    //               />
-    //               <img
-    //                 src="/static/rating-autsorsers-0d51b9bcbf264b703d5b7524241686a6.svg"
-    //                 alt="рейтинг аутсорсеров"
-    //                 className="HeaderVideo-RatingAutsorsersImage-module--cls2--3KqqR HeaderVideo-RatingAutsorsersImage-module--cls1--2N7km"
-    //               /> */}
-    //           </div>
-    //         </div>
-    //       </div>
-    //     </div>
-    //   </div>
-    // </div>
+    </>
   );
 };
 

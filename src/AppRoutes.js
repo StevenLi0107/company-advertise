@@ -11,13 +11,8 @@ const AppRoutes = () => {
   return (
     <Switch>
       <PrivateRoute path="/admin" component={AdminDetails} />
-      {/* <Route path="/admin" render={(props) => <AdminDetails {...props} />} /> */}
       <Route path="/login" render={(props) => <Login {...props} />} />
       <Route path="/apply" render={(props) => <ApplyForJob {...props} />} />
-      {/* <Route
-        path="/developers"
-        render={(props) => <DevelopersPage {...props} />}
-      /> */}
       <Route path="/developers" exact component={DevelopersPage} />
       <Route path="/" render={(props) => <MainPage {...props} />} />
     </Switch>

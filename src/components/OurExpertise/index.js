@@ -64,19 +64,19 @@ const OurExpertise = ({ ref }) => {
         advantages
         <br /> in modern software developing “pool”.
       </div>
-      <div>
-        <div className="expertise-logo-wrapper">
-          {EXPERTISE_LIST.map((item) => (
-            <div className="expertise-logo-item-wrapper">
-              <div className="expertise-logo-img">
-                <img src={item.img} alt="logo" />
-              </div>
-              <div className="expertise-logo-text">{item.label}</div>
+      <div className="expertise-logo-wrapper">
+        {EXPERTISE_LIST.map((item) => (
+          <div className="expertise-logo-item-wrapper">
+            <div className="expertise-logo-img">
+              <img src={item.img} alt="logo" />
             </div>
-          ))}
-        </div>
+            <div className="expertise-logo-text">{item.label}</div>
+          </div>
+        ))}
       </div>
-      <div className="expertise-line"></div>
+      <div className="expertise-line">
+        <div></div>
+      </div>
     </div>
   );
 };

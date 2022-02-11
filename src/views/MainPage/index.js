@@ -23,8 +23,14 @@ const useStyles = makeStyles({
     display: "flex",
     flexDirection: "column",
     background: "#1d1d1d",
-    overflowX: "auto",
+    overflow: "auto",
     position: "relative",
+  },
+
+  boxContainer: {
+    width: "100%",
+    padding: "0",
+    margin: "0",
   },
 });
 
@@ -57,30 +63,30 @@ const MainPage = () => {
     //   contactUsRef.current.offsetTop,
     //   mainFooterRef.current.offsetTop
     // );
-    if (
-      window.pageYOffset > mainRef.current.offsetTop &&
-      window.pageYOffset < expertiseRef.current.offsetTop - 56
-    ) {
-      setActive("Main");
-    }
-    if (
-      window.pageYOffset > expertiseRef.current.offsetTop - 60 &&
-      window.pageYOffset < contactUsRef.current.offsetTop - 60
-    ) {
-      setActive("Expertise");
-    }
-    if (
-      window.pageYOffset > contactUsRef.current.offsetTop - 60 &&
-      window.pageYOffset < contactUsRef.current.offsetTop + 60
-    ) {
-      setActive("contactUs");
-    }
-    if (
-      window.pageYOffset > contactUsRef.current.offsetTop + 100 &&
-      window.pageYOffset < mainFooterRef.current.offsetTop
-    ) {
-      setActive("About");
-    }
+    // if (
+    //   window.pageYOffset > mainRef.current.offsetTop &&
+    //   window.pageYOffset < expertiseRef.current.offsetTop - 56
+    // ) {
+    //   setActive("Main");
+    // }
+    // if (
+    //   window.pageYOffset > expertiseRef.current.offsetTop - 60 &&
+    //   window.pageYOffset < contactUsRef.current.offsetTop - 60
+    // ) {
+    //   setActive("Expertise");
+    // }
+    // if (
+    //   window.pageYOffset > contactUsRef.current.offsetTop - 60 &&
+    //   window.pageYOffset < contactUsRef.current.offsetTop + 60
+    // ) {
+    //   setActive("contactUs");
+    // }
+    // if (
+    //   window.pageYOffset > contactUsRef.current.offsetTop + 100 &&
+    //   window.pageYOffset < mainFooterRef.current.offsetTop
+    // ) {
+    //   setActive("About");
+    // }
   }, []);
 
   const scrollToElement = useCallback((event, navActive) => {
@@ -120,17 +126,16 @@ const MainPage = () => {
       {/* <Box ref={portfolioRef}>
         <OurCases />
       </Box> */}
-      <Box ref={expertiseRef}>
+      <div className={classes.boxContainer} ref={expertiseRef}>
         <OurExpertise />
-        {isActiveLogosSection && <OurClients />}
-      </Box>
-
-      <Box ref={contactUsRef}>
+      </div>
+      {isActiveLogosSection && <OurClients />}
+      <div className={classes.boxContainer} ref={contactUsRef}>
         <ContactUs />
-      </Box>
-      <Box ref={mainFooterRef}>
+      </div>
+      <div className={classes.boxContainer} ref={mainFooterRef}>
         <MainFooter />
-      </Box>
+      </div>
     </div>
   );
 };
