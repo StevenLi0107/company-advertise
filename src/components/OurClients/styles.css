@@ -28,19 +28,32 @@
   color: #e2e2e1;
 
   margin-top: 20px;
-  margin-left: 310px;
-  margin-right: 310px;
+  margin-bottom: 110px;
+  padding-left: 310px;
+  padding-right: 310px;
 }
 
-.client-logo-list {
+.client-logo-img-scroll-wrapper {
   width: 100%;
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: center;
   gap: 150px;
+}
 
-  margin-top: 110px;
+.client-logo-list {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 150px;
+}
+
+.logo-image {
+  -o-object-fit: contain;
+  object-fit: contain;
+  opacity: 1;
 }
 
 .client-information-wrapper {
@@ -63,9 +76,8 @@
 
 .client-solution-pattern-img {
   display: flex;
-  /* position: absolute; */
-  /* margin-top: 0px;
-  margin-left: 0px; */
+  margin-left: 6px;
+
   z-index: 4;
 }
 
@@ -83,7 +95,6 @@
   background: url("../../assets/client/solution-bg.png") no-repeat;
 
   box-sizing: border-box;
-
   margin-top: -57px;
 }
 
@@ -161,24 +172,32 @@
   cursor: pointer;
 }
 
-.client-name-corporation-wrapper {
+.client-name-cooperation-wrapper {
   display: flex;
+  height: 36px;
   flex-direction: row;
   align-items: center;
   margin-top: 42px;
   margin-left: 144px;
   margin-right: 76px;
   justify-content: space-between;
+  box-sizing: border-box;
 }
 
-.client-corporation-description {
+.client-name-img {
+  -o-object-fit: contain;
+  object-fit: contain;
+  box-sizing: border-box;
+}
+
+.client-cooperation-description {
   display: flex;
   width: 105px;
   flex-direction: row;
   align-items: center;
 }
 
-.client-corporation-description div {
+.client-cooperation-description div {
   font-size: 14px;
   line-height: 17px;
   display: flex;
@@ -278,7 +297,7 @@
   color: #dec8a7;
 }
 
-.client-back-next-page:hover {
+.client-back-next-page img:hover {
   cursor: pointer;
 }
 

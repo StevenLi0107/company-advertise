@@ -1,12 +1,24 @@
 import React from "react";
 import ArrowDown from "../../assets/arrow-down.svg";
+import BackImg from "../../assets/background-img.png";
 import { SOCIAL_LIST } from "../../constant.js";
 import "./styles.css";
 
 const MainContainer = ({ scrollToElement }) => {
   return (
     <div style={{ width: "100%", position: "relative" }}>
-      <div className="main-bottom-gradient"></div>
+      {/* <div className="main-bottom-gradient"></div> */}
+      <div
+        style={{
+          width: "100%",
+          display: "flex",
+          flexDirection: "row",
+          justifyContent: "end",
+          position: "relative",
+        }}
+      >
+        <img src={BackImg} alt="background" className="main-background-img" />
+      </div>
       <div className="main-Section">
         <div className="main-container">
           <div className="main-title">
@@ -28,13 +40,27 @@ const MainContainer = ({ scrollToElement }) => {
           </button>
           <div className="main-social-wrapper">
             {SOCIAL_LIST.map((item) => (
-              <div className="main-social-item">{item.label}</div>
+              <a
+                className="main-social-item"
+                href={item.href}
+                target="_blank"
+                aria-label={item.label}
+                rel="noopener noreferrer"
+              >
+                {item.label}
+              </a>
             ))}
           </div>
         </div>
-      </div>
-      <div className="arrow-button-wrapper">
-        <img className="arrow-button" src={ArrowDown} alt="" />
+        <div className="arrow-button-wrapper">
+          <img
+            className="arrow-button"
+            id="expertise"
+            src={ArrowDown}
+            alt=""
+            onClick={(event) => scrollToElement(event, "Expertise")}
+          />
+        </div>
       </div>
     </div>
 

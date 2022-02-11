@@ -7,12 +7,12 @@ function Loader({ type, color }) {
       <div
         style={{
           position: "fixed",
-          top: "80%",
-          left: "70%",
+          top: "50%",
+          left: "75%",
           transform: "translate(-50%, -50%)",
         }}
       >
-        <h2 style={{ color: "powderBlue" }}>Loading...</h2>
+        <h2 style={{ color: "#E2E2E1" }}>Loading...</h2>
         <ReactLoading type={type} color={color} height={"80%"} width={"80%"} />
       </div>
     </div>

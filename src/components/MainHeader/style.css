@@ -9,7 +9,7 @@
   padding-left: 122px;
   padding-right: 122px;
 
-  backdrop-filter: blur(2px);
+  backdrop-filter: blur(10px);
 
   box-shadow: 0 3px 3px rgba(106, 105, 105, 0.15);
   position: fixed;
@@ -31,7 +31,7 @@
   justify-content: center;
   align-items: center;
   width: 34px;
-  height: 34px;
+  height: 38px;
   margin-right: 8px;
 }
 
@@ -41,7 +41,7 @@
   align-items: start;
   letter-spacing: 0.1em;
   font-size: 22px;
-  /* font-family: "Telegrafico"; */
+  font-family: "Telegrafico", sans-serif;
   font-style: normal;
 
   color: #d9d9d9;
@@ -63,6 +63,9 @@
   display: flex;
   align-items: center;
   gap: 64px;
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
 }
 
 .Link-Container a {
@@ -74,24 +77,56 @@
   font-weight: 400;
   line-height: 20px;
 
+  transition: all 0.3s ease-in;
+
   color: #e2e2e1;
   opacity: 0.7;
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  padding: 0;
 }
 
 .Link-Container a:hover {
   color: #f3963a;
   font-weight: bold;
   font-family: "tommy-regular";
-  border-bottom: 1px solid #f3963a;
+
+  border-bottom: 2px solid transparent;
+  border-image: linear-gradient(
+    90deg,
+    #903423 0%,
+    #c06f18 50.21%,
+    #af9d83 99.38%
+  );
+  border-image-slice: 1;
   opacity: 1;
+
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  padding: 0;
 }
 
 .Link-Container .active {
   color: #f3963a !important;
   font-weight: bold;
   font-family: "tommy-regular";
-  border-bottom: 1px solid #f3963a;
+
+  border-bottom: 2px solid transparent;
+  border-image: linear-gradient(
+    90deg,
+    #903423 0%,
+    #c06f18 50.21%,
+    #af9d83 99.38%
+  );
+  border-image-slice: 1;
+
   opacity: 1;
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  padding: 0;
 }
 
 /* .special {
@@ -126,6 +161,8 @@
   font-weight: 400;
   font-family: "tommy-regular";
   line-height: 20px;
+
+  transition: all 0.3s ease-in;
 }
 
 .header-special:hover {

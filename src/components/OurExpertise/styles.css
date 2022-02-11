@@ -54,8 +54,8 @@
   width: 180px;
   height: 206px;
   background: rgba(34, 34, 34, 1);
-  filter: drop-shadow(6px 6px 10px rgba(0, 0, 0, 0.15));
-  box-shadow: 6px 6px 10px 0px rgba(0, 0, 0, 0.15);
+  /* filter: drop-shadow(6px 6px 10px rgba(0, 0, 0, 0.15));
+  box-shadow: 6px 6px 10px 0px rgba(0, 0, 0, 0.15); */
 
   font-size: 16px;
   line-height: 36px;
@@ -63,6 +63,15 @@
   text-transform: uppercase;
 
   box-sizing: border-box;
+  transition: all 0.3s ease-in-out;
+}
+
+.expertise-logo-item-wrapper:hover {
+  /* filter: drop-shadow(6px 6px 10px rgba(0, 0, 0, 0.15)); */
+  box-shadow: 6px 6px 10px 0px rgba(0, 0, 0, 0.15);
+  margin-left: -4px;
+  margin-top: -4px;
+  cursor: pointer;
 }
 
 .expertise-logo-img {

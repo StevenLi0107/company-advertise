@@ -103,7 +103,7 @@ const MainPage = () => {
 
   useEffect(() => {
     // dispatch(getPortfoliosList());
-    // dispatch(getClientsList());
+    dispatch(getClientsList());
     // dispatch(getUserList());
   }, [dispatch]);
 
@@ -122,8 +122,9 @@ const MainPage = () => {
       </Box> */}
       <Box ref={expertiseRef}>
         <OurExpertise />
+        {isActiveLogosSection && <OurClients />}
       </Box>
-      {true && <OurClients />}
+
       <Box ref={contactUsRef}>
         <ContactUs />
       </Box>

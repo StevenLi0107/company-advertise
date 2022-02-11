@@ -1,7 +1,7 @@
 .main-Section {
   /* height: calc(100vh - 3.5em); */
-  height: auto;
-  width: auto;
+  height: 900px;
+  width: 100%;
   display: flex;
   flex-direction: column;
   position: relative;
@@ -12,8 +12,8 @@
 
   /* border: 2px solid red; */
 
-  background: rgba(255, 255, 255, 0.01),
-    url("../../assets/background-img.png") no-repeat,
+  /* background: rgba(255, 255, 255, 0.01),
+    url("../../assets/background-img.svg") no-repeat,
     -moz-linear-gradient(82.51deg, #1d1d1d 42.02%, rgba(27, 29, 32, 0.94) 52.11%, rgba(
             26,
             29,
@@ -22,11 +22,11 @@
           )
           68.71%, rgba(0, 0, 0, 0) 92.74%);
   background: rgba(255, 255, 255, 0.01),
-    url("../../assets/background-img.png") no-repeat,
+    url("../../assets/background-img.svg") no-repeat,
     -webkit-linear-gradient(82.51deg, #1d1d1d 42.02%, rgba(27, 29, 32, 0.94)
           52.11%, rgba(26, 29, 34, 0.74) 68.71%, rgba(0, 0, 0, 0) 92.74%);
   background: rgba(255, 255, 255, 0.01),
-    url("../../assets/background-img.png") no-repeat,
+    url("../../assets/background-img.svg") no-repeat,
     -o-linear-gradient(82.51deg, #1d1d1d 42.02%, rgba(27, 29, 32, 0.94) 52.11%, rgba(
             26,
             29,
@@ -35,26 +35,38 @@
           )
           68.71%, rgba(0, 0, 0, 0) 92.74%);
   background: rgba(255, 255, 255, 0.01),
-    url("../../assets/background-img.png") no-repeat,
+    url("../../assets/background-img.svg") no-repeat,
     -ms-linear-gradient(82.51deg, #1d1d1d 42.02%, rgba(27, 29, 32, 0.94) 52.11%, rgba(
             26,
             29,
             34,
             0.74
           )
-          68.71%, rgba(0, 0, 0, 0) 92.74%);
+          68.71%, rgba(0, 0, 0, 0) 92.74%); */
 
   background: linear-gradient(
-      82.51deg,
-      #1d1d1d 42.02%,
-      rgba(27, 29, 32, 0.94) 52.11%,
-      rgba(26, 29, 34, 0.74) 68.71%,
-      rgba(0, 0, 0, 0) 92.74%
-    ),
-    url("../../assets/background-img.png") no-repeat;
+    82.51deg,
+    #1d1d1d 42.02%,
+    rgba(27, 29, 32, 0.94) 52.11%,
+    rgba(26, 29, 34, 0.74) 68.71%,
+    rgba(0, 0, 0, 0) 92.74%
+  );
+  /* url("../../assets/background-img.svg") no-repeat; */
 
   background-size: cover;
   box-sizing: border-box;
+  z-index: 1;
+}
+
+.main-background-img {
+  position: absolute;
+  min-width: 968px;
+  min-height: 885px;
+
+  -o-object-fit: contain;
+  object-fit: contain;
+
+  z-index: 0;
 }
 
 .main-container {
@@ -123,6 +135,8 @@
   font-size: 24px;
   font-family: "tommy-medium";
   line-height: 30px;
+
+  transition: 1s all;
 }
 .contact-btn:hover {
   border: none;
@@ -144,18 +158,19 @@
   align-items: center;
   gap: 57px;
 
-  color: #e2e2e1;
   margin-top: 130px;
+}
 
+.main-social-item:link,
+.main-social-item:visited,
+.main-social-item:active {
+  /* cursor: pointer; */
   font-size: 16px;
   font-family: "tommy-thin";
   font-weight: 400;
-
   letter-spacing: 0.3em;
-}
-
-.main-social-item {
-  cursor: pointer;
+  color: #e2e2e1;
+  text-decoration: none;
 }
 
 .arrow-button-wrapper {
