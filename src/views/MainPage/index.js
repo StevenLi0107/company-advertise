@@ -44,30 +44,36 @@ const MainPage = () => {
     //   contactUsRef.current.offsetTop,
     //   mainFooterRef.current.offsetTop
     // );
-    // if (
-    //   window.pageYOffset > mainRef.current.offsetTop &&
-    //   window.pageYOffset < expertiseRef.current.offsetTop - 56
-    // ) {
-    //   setActive("Main");
-    // }
-    // if (
-    //   window.pageYOffset > expertiseRef.current.offsetTop - 60 &&
-    //   window.pageYOffset < contactUsRef.current.offsetTop - 60
-    // ) {
-    //   setActive("Expertise");
-    // }
+    if (
+      window.pageYOffset > mainRef.current.offsetTop &&
+      window.pageYOffset < expertiseRef.current.offsetTop - 150
+    ) {
+      setActive("Main");
+    }
+    if (
+      window.pageYOffset > expertiseRef.current.offsetTop - 60 &&
+      window.pageYOffset < portfolioRef.current.offsetTop - 450
+    ) {
+      setActive("Expertise");
+    }
+    if (
+      window.pageYOffset > portfolioRef.current.offsetTop - 60 &&
+      window.pageYOffset < contactUsRef.current.offsetTop - 350
+    ) {
+      setActive("Portfolio");
+    }
     // if (
     //   window.pageYOffset > contactUsRef.current.offsetTop - 60 &&
-    //   window.pageYOffset < contactUsRef.current.offsetTop + 60
+    //   window.pageYOffset < contactUsRef.current.offsetTop + 5
     // ) {
     //   setActive("contactUs");
     // }
-    // if (
-    //   window.pageYOffset > contactUsRef.current.offsetTop + 100 &&
-    //   window.pageYOffset < mainFooterRef.current.offsetTop
-    // ) {
-    //   setActive("About");
-    // }
+    if (
+      window.pageYOffset > contactUsRef.current.offsetTop - 60 &&
+      window.pageYOffset < mainFooterRef.current.offsetTop
+    ) {
+      setActive("About");
+    }
   }, []);
 
   const scrollToElement = useCallback((event, navActive) => {
@@ -76,7 +82,7 @@ const MainPage = () => {
     const refs = {
       main: mainRef,
       expertise: expertiseRef,
-      portfolio: mainRef,
+      portfolio: portfolioRef,
       contactUs: contactUsRef,
       footer: mainFooterRef,
     };
@@ -110,12 +116,16 @@ const MainPage = () => {
         {isActiveLogosSection && <OurClients />}
       </Box>
 
-      <div ref={contactUsRef}>
+      <Box ref={portfolioRef}>
+        <OurCases />
+      </Box>
+
+      <Box ref={contactUsRef}>
         <ContactUs />
-      </div>
-      <div ref={mainFooterRef}>
+      </Box>
+      <Box ref={mainFooterRef}>
         <MainFooter />
-      </div>
+      </Box>
     </div>
   );
 };

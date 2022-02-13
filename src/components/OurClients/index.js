@@ -2,70 +2,70 @@
 import { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 
-import ArrowBack from "../../assets/client/arrow-back.svg";
-import ArrowNext from "../../assets/client/arrow-next.svg";
-import Business from "../../assets/client/client-business-icon.svg";
-import SocialIcon from "../../assets/client/client-social-icon.svg";
-import Cooperation from "../../assets/client/cooperation-icon.svg";
-import CorvaName from "../../assets/client/corva-name.svg";
-import GplanLogo from "../../assets/client/gplan-logo.svg";
-import GroupSelect from "../../assets/client/group-selected-icon.svg";
-import GroupUnselect from "../../assets/client/group-unselected-icon.svg";
-import LocationImg from "../../assets/client/location-img.svg";
-import MeituanLogo from "../../assets/client/meituan-logo.png";
-import Pattern from "../../assets/client/pattern.svg";
+// import ArrowBack from "../../assets/client/arrow-back.svg";
+// import ArrowNext from "../../assets/client/arrow-next.svg";
+// import Business from "../../assets/client/client-business-icon.svg";
+// import SocialIcon from "../../assets/client/client-social-icon.svg";
+// import Cooperation from "../../assets/client/cooperation-icon.svg";
+// import CorvaName from "../../assets/client/corva-name.svg";
+// import GplanLogo from "../../assets/client/gplan-logo.svg";
+// import MeituanLogo from "../../assets/client/meituan-logo.png";
+// import GroupSelect from "../../assets/client/group-selected-icon.svg";
+// import GroupUnselect from "../../assets/client/group-unselected-icon.svg";
+// import LocationImg from "../../assets/client/location-img.svg";
+// import Pattern from "../../assets/client/pattern.svg";
 
 import "./styles.css";
 
-const CLIENT_LIST = [
-  {
-    key: "corva_client",
-    label: "Corva",
-    nameImg: CorvaName,
-    duration: 5,
-    location: "USA",
-    business: "Large Business",
-    description: "",
-    services: "Frontend backend QA",
-  },
-  {
-    key: "gplans_client",
-    label: "gplans",
-    nameImg: GplanLogo,
-    duration: 5,
-    location: "USA",
-    business: "Large Business",
-    description: "",
-    services: "Frontend backend QA",
-  },
-  {
-    key: "meituan_client",
-    label: "Meituan",
-    nameImg: MeituanLogo,
-    duration: 5,
-    location: "USA",
-    business: "Large Business",
-    description: "",
-    services: "Frontend backend QA",
-  },
-];
+// const CLIENT_LIST = [
+//   {
+//     key: "corva_client",
+//     label: "Corva",
+//     nameImg: CorvaName,
+//     duration: 5,
+//     location: "USA",
+//     business: "Large Business",
+//     description: "",
+//     services: "Frontend backend QA",
+//   },
+//   {
+//     key: "gplans_client",
+//     label: "gplans",
+//     nameImg: GplanLogo,
+//     duration: 5,
+//     location: "USA",
+//     business: "Large Business",
+//     description: "",
+//     services: "Frontend backend QA",
+//   },
+//   {
+//     key: "meituan_client",
+//     label: "Meituan",
+//     nameImg: MeituanLogo,
+//     duration: 5,
+//     location: "USA",
+//     business: "Large Business",
+//     description: "",
+//     services: "Frontend backend QA",
+//   },
+// ];
 
 const OurClients = () => {
   const clientsList = useSelector((state) => state.adminReducer.clientsList);
   const [scrollY, setScrollY] = useState(0);
-  const [clientIndex, setClientIndex] = useState(0);
+  // const [clientIndex, setClientIndex] = useState(0);
 
   const handleFollow = () => {
     setScrollY(window.pageYOffset);
   };
 
-  const handlePageMove = (event) => {
-    if (event.target.id === "back") {
-      clientIndex > 0 && setClientIndex((prev) => prev - 1);
-    } else if (event.target.id === "next") {
-      clientIndex < 2 && setClientIndex((prev) => prev + 1);
-    }
-  };
+  // const handlePageMove = (event) => {
+  //   if (event.target.id === "back") {
+  //     clientIndex > 0 && setClientIndex((prev) => prev - 1);
+  //   } else if (event.target.id === "next") {
+  //     clientIndex < 2 && setClientIndex((prev) => prev + 1);
+  //   }
+  // };
 
   useEffect(() => {
     const watch = () => {
@@ -156,7 +156,7 @@ const OurClients = () => {
           </div> */}
         </div>
       )}
-      <div className="client-information-wrapper">
+      {/* <div className="client-information-wrapper">
         <div className="client-solution-description">
           <img src={Pattern} alt="" className="client-solution-pattern-img" />
           <div className="client-solution-background">
@@ -248,7 +248,7 @@ const OurClients = () => {
             </div>
           </div>
         </div>
-      </div>
+      </div> */}
     </div>
   );
 };

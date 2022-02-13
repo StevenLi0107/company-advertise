@@ -37,8 +37,8 @@
   grid-template-rows: repeat(2, 1fr);
   grid-template-columns: repeat(4, 0fr);
   place-content: center;
-  row-gap: 45px;
-  column-gap: 65px;
+  /* row-gap: 45px;
+  column-gap: 65px; */
   margin-top: 59px;
   margin-bottom: 151px;
 
@@ -61,7 +61,10 @@
   text-transform: uppercase;
 
   box-sizing: border-box;
-  transition: all 0.3s ease-in-out;
+  transition: all 0.2s;
+
+  margin-right: 45px;
+  margin-bottom: 65px;
 }
 
 .expertise-logo-item-wrapper:hover {
@@ -69,6 +72,9 @@
   margin-left: -4px;
   margin-top: -4px;
   cursor: pointer;
+
+  margin-right: 49px;
+  margin-bottom: 65px;
 }
 
 .expertise-logo-img {

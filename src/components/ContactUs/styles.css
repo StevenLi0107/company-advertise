@@ -1,7 +1,7 @@
 .contact-container {
   position: relative;
   width: 100%;
-  padding-top: 80px;
+  /* padding-top: 80px; */
   padding-bottom: 154px;
 }
 
@@ -393,7 +393,7 @@
   border: #222121 1px solid;
   background: #222222;
 
-  margin-bottom: 160px;
+  margin-bottom: 750px;
 }
 
 .contact-alert-success-img {
@@ -412,4 +412,5 @@
 .contact-alert-close-img {
   margin-right: 8px;
   margin-top: -25px;
+  cursor: pointer;
 }

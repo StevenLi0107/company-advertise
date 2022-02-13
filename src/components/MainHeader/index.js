@@ -26,7 +26,7 @@ const MainHeader = ({ scrollToElement, onScrollChange, active }) => {
       <div className="navBar">
         {/** Logo */}
         <div className="header-left">
-          <img className="logo-wrapper" src={logo} alt="logo" />
+          <img className="logo-img" src={logo} alt="logo" />
           <div className="logo-text">
             <span className="logo-name">COWORK</span>
             <span className="logo-service-text">DEVELOPMENT</span>

@@ -358,14 +358,12 @@ const ContactUs = ({ ref }) => {
                     id="contact-message"
                     placeholder="Message*"
                   />
-                  {!attachFile && (
-                    <img
-                      onClick={handleAttachClick}
-                      alt="file attach click"
-                      src={FileAttach}
-                      className="contact-file-attach-img"
-                    />
-                  )}
+                  <img
+                    onClick={handleAttachClick}
+                    alt="file attach click"
+                    src={FileAttach}
+                    className="contact-file-attach-img"
+                  />
                   <input
                     ref={fileRef}
                     onChange={handleAttachOnChange}

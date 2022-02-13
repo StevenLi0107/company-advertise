@@ -1,122 +1,163 @@
-import React from "react";
+import { useState } from "react";
 import { useSelector } from "react-redux";
 // import { Avatar } from "@material-ui/core";
+
+import ArrowBack from "../../assets/client/arrow-back.svg";
+import ArrowNext from "../../assets/client/arrow-next.svg";
+import Business from "../../assets/client/client-business-icon.svg";
+import SocialIcon from "../../assets/client/client-social-icon.svg";
+import Cooperation from "../../assets/client/cooperation-icon.svg";
+import CorvaName from "../../assets/client/corva-name.svg";
+import GplanLogo from "../../assets/client/gplan-logo.svg";
+import MeituanLogo from "../../assets/client/meituan-logo.png";
+import GroupSelect from "../../assets/client/group-selected-icon.svg";
+import GroupUnselect from "../../assets/client/group-unselected-icon.svg";
+import LocationImg from "../../assets/client/location-img.svg";
+import Pattern from "../../assets/client/pattern.svg";
+
+import "./styles.css";
+
+const CLIENT_LIST = [
+  {
+    key: "corva_client",
+    label: "Corva",
+    nameImg: CorvaName,
+    duration: 5,
+    location: "USA",
+    business: "Large Business",
+    description: "",
+    services: "Frontend backend QA",
+  },
+  {
+    key: "gplans_client",
+    label: "gplans",
+    nameImg: GplanLogo,
+    duration: 5,
+    location: "USA",
+    business: "Large Business",
+    description: "",
+    services: "Frontend backend QA",
+  },
+  {
+    key: "meituan_client",
+    label: "Meituan",
+    nameImg: MeituanLogo,
+    duration: 5,
+    location: "USA",
+    business: "Large Business",
+    description: "",
+    services: "Frontend backend QA",
+  },
+];
+
 const OurCases = ({ ref }) => {
   const portfoliosList = useSelector(
     (state) => state.adminReducer.portfoliosList
   );
 
-  return (
-    <div
-      ref={ref}
-      className="WidthContainer-OuterContainer-module--cls2--2akaW WidthContainer-OuterContainer-module--cls1--1qDQ4"
-    >
-      <div className="WidthContainer-InnerContainer-module--cls2--32dv6 WidthContainer-InnerContainer-module--cls1--1Ms9D">
-        <div className="OurCases-Container-module--cls2--3r3Xq OurCases-Container-module--cls1--13szu">
-          <h2 className="OurCases-CustomTitle-module--cls2--344Ju OurCases-CustomTitle-module--cls1--13kNv commonStyles-Title-module--cls2--34psA commonStyles-Title-module--cls1--2d40n">
-            Our cases
-          </h2>
-          <div className="OurCases-Column-module--cls2--3e6eD OurCases-Column-module--cls1--be_Sc">
-            {portfoliosList &&
-              portfoliosList.map((portfolio, index) => (
-                <a
-                  href="/Page/PortfolioMobile/big3"
-                  className="OurCase-Container-module--cls2--1dWUN OurCase-Container-module--cls1--2MZpC"
-                  key={index}
-                >
-                  <div className="OurCase-Image-module--cls2--2XuQ0 OurCase-Image-module--cls1--1HAll">
-                    <div className="gatsby-image-wrapper position-image">
-                      <div
-                        aria-hidden="true"
-                        style={{ width: "100%", paddingBottom: "108%" }}
-                      ></div>
-                    </div>
-                  </div>
-                  <div className="OurCase-SubImage-module--cls2--JE2nq OurCase-SubImage-module--cls1--1oK5I">
-                    <div className="gatsby-image-wrapper position-image">
-                      <div
-                        aria-hidden="true"
-                        style={{ width: "100%", paddingBottom: "108%" }}
-                      >
-                        <img
-                          className="img"
-                          aria-hidden="true"
-                          src={`https://api.cowork.dev/data/img/${portfolio.img}`}
-                          alt="Mobile App won International Social Media Awards and Best Media / Media App"
-                        />
-                      </div>
-                    </div>
-                  </div>
-                  <div className="OurCase-TextContainer-module--cls2--1V8FK OurCase-TextContainer-module--cls1--HzZ36">
-                    {/* <Avatar
-                      src={`https://api.cowork.dev/data/img/${portfolio.img}`}
-                    /> */}
-                    <span className="OurCase-Title-module--cls2--D696E OurCase-Title-module--cls1--cDbok">
-                      {portfolio.name}
-                    </span>
-                    <span className="OurCase-Text-module--cls2--2Sjya OurCase-Text-module--cls1--1gpVJ">
-                      {portfolio.description}
-                    </span>
-                  </div>
-                </a>
-              ))}
+  const [clientIndex, setClientIndex] = useState(0);
 
-            {/* 
-            <a
-              href="/Page/PortfolioMobile/big3"
-              className="OurCase-Container-module--cls2--1dWUN OurCase-Container-module--cls1--2MZpC"
-            >
-              <div className="OurCase-Image-module--cls2--2XuQ0 OurCase-Image-module--cls1--1HAll">
-                <div className="gatsby-image-wrapper position-image">
-                  <div
-                    aria-hidden="true"
-                    style={{ width: "100%", paddingBottom: "108%" }}
-                  ></div>
-                  <img
-                    className="img"
-                    aria-hidden="true"
-                    src="data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAAWABQDASIAAhEBAxEB/8QAGQABAAIDAAAAAAAAAAAAAAAAAAQFAQID/8QAFgEBAQEAAAAAAAAAAAAAAAAAAgMB/9oADAMBAAIQAxAAAAGrWeaCrT25O0JU7hH/xAAcEAACAgIDAAAAAAAAAAAAAAABAgMEABIQESP/2gAIAQEAAQUC5pw7ZoqsarHD3Eqp6TWRC/8A/8QAFhEBAQEAAAAAAAAAAAAAAAAAEQAQ/9oACAEDAQE/ASMb/8QAFxEBAQEBAAAAAAAAAAAAAAAAABESQf/aAAgBAgEBPwHSuo//xAAfEAABBAICAwAAAAAAAAAAAAABAAIRIRJBAxAiMVH/2gAIAQEABj8C7L3CtI4AXp3xS2AD6CHHPid7QZMtddrHGV//xAAbEAEBAQEBAAMAAAAAAAAAAAABEQAhMUFhgf/aAAgBAQABPyG664CA+A5QpP1fRzc+kj0NFKsHgB7lKtU/CPmKJcXm/9oADAMBAAIAAwAAABAg3z3/xAAXEQEBAQEAAAAAAAAAAAAAAAABABEh/9oACAEDAQE/EBtqzkrb/8QAGBEBAQEBAQAAAAAAAAAAAAAAAQARIWH/2gAIAQIBAT8QQWbXjyAl/8QAHhABAQADAAEFAAAAAAAAAAAAAREAITFREHGRwdH/2gAIAQEAAT8Q9RPMkmj5fr5wefLtgG1OcX2mdaDnVwddmMiHEIyjWlR06wTmqVQAh8KlkIcxg0m0HV/M/9k="
-                    alt="Мобильное приложение получило награды Международное Social Media и Лучшее приложение Медиа / СМИ"
-                  />
-                </div>
+  const handlePageMove = (event) => {
+    if (event.target.id === "back") {
+      clientIndex > 0 && setClientIndex((prev) => prev - 1);
+    } else if (event.target.id === "next") {
+      clientIndex < 2 && setClientIndex((prev) => prev + 1);
+    }
+  };
+
+  return (
+    <div className="portfolio-container">
+      <div className="client-information-wrapper">
+        <div className="client-solution-description">
+          <img src={Pattern} alt="" className="client-solution-pattern-img" />
+          <div className="client-solution-background">
+            <div className="client-solution-content">
+              <div className="client-solution-title">
+                Solution Built
+                <br /> To Perfection
               </div>
-              <div className="OurCase-SubImage-module--cls2--JE2nq OurCase-SubImage-module--cls1--1oK5I">
-                <div className="gatsby-image-wrapper position-image">
-                  <div
-                    aria-hidden="true"
-                    style={{ width: "100%", paddingBottom: "108%" }}
-                  ></div>
-                  <img
-                    className="img"
-                    aria-hidden="true"
-                    src="data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAAWABQDASIAAhEBAxEB/8QAGQABAAIDAAAAAAAAAAAAAAAAAAQFAQID/8QAFgEBAQEAAAAAAAAAAAAAAAAAAgMB/9oADAMBAAIQAxAAAAGrWeaCrT25O0JU7hH/xAAcEAACAgIDAAAAAAAAAAAAAAABAgMEABIQESP/2gAIAQEAAQUC5pw7ZoqsarHD3Eqp6TWRC/8A/8QAFhEBAQEAAAAAAAAAAAAAAAAAEQAQ/9oACAEDAQE/ASMb/8QAFxEBAQEBAAAAAAAAAAAAAAAAABESQf/aAAgBAgEBPwHSuo//xAAfEAABBAICAwAAAAAAAAAAAAABAAIRIRJBAxAiMVH/2gAIAQEABj8C7L3CtI4AXp3xS2AD6CHHPid7QZMtddrHGV//xAAbEAEBAQEBAAMAAAAAAAAAAAABEQAhMUFhgf/aAAgBAQABPyG664CA+A5QpP1fRzc+kj0NFKsHgB7lKtU/CPmKJcXm/9oADAMBAAIAAwAAABAg3z3/xAAXEQEBAQEAAAAAAAAAAAAAAAABABEh/9oACAEDAQE/EBtqzkrb/8QAGBEBAQEBAQAAAAAAAAAAAAAAAQARIWH/2gAIAQIBAT8QQWbXjyAl/8QAHhABAQADAAEFAAAAAAAAAAAAAREAITFREHGRwdH/2gAIAQEAAT8Q9RPMkmj5fr5wefLtgG1OcX2mdaDnVwddmMiHEIyjWlR06wTmqVQAh8KlkIcxg0m0HV/M/9k="
-                    alt="Мобильное приложение получило награды Международное Social Media и Лучшее приложение Медиа / СМИ"
-                  />
-                </div>
+              <div className="client-solution-content-text">
+                We enjoy long-term partnerships and each step during the
+                creation of the best products within different niches
               </div>
-              <div className="OurCase-TextContainer-module--cls2--1V8FK OurCase-TextContainer-module--cls1--HzZ36">
-                <span className="OurCase-Title-module--cls2--D696E OurCase-Title-module--cls1--cDbok">
-                  СМИ для лиги BIG3
-                </span>
-                <span className="OurCase-Text-module--cls2--2Sjya OurCase-Text-module--cls1--1gpVJ">
-                  Мобильное приложение получило награды Международное Social
-                  Media и Лучшее приложение Медиа / СМИ
-                </span>
-              </div>
-            </a> */}
+            </div>
           </div>
-          {/* <a
-            href="/Ru/Page/InDevelopment"
-            aria-label="Dex"
-            className="OurCases-MoreCases-module--cls2--2_V1z OurCases-MoreCases-module--cls1--PlPfy"
-          >
-            <div>More cases</div>
+        </div>
+        <div className="client-information-description-wrapper">
+          <div className="client-social-img-wrapper">
+            <img src={SocialIcon} alt="" className="client-social-img" />
+          </div>
+
+          <div className="client-name-cooperation-wrapper">
             <img
-              src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNTEiIGhlaWdodD0iMTgiIHZpZXdCb3g9IjAgMCA1MSAxOCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4NCjxwYXRoIGQ9Ik00MSAxTDQ5IDlMNDEgMTciIHN0cm9rZT0iIzI2NjlDQyIgc3Ryb2tlLXdpZHRoPSIyIi8+DQo8cGF0aCBkPSJNNDguNSA5SDAuNSIgc3Ryb2tlPSIjMjY2OUNDIiBzdHJva2Utd2lkdGg9IjIiLz4NCjwvc3ZnPg0K"
-              alt="Больше кейсов"
-              className="OurCases-MoreCasesIcon-module--cls2--fdyV8 OurCases-MoreCasesIcon-module--cls1--3H5Pg"
+              className="client-name-img"
+              src={CLIENT_LIST[clientIndex].nameImg}
+              alt=""
             />
-          </a> */}
+            <div className="client-cooperation-description">
+              <img src={Cooperation} alt="" style={{ marginRight: "5px" }} />
+              <div>{`${CLIENT_LIST[clientIndex].duration} years of cooperation`}</div>
+            </div>
+          </div>
+          <div className="client-information-text">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
+            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+            aliquip ex ea commodo consequat.
+          </div>
+          <div className="client-location-business-wrapper">
+            <div className="client-location-wrapper">
+              <img src={LocationImg} alt="" style={{ marginRight: "5px" }} />
+              <p>{CLIENT_LIST[clientIndex].location}</p>
+            </div>
+            <div className="client-location-wrapper">
+              <img src={Business} alt="" style={{ marginRight: "5px" }} />
+              <p>{CLIENT_LIST[clientIndex].business}</p>
+            </div>
+          </div>
+          <div className="client-service-title">Services:</div>
+          <div className="client-service-list">
+            {CLIENT_LIST[clientIndex].services}
+          </div>
+          <div className="client-information-page-wrapper">
+            <div className="client-back-next-page">
+              <img
+                id="back"
+                src={ArrowBack}
+                alt=""
+                style={{ marginRight: "5px" }}
+                onClick={handlePageMove}
+              />
+              BACK
+            </div>
+            <div className="client-information-group-page">
+              {CLIENT_LIST.map((item, index) =>
+                index === clientIndex ? (
+                  <img
+                    src={GroupSelect}
+                    alt=""
+                    style={{ width: "7px", height: "7px" }}
+                  />
+                ) : (
+                  <img
+                    src={GroupUnselect}
+                    alt=""
+                    style={{ width: "7px", height: "7px" }}
+                  />
+                )
+              )}
+            </div>
+            <div className="client-back-next-page">
+              NEXT
+              <img
+                id="next"
+                src={ArrowNext}
+                alt=""
+                style={{ marginLeft: "5px" }}
+                onClick={handlePageMove}
+              />
+            </div>
+          </div>
         </div>
       </div>
     </div>
