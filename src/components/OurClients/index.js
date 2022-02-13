@@ -78,7 +78,6 @@ const OurClients = () => {
   });
   const listLen = clientsList.length;
 
-  console.log("listLen:", listLen, scrollY);
   return (
     <div className="client-container">
       <div className="client-title">our clients</div>
