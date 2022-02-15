@@ -57,8 +57,6 @@ const Portfolios = () => {
 
   const handleAddPortfolio = React.useCallback(
     (newPortfolio) => {
-      console.log("newPortfolio:", newPortfolio);
-
       dispatch(addPortfolio(newPortfolio));
     },
     [dispatch]
@@ -102,8 +100,6 @@ const Portfolios = () => {
       JSON.stringify(initialState.current) === JSON.stringify(portfoliosList)
     );
   }, [portfoliosList]);
-
-  console.log("portfoliosList:", portfoliosList, initialState.current);
 
   return (
     <>

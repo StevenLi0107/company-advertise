@@ -200,8 +200,6 @@ const ContactUs = ({ ref }) => {
     return <MuiAlert elevation={6} variant="filled" {...props} />;
   }
 
-  console.log("containA", containA, isSendSuccess);
-
   return (
     <div className="contact-container">
       <img src={BackPoints} alt="" className="contact-back-points" />
