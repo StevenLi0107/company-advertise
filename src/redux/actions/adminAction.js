@@ -124,7 +124,12 @@ export const updatePortfolio = (payload) => async (dispatch, getState) => {
       token,
       id: payload.id,
       name: payload.name,
+      company_age: payload.company_age,
+      location: payload.location,
+      business: payload.business,
       description: payload.description,
+      services: payload.services,
+      social_link: payload.social_link,
     });
     await dispatch({
       type: TYPES.UPDATE_PORTFOLIO_SUCCESS,

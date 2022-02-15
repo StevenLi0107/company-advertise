@@ -151,7 +151,7 @@ export const AddPortfolioModal = memo(
         company_age: formState.company_age,
         location: formState.location,
         business: formState.business,
-        description: formState.desc,
+        description: formState.description,
         services: formState.services,
         social_link: formState.social_link,
         url: formState.url,
