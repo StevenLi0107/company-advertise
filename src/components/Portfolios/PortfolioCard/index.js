@@ -44,10 +44,10 @@ const PortfolioCard = ({
       handleDelete={handleDeletePortfolio}
       handleUpload={handleUpload}
     >
-      <Box display="flex" alignItems="center">
+      <Box display="flex" alignItems="center" width="70%">
         {img ? (
           <img
-            style={{ width: "50px", height: "auto" }}
+            style={{ width: "50px", height: "50px", textAlign: "center" }}
             src={`https://api.cowork.dev/data/img/${img}`}
             alt=""
           />
@@ -55,8 +55,9 @@ const PortfolioCard = ({
           <div
             style={{
               display: "flex",
+              flexDirection: "row",
               width: "50px",
-              height: "auto",
+              height: "50px",
               alignItems: "center",
               justifyContent: "center",
             }}
@@ -64,9 +65,9 @@ const PortfolioCard = ({
             <Avatar src={`https://api.cowork.dev/data/img/${img}`} />
           </div>
         )}
-        <Box ml="10px" display="flex" flexDirection="column">
+        <Box ml="10px" display="flex" flexDirection="column" width="80%">
           {isEditing ? (
-            <Box display="flex" flexDirection="column" alignItems="center">
+            <div display="flex" flexDirection="column" alignItems="center">
               {PORTFOLIO_LIST.map((item) => (
                 <TextField
                   variant="outlined"
@@ -77,7 +78,7 @@ const PortfolioCard = ({
                   label={item.placeholder}
                   multiline
                   style={{
-                    width: "450px",
+                    width: "100%",
                     marginTop: "10px",
                     marginBottom: "5px",
                   }}
@@ -103,14 +104,14 @@ const PortfolioCard = ({
                 multiline
                 style={{ width: "450px" }}
               /> */}
-            </Box>
+            </div>
           ) : (
             <div
               style={{
+                width: "100%",
                 display: "flex",
                 flexDirection: "column",
                 justifyContent: "center",
-                width: "450px",
               }}
             >
               <Typography className="portfolio-subtitle">
