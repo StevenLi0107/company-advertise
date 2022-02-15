@@ -57,11 +57,13 @@ const OurCases = ({ ref }) => {
 
   const [clientIndex, setClientIndex] = useState(0);
 
-  const handlePageMove = (event) => {
-    if (event.target.id === "back") {
-      clientIndex > 0 && setClientIndex((prev) => prev - 1);
-    } else if (event.target.id === "next") {
-      clientIndex < 2 && setClientIndex((prev) => prev + 1);
+  const handlePageMove = (id) => {
+    if (id === "back" || id === "backImg") {
+      clientIndex > 0
+        ? setClientIndex((prev) => prev - 1)
+        : setClientIndex(CLIENT_LIST.length - 1);
+    } else if (id === "next" || id === "nextImg") {
+      clientIndex < 2 ? setClientIndex((prev) => prev + 1) : setClientIndex(0);
     }
   };
 
@@ -120,19 +122,15 @@ const OurCases = ({ ref }) => {
             {CLIENT_LIST[clientIndex].services}
           </div>
           <div className="client-information-page-wrapper">
-            <div
-              id="back"
-              className="client-back-next-page"
-              onClick={(event) => handlePageMove(event)}
-            >
+            <div id="back" className="client-back-next-page">
               <img
-                id="back"
+                id="backImg"
                 src={ArrowBack}
                 alt=""
                 style={{ marginRight: "5px" }}
-                onClick={(event) => handlePageMove(event)}
+                onClick={() => handlePageMove("backImg")}
               />
-              BACK
+              <p onClick={() => handlePageMove("back")}>BACK</p>
             </div>
             <div className="client-information-group-page">
               {CLIENT_LIST.map((item, index) =>
@@ -151,18 +149,14 @@ const OurCases = ({ ref }) => {
                 )
               )}
             </div>
-            <div
-              id="next"
-              className="client-back-next-page"
-              onClick={(event) => handlePageMove(event)}
-            >
-              NEXT
+            <div id="next" className="client-back-next-page">
+              <p onClick={() => handlePageMove("next")}>Next</p>
               <img
-                id="next"
+                id="nextImg"
                 src={ArrowNext}
                 alt=""
                 style={{ marginLeft: "5px" }}
-                onClick={(event) => handlePageMove(event)}
+                onClick={() => handlePageMove("nextImg")}
               />
             </div>
           </div>
