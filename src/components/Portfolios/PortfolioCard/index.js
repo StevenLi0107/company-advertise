@@ -1,7 +1,9 @@
 import { useEffect, useState, useCallback } from "react";
-import { useStyles } from "./styles";
+import { get } from "lodash";
 import { Typography, Box, TextField, Avatar } from "@material-ui/core";
 import ListItem from "../../ListItem";
+import { PORTFOLIO_LIST } from "../../../constant";
+import "./styles.css";
 
 const PortfolioCard = ({
   portfolio,
@@ -12,7 +14,6 @@ const PortfolioCard = ({
   const [formState, setFormstate] = useState(portfolio);
   const [isEditing, setIsEditing] = useState(false);
   const [img, setImg] = useState(portfolio.img);
-  const classes = useStyles();
   const { name, description } = formState;
 
   useEffect(() => {
@@ -35,6 +36,7 @@ const PortfolioCard = ({
     setIsEditing(!isEditing);
   };
 
+  // console.log("formState:", formState);
   return (
     <ListItem
       id={portfolio.id}
@@ -42,18 +44,54 @@ const PortfolioCard = ({
       handleDelete={handleDeletePortfolio}
       handleUpload={handleUpload}
     >
-      <Box display="flex">
-        <Avatar src={`https://api.cowork.dev/data/img/${img}`} />
+      <Box display="flex" alignItems="center">
+        {img ? (
+          <img
+            style={{ width: "50px", height: "auto" }}
+            src={`https://api.cowork.dev/data/img/${img}`}
+            alt=""
+          />
+        ) : (
+          <div
+            style={{
+              display: "flex",
+              width: "50px",
+              height: "auto",
+              alignItems: "center",
+              justifyContent: "center",
+            }}
+          >
+            <Avatar src={`https://api.cowork.dev/data/img/${img}`} />
+          </div>
+        )}
         <Box ml="10px" display="flex" flexDirection="column">
           {isEditing ? (
-            <Box display="flex" alignItems="center">
-              <TextField
+            <Box display="flex" flexDirection="column" alignItems="center">
+              {PORTFOLIO_LIST.map((item) => (
+                <TextField
+                  variant="outlined"
+                  size="small"
+                  name={item.key}
+                  onChange={handleChange}
+                  value={get(formState, item.key)}
+                  label={item.placeholder}
+                  multiline
+                  style={{
+                    width: "450px",
+                    marginTop: "10px",
+                    marginBottom: "5px",
+                  }}
+                />
+              ))}
+              {/* <TextField
                 variant="outlined"
                 size="small"
                 name="name"
                 onChange={handleChange}
                 value={name}
                 placeholder="Name"
+                multiline
+                style={{ width: "450px", marginBottom: "5px" }}
               />
               <TextField
                 variant="outlined"
@@ -62,13 +100,26 @@ const PortfolioCard = ({
                 onChange={handleChange}
                 value={description}
                 placeholder="description"
-              />
+                multiline
+                style={{ width: "450px" }}
+              /> */}
             </Box>
           ) : (
-            <>
-              <Typography>{name}</Typography>
-              <span className={classes.subtitle}>{description}</span>
-            </>
+            <div
+              style={{
+                display: "flex",
+                flexDirection: "column",
+                justifyContent: "center",
+                width: "450px",
+              }}
+            >
+              <Typography className="portfolio-subtitle">
+                {get(formState, "name")}
+              </Typography>
+              <div className="portfolio-subtitle">
+                {get(formState, "description")}
+              </div>
+            </div>
           )}
         </Box>
       </Box>

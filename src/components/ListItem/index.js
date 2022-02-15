@@ -21,7 +21,7 @@ const ListItem = ({ children, id, handleEdit, handleDelete, handleUpload }) => {
       alignItems="center"
     >
       {children}
-      <Box>
+      <Box display="flex" alignItems="center" justifyContent="flex-end">
         <Button onClick={handleUploadClick}>Upload</Button>
         <IconButton onClick={handleEdit} aria-label="edit">
           <EditIcon />

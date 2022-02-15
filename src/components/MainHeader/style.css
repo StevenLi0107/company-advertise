@@ -63,6 +63,7 @@
 .navBar .Link-Container {
   display: flex;
   align-items: center;
+  justify-content: space-between;
   gap: 64px;
   box-sizing: border-box;
   -webkit-box-sizing: border-box;
@@ -90,8 +91,12 @@
 
 .Link-Container a:hover {
   color: #f3963a;
-  font-weight: bold;
-  font-family: "tommy-regular";
+  font-weight: 800;
+  font-family: "tommy-light";
+
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
 
   border-bottom: 2px solid transparent;
   border-image: linear-gradient(
@@ -103,16 +108,17 @@
   border-image-slice: 1;
   opacity: 1;
 
-  box-sizing: border-box;
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
   padding: 0;
 }
 
 .Link-Container .active {
   color: #f3963a !important;
-  font-weight: bold;
-  font-family: "tommy-regular";
+  font-weight: 800;
+  font-family: "tommy-light";
+
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
 
   border-bottom: 2px solid transparent;
   border-image: linear-gradient(
@@ -124,9 +130,6 @@
   border-image-slice: 1;
 
   opacity: 1;
-  box-sizing: border-box;
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
   padding: 0;
 }
 

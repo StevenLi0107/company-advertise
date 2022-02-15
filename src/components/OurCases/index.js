@@ -120,13 +120,17 @@ const OurCases = ({ ref }) => {
             {CLIENT_LIST[clientIndex].services}
           </div>
           <div className="client-information-page-wrapper">
-            <div className="client-back-next-page">
+            <div
+              id="back"
+              className="client-back-next-page"
+              onClick={(event) => handlePageMove(event)}
+            >
               <img
                 id="back"
                 src={ArrowBack}
                 alt=""
                 style={{ marginRight: "5px" }}
-                onClick={handlePageMove}
+                onClick={(event) => handlePageMove(event)}
               />
               BACK
             </div>
@@ -147,14 +151,18 @@ const OurCases = ({ ref }) => {
                 )
               )}
             </div>
-            <div className="client-back-next-page">
+            <div
+              id="next"
+              className="client-back-next-page"
+              onClick={(event) => handlePageMove(event)}
+            >
               NEXT
               <img
                 id="next"
                 src={ArrowNext}
                 alt=""
                 style={{ marginLeft: "5px" }}
-                onClick={handlePageMove}
+                onClick={(event) => handlePageMove(event)}
               />
             </div>
           </div>

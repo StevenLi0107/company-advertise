@@ -253,8 +253,9 @@
   color: #dec8a7;
 }
 
-.client-back-next-page img:hover {
+.client-back-next-page:hover {
   cursor: pointer;
+  opacity: 0.7;
 }
 
 .client-information-group-page {

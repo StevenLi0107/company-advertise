@@ -57,6 +57,8 @@ const Portfolios = () => {
 
   const handleAddPortfolio = React.useCallback(
     (newPortfolio) => {
+      console.log("newPortfolio:", newPortfolio);
+
       dispatch(addPortfolio(newPortfolio));
     },
     [dispatch]
@@ -100,9 +102,12 @@ const Portfolios = () => {
       JSON.stringify(initialState.current) === JSON.stringify(portfoliosList)
     );
   }, [portfoliosList]);
+
+  console.log("portfoliosList:", portfoliosList, initialState.current);
+
   return (
     <>
-      <Box display="flex" justifyContent="space-between">
+      <Box display="flex" justifyContent="space-between" alignItems="center">
         <IconButton onClick={handleOpenModal} aria-label="add">
           <AddCircleOutlineIcon />
           Add
@@ -117,7 +122,8 @@ const Portfolios = () => {
         </Button>
       </Box>
 
-      <hr />
+      <hr style={{ marginBottom: "10px" }} />
+
       <Box className={classes.content}>
         {portfoliosList &&
           portfoliosList.map((portfolio, index) => (
@@ -127,12 +133,12 @@ const Portfolios = () => {
               index={index}
               moveCard={moveCard}
             >
-              {/* <PortfolioCard
+              <PortfolioCard
                 portfolio={portfolio}
                 handleDeletePortfolio={handleDeletePortfolio}
                 handleChangePortfolioInfo={handleChangePortfolioInfo}
                 handleUpload={handleUpload}
-              /> */}
+              />
             </CardDnd>
           ))}
         <AddPortfolioModal

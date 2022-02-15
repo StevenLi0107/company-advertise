@@ -62,3 +62,34 @@ export const INITFORM_LIST = [
     errorText: "Plese fill in the field",
   },
 ];
+
+export const PORTFOLIO_LIST = [
+  {
+    key: "name",
+    placeholder: "Title",
+  },
+  {
+    key: "company_age",
+    placeholder: "Company coorperation",
+  },
+  {
+    key: "location",
+    placeholder: "Location",
+  },
+  {
+    key: "business",
+    placeholder: "Business",
+  },
+  {
+    key: "services",
+    placeholder: "Services",
+  },
+  {
+    key: "social_link",
+    placeholder: "Social Link",
+  },
+  {
+    key: "description",
+    placeholder: "Description",
+  },
+];

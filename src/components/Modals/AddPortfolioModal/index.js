@@ -1,4 +1,5 @@
 import React, { memo } from "react";
+import { get } from "lodash";
 import Button from "@material-ui/core/Button";
 import Box from "@material-ui/core/Box";
 import Dialog from "@material-ui/core/Dialog";
@@ -9,6 +10,7 @@ import { makeStyles, withStyles } from "@material-ui/core/styles";
 import { Avatar, FormControl, TextField, Typography } from "@material-ui/core";
 
 import { getBase64 } from "../../../utils/base64";
+import { PORTFOLIO_LIST } from "../../../constant";
 
 const StyledDialogContent = withStyles((theme) => ({
   root: {
@@ -84,10 +86,21 @@ const useStyles = makeStyles((theme) => ({
     textDecoration: "none",
   },
   avatar: {
-    width: 150,
-    height: 150,
+    width: "150px",
+    height: "150px",
+
     marginBottom: theme.spacing(2),
   },
+
+  portfolioImg: {
+    width: "150px",
+    height: "auto",
+
+    objectFit: "cover",
+
+    marginBottom: theme.spacing(2),
+  },
+
   textField: {
     width: "100%",
     "& input": {
@@ -107,8 +120,14 @@ export const AddPortfolioModal = memo(
     const classes = useStyles();
 
     const initialFormState = {
+      key: "",
       title: "",
-      desc: "",
+      company_age: "",
+      location: "",
+      business: "",
+      description: "",
+      services: "",
+      social_link: "",
       url: "",
       img: "",
     };
@@ -116,7 +135,7 @@ export const AddPortfolioModal = memo(
     const [formState, setFormstate] = React.useState(initialFormState);
     const imgRef = React.useRef();
 
-    const { title, desc, url } = formState;
+    // const { title, desc, url } = formState;
 
     const handleChange = React.useCallback(
       ({ target: { name, value } }) => {
@@ -128,8 +147,14 @@ export const AddPortfolioModal = memo(
     const onSubmit = () => {
       const newPortfolio = {
         // id: Date.now(),
-        name: formState.title,
+        name: formState.name,
+        company_age: formState.company_age,
+        location: formState.location,
+        business: formState.business,
         description: formState.desc,
+        services: formState.services,
+        social_link: formState.social_link,
+        url: formState.url,
         img: formState.img.split(",")[1],
       };
       onClose();
@@ -174,7 +199,20 @@ export const AddPortfolioModal = memo(
 
         <StyledDialogContent>
           <form className={classes.form} noValidate>
-            <FormControl className={classes.formControl}>
+            {PORTFOLIO_LIST.map((item) => (
+              <FormControl className={classes.formControl}>
+                <TextField
+                  className={classes.textField}
+                  variant="outlined"
+                  size="small"
+                  name={item.key}
+                  onChange={handleChange}
+                  value={get(formState, item.key)}
+                  label={item.placeholder}
+                />
+              </FormControl>
+            ))}
+            {/* <FormControl className={classes.formControl}>
               <TextField
                 className={classes.textField}
                 variant="outlined"
@@ -195,9 +233,17 @@ export const AddPortfolioModal = memo(
                 value={desc}
                 placeholder="Description"
               />
-            </FormControl>
+            </FormControl> */}
             <FormControl className={classes.formControl}>
-              <Avatar className={classes.avatar} src={url} />
+              {!formState.url ? (
+                <Avatar className={classes.avatar} src={formState.url} />
+              ) : (
+                <img
+                  className={classes.portfolioImg}
+                  src={formState.url}
+                  alt=""
+                />
+              )}
               <input
                 type="file"
                 ref={imgRef}

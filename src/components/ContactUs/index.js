@@ -71,6 +71,9 @@ function Alert(props) {
 }
 
 const ContactUs = ({ ref }) => {
+  const dispatch = useDispatch();
+  const isSendSuccess = useSelector((state) => state.adminReducer.sendSuccess);
+
   const [activeButtons, setActiveButtons] = useState([]);
   const [activeInputs, setActiveInputs] = useState([]);
   const [attachFile, setAttachFile] = useState(false);
@@ -80,8 +83,6 @@ const ContactUs = ({ ref }) => {
   const [form, setForm] = useState(initForm);
 
   const fileRef = useRef();
-  const isSendSuccess = useSelector((state) => state.adminReducer.sendSuccess);
-  const dispatch = useDispatch();
 
   const handleActiveButtons = (num) => {
     if (activeButtons.some((n) => n === num)) {
@@ -199,7 +200,7 @@ const ContactUs = ({ ref }) => {
     return <MuiAlert elevation={6} variant="filled" {...props} />;
   }
 
-  console.log("containA", containA, form);
+  console.log("containA", containA, isSendSuccess);
 
   return (
     <div className="contact-container">
@@ -395,7 +396,7 @@ const ContactUs = ({ ref }) => {
                 )}
               </div>
 
-              <div className="contact-info-touch">
+              <div className="contact-info-touch" onClick={handleSubmit}>
                 <p>GET IN TOUCH</p>
                 <img alt="" src={Arrow} onClick={handleSubmit} />
               </div>

@@ -182,7 +182,7 @@
   height: 200px;
   width: 1067px;
   position: absolute;
-  top: calc(100% - 180px);
+  top: calc(100% - 200px);
   right: 0;
   background: linear-gradient(
     343.84deg,
@@ -190,7 +190,7 @@
     rgba(29, 29, 29, 0.54) 28.66%,
     #1d1d1d 52.22%
   );
-  transform: matrix(1, -0.03, -0.03, -1, 0, 0);
+  transform: matrix(1, 0, 0, -1, 0, 0);
 
   background-size: cover;
   box-sizing: border-box;
