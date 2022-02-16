@@ -57,6 +57,7 @@ const Portfolios = () => {
 
   const handleAddPortfolio = React.useCallback(
     (newPortfolio) => {
+      // console.log("newPortfolio:", newPortfolio);
       dispatch(addPortfolio(newPortfolio));
     },
     [dispatch]

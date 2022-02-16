@@ -396,7 +396,7 @@ const ContactUs = ({ ref }) => {
 
               <div className="contact-info-touch" onClick={handleSubmit}>
                 <p>GET IN TOUCH</p>
-                <img alt="" src={Arrow} onClick={handleSubmit} />
+                <img alt="" src={Arrow} />
               </div>
               <div>
                 {isLoading && (

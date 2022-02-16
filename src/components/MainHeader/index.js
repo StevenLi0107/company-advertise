@@ -59,7 +59,7 @@ const MainHeader = ({ scrollToElement, onScrollChange, active }) => {
             Portfolio
           </a>
           <a
-            id="footer"
+            id="about"
             onClick={(event) => handleNavBarClick(event, "About")}
             className={active === "About" && "active"}
             href="/"

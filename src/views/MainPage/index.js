@@ -62,18 +62,18 @@ const MainPage = () => {
     ) {
       setActive("Portfolio");
     }
-    // if (
-    //   window.pageYOffset > contactUsRef.current.offsetTop - 60 &&
-    //   window.pageYOffset < contactUsRef.current.offsetTop + 5
-    // ) {
-    //   setActive("contactUs");
-    // }
     if (
-      window.pageYOffset > contactUsRef.current.offsetTop - 60 &&
-      window.pageYOffset < mainFooterRef.current.offsetTop
+      window.pageYOffset > contactUsRef.current.offsetTop - 350 &&
+      window.pageYOffset < contactUsRef.current.offsetTop + 5
     ) {
       setActive("About");
     }
+    // if (
+    //   window.pageYOffset > contactUsRef.current.offsetTop - 60 &&
+    //   window.pageYOffset < mainFooterRef.current.offsetTop
+    // ) {
+    //   setActive("About");
+    // }
   }, []);
 
   const scrollToElement = useCallback((event, navActive) => {
@@ -84,7 +84,7 @@ const MainPage = () => {
       expertise: expertiseRef,
       portfolio: portfolioRef,
       contactUs: contactUsRef,
-      footer: mainFooterRef,
+      about: contactUsRef,
     };
     window.scrollTo({
       behavior: "smooth",
