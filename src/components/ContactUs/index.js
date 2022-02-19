@@ -78,7 +78,6 @@ const ContactUs = ({ ref }) => {
   const [activeInputs, setActiveInputs] = useState([]);
   const [attachFile, setAttachFile] = useState(false);
   const [containA, setContainA] = useState(false);
-  const [isLoading, setIsLoading] = useState(false);
   const [isOpen, setOpen] = useState(false);
   const [form, setForm] = useState(initForm);
 
@@ -178,7 +177,6 @@ const ContactUs = ({ ref }) => {
         name: form.attachment.name,
       },
     };
-    setIsLoading(true);
     dispatch(contactUs(query));
   };
 
@@ -192,7 +190,6 @@ const ContactUs = ({ ref }) => {
       setAttachFile(false);
       setOpen(isSendSuccess);
       setForm(initForm);
-      setIsLoading(false);
     }
   }, [isSendSuccess]);
 
@@ -242,7 +239,7 @@ const ContactUs = ({ ref }) => {
               open={isOpen}
               autoHideDuration={4000}
               onClose={handleClose}
-              anchorOrigin={{ vertical: "bottom", horizontal: "center" }}
+              anchorOrigin={{ vertical: "bottom", horizontal: "right" }}
             >
               <div className="contact-alert-section">
                 <img
@@ -290,12 +287,21 @@ const ContactUs = ({ ref }) => {
             <div className="contact-info-label">
               {INITFORM_LIST.map((item, index) => (
                 <span className="contact-info-item">
+                  <span
+                    className={`${
+                      activeInputs.some((num) => num === index)
+                        ? "contact-info-item-active"
+                        : "contact-info-item-normal"
+                    }`}
+                  >
+                    {item.label}
+                  </span>
                   <input
                     value={get(form, [`${item.key}`, "text"])}
                     onChange={handleChangeForm}
                     onFocus={handleActiveInput.bind(null, index)}
                     onBlur={handleActiveInput.bind(null, index)}
-                    placeholder={item.label}
+                    // placeholder={item.label}
                     name={item.key}
                   />
                   <div className="contact-info-item-line">
@@ -324,30 +330,20 @@ const ContactUs = ({ ref }) => {
                   )}
                 </span>
               ))}
-
-              {/* <span className="contact-info-item">
-                <input placeholder="Company*" />
-                <div className="contact-info-item-line">
-                  <span></span>
-                </div>
-              </span>
-              <span className="contact-info-item">
-                <input placeholder="Email*" />
-                <div className="contact-info-item-line">
-                  <span></span>
-                </div>
-              </span>
-              <span className="contact-info-item">
-                <input placeholder="Phone*" />
-                <div className="contact-info-item-line">
-                  <span></span>
-                </div>
-              </span> */}
               <span className="contact-info-item">
                 <div
                   className="contact-file-attach-wrapper"
                   style={{ border: "none" }}
                 >
+                  <span
+                    className={`${
+                      activeInputs.some((num) => num === 3)
+                        ? "contact-info-item-active"
+                        : "contact-info-item-normal"
+                    }`}
+                  >
+                    Message*
+                  </span>
                   <input
                     value={form.projectDetails.text}
                     onChange={handleChangeForm}
@@ -355,7 +351,7 @@ const ContactUs = ({ ref }) => {
                     onBlur={handleActiveInput.bind(null, 3)}
                     name="projectDetails"
                     id="contact-message"
-                    placeholder="Message*"
+                    // placeholder="Message*"
                   />
                   <img
                     onClick={handleAttachClick}
@@ -394,18 +390,9 @@ const ContactUs = ({ ref }) => {
                 )}
               </div>
 
-              <div className="contact-info-touch" onClick={handleSubmit}>
-                <p>GET IN TOUCH</p>
-                <img alt="" src={Arrow} />
-              </div>
-              <div>
-                {isLoading && (
-                  <Loader
-                    type="spinningBubbles"
-                    color="#aaaaaa"
-                    message="Laoding..."
-                  />
-                )}
+              <div className="contact-info-touch">
+                <p onClick={handleSubmit}>GET IN TOUCH</p>
+                <img alt="" src={Arrow} onClick={handleSubmit} />
               </div>
             </div>
           </div>
