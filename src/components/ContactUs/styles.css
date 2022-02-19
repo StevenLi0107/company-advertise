@@ -290,7 +290,10 @@
   left: 22px;
   transition: all 0.2s ease-in-out;
   font-size: 18px;
-  opacity: 0.6;
+  /* opacity: 0.6; */
+  font-family: "tommy-thin";
+  line-height: 26px;
+  color: #e2e2e1;
 }
 
 .contact-info-item-active {
@@ -298,6 +301,9 @@
   top: -18px;
   left: 22px;
   font-size: 14px;
+  font-family: "tommy-thin";
+  line-height: 26px;
+  color: #dec8a7;
 }
 
 .contact-info-item-line {

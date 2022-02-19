@@ -9,6 +9,9 @@
   font-family: "tommy-light";
   font-style: normal;
   font-weight: 400;
+  z-index: 1;
+
+  position: relative;
 }
 
 .expertise-title {

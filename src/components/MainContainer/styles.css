@@ -12,50 +12,23 @@
     rgba(26, 29, 34, 0.74) 68.71%,
     rgba(0, 0, 0, 0) 92.74%
   ); */
-
-  background-size: cover;
-  z-index: 1;
-}
-
-.main-background-gradient {
-  position: absolute;
-  width: 1440px;
-  height: 885px;
-
-  background: linear-gradient(
-    82.51deg,
-    #1d1d1d 42.02%,
-    rgba(27, 29, 32, 0.94) 52.11%,
-    rgba(26, 29, 34, 0.74) 68.71%,
-    rgba(0, 0, 0, 0) 92.74%
-  );
-
-  /* -o-object-fit: contain;
-  object-fit: contain; */
-
-  top: 0;
-  right: 0;
-  z-index: 0 !important;
+  z-index: 0;
 }
 
 .main-background-img {
   position: absolute;
-  width: 968px;
-  height: 885px;
 
-  background: linear-gradient(
-    82.51deg,
-    #1d1d1d 42.02%,
-    rgba(27, 29, 32, 0.94) 52.11%,
-    rgba(26, 29, 34, 0.74) 68.71%,
-    rgba(0, 0, 0, 0) 92.74%
-  );
-  border-radius: 8px;
-  /* -o-object-fit: contain;
-  object-fit: contain; */
+  background: url("../../assets/background-img.png") no-repeat center center;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
 
   top: 0;
   right: 0;
+  min-width: 100%;
+  /* height: auto; */
+
   z-index: 0 !important;
 }
 

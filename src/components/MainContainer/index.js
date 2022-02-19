@@ -13,8 +13,9 @@ const MainContainer = ({ scrollToElement }) => {
       }}
     >
       <img src={BackImg} alt="background" className="main-background-img" />
-      <div className="main-background-gradient"></div>
-      <div className="main-bottom-gradient"></div>
+      {/* <div className="main-background-img"></div> */}
+      {/* <div className="main-background-gradient"></div> */}
+      {/* <div className="main-bottom-gradient"></div> */}
       <div className="main-Section">
         <div className="main-container">
           <div className="main-title">

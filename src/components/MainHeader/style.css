@@ -11,7 +11,7 @@
 
   background: rgba(255, 255, 255, 0.01);
   border: 1px solid #161616;
-  backdrop-filter: blur(23.094px);
+  backdrop-filter: blur(10px);
 
   position: fixed;
   top: 0;

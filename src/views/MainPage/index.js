@@ -120,11 +120,11 @@ const MainPage = () => {
         {isActiveLogosSection && <OurClients />}
       </Box>
 
-      <Box ref={portfolioRef}>
-        <OurCases />
-      </Box>
+      <Box ref={portfolioRef}>{portfoliosList.length > 0 && <OurCases />}</Box>
 
-      <Box ref={contactUsRef}>{portfoliosList.length > 0 && <ContactUs />}</Box>
+      <Box ref={contactUsRef}>
+        <ContactUs />
+      </Box>
       <Box ref={mainFooterRef}>
         <MainFooter />
       </Box>
