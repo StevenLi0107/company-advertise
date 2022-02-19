@@ -1,11 +1,10 @@
 import React, { useState } from "react";
 import { IconButton, Box, Button } from "@material-ui/core";
 import AddCircleOutlineIcon from "@material-ui/icons/AddCircleOutline";
+import { useSelector, useDispatch } from "react-redux";
 import PortfolioCard from "./PortfolioCard";
 import { useStyles } from "./styles";
-// import { mock } from "./mock";
 import { CardDnd } from "../CardDnd";
-import { useSelector, useDispatch } from "react-redux";
 import { AddPortfolioModal } from "../Modals/AddPortfolioModal";
 import { UploadImageModal } from "../Modals/UploadImageModal";
 
@@ -20,14 +19,15 @@ import {
 import { checkTokenValid } from "../../redux/actions/authAction";
 
 const Portfolios = () => {
+  const classes = useStyles();
+
+  const dispatch = useDispatch();
   const portfoliosList = useSelector(
     (state) => state.adminReducer.portfoliosList
   );
   const initialState = React.useRef();
   const [openModal, setOpenModal] = React.useState(false);
   const [openUpload, setOpenUpload] = React.useState(false);
-  const dispatch = useDispatch();
-  const classes = useStyles();
   const [uploadId, setUploadId] = useState();
 
   React.useEffect(() => {
@@ -57,7 +57,6 @@ const Portfolios = () => {
 
   const handleAddPortfolio = React.useCallback(
     (newPortfolio) => {
-      // console.log("newPortfolio:", newPortfolio);
       dispatch(addPortfolio(newPortfolio));
     },
     [dispatch]

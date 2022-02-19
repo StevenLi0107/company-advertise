@@ -1,8 +1,6 @@
 import React from "react";
 import { IconButton, Box, Button } from "@material-ui/core";
 import AddCircleOutlineIcon from "@material-ui/icons/AddCircleOutline";
-// import { useStyles } from './styles';
-// import { mock } from './mock';
 import { AddUserModal } from "../Modals/AddUserModal";
 import UserCard from "./UserCard";
 import { CardDnd } from "../CardDnd";
@@ -20,6 +18,7 @@ import {
 import { checkTokenValid } from "../../redux/actions/authAction";
 
 const People = () => {
+  const dispatch = useDispatch();
   const isActivePeopleSection = useSelector(
     (state) => state.adminReducer.isActivePeopleSection
   );
@@ -27,11 +26,7 @@ const People = () => {
   const initialState = React.useRef();
   const [openModal, setOpenModal] = React.useState(false);
   const [openUpload, setOpenUpload] = React.useState(false);
-  const dispatch = useDispatch();
-  // const classes = useStyles();
   const [uploadId, setUploadId] = React.useState();
-
-  // console.log("People: usersList:", usersList);
 
   React.useEffect(() => {
     dispatch(checkTokenValid());

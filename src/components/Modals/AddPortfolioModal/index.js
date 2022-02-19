@@ -154,7 +154,7 @@ export const AddPortfolioModal = memo(
         description: formState.description,
         services: formState.services,
         social_link: formState.social_link,
-        url: formState.url,
+        // url: formState.url,
         img: formState.img.split(",")[1],
       };
       onClose();

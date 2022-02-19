@@ -35,6 +35,10 @@ const MainPage = () => {
     (state) => state.adminReducer.isActivePeopleSection
   );
 
+  const portfoliosList = useSelector(
+    (state) => state.adminReducer.portfoliosList
+  );
+
   const handleScroll = useCallback(() => {
     // console.log(
     //   "window.pageYoffset:",
@@ -95,7 +99,7 @@ const MainPage = () => {
   }, []);
 
   useEffect(() => {
-    // dispatch(getPortfoliosList());
+    dispatch(getPortfoliosList());
     dispatch(getClientsList());
     // dispatch(getUserList());
   }, [dispatch]);
@@ -120,9 +124,7 @@ const MainPage = () => {
         <OurCases />
       </Box>
 
-      <Box ref={contactUsRef}>
-        <ContactUs />
-      </Box>
+      <Box ref={contactUsRef}>{portfoliosList.length > 0 && <ContactUs />}</Box>
       <Box ref={mainFooterRef}>
         <MainFooter />
       </Box>

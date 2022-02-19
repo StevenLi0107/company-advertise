@@ -97,6 +97,7 @@
 .client-information-description-wrapper {
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
   width: 696px;
   height: 542px;
   margin-top: 60px;
@@ -133,7 +134,7 @@
   height: 36px;
   flex-direction: row;
   align-items: center;
-  margin-top: 42px;
+  /* margin-top: 42px; */
   margin-left: 144px;
   margin-right: 76px;
   justify-content: space-between;
@@ -163,6 +164,13 @@
   color: #e2e2e1;
 
   font-family: "tommy-thin";
+}
+
+.client-information {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  /* margin-top: 42px; */
 }
 
 .client-information-text {
@@ -233,7 +241,7 @@
   flex-direction: row;
   align-items: center;
 
-  margin-top: 57px;
+  margin-bottom: 57px;
   margin-left: 145px;
   margin-right: 76px;
 

@@ -45,8 +45,12 @@ export const updateUser = (payload) => async (dispatch, getState) => {
       token,
       id: payload.id,
       name: payload.name,
-      role: payload.role,
-      url: payload.url,
+      company_age: payload.company_age,
+      location: payload.location,
+      business: payload.business,
+      description: payload.description,
+      services: payload.services,
+      social_link: payload.social_link,
     });
     await dispatch({ type: TYPES.UPDATE_USER_SUCCESS, payload });
   } catch (error) {
@@ -145,6 +149,7 @@ export const addPortfolio = (payload) => async (dispatch, getState) => {
   try {
     const token = getState().auth.token;
     const { data } = await adminService.addPortfolio({ token, ...payload });
+
     await dispatch({ type: TYPES.ADD_PORTFOLIO_SUCCESS, payload: data });
   } catch (error) {
     dispatch({ type: TYPES.ADD_PORTFOLIO_ERROR, payload: error });

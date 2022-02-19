@@ -14,7 +14,6 @@ const PortfolioCard = ({
   const [formState, setFormstate] = useState(portfolio);
   const [isEditing, setIsEditing] = useState(false);
   const [img, setImg] = useState(portfolio.img);
-  const { name, description } = formState;
 
   useEffect(() => {
     setImg(portfolio.img);
@@ -36,7 +35,6 @@ const PortfolioCard = ({
     setIsEditing(!isEditing);
   };
 
-  // console.log("formState:", formState);
   return (
     <ListItem
       id={portfolio.id}
@@ -84,26 +82,6 @@ const PortfolioCard = ({
                   }}
                 />
               ))}
-              {/* <TextField
-                variant="outlined"
-                size="small"
-                name="name"
-                onChange={handleChange}
-                value={name}
-                placeholder="Name"
-                multiline
-                style={{ width: "450px", marginBottom: "5px" }}
-              />
-              <TextField
-                variant="outlined"
-                size="small"
-                name="description"
-                onChange={handleChange}
-                value={description}
-                placeholder="description"
-                multiline
-                style={{ width: "450px" }}
-              /> */}
             </div>
           ) : (
             <div
