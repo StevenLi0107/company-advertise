@@ -1,0 +1,145 @@
+.services-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 80px;
+  z-index: 1;
+  position: relative;
+}
+
+.services-title {
+  font-family: "tommy-thin";
+  font-size: 14px;
+  line-height: 17px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #565656;
+  margin-bottom: 20px;
+}
+
+.services-content {
+  font-family: "tommy-light";
+  font-size: 24px;
+  line-height: 31px;
+  color: #e2e2e1;
+  text-align: center;
+  /* padding-left: 297px;
+  padding-right: 297px; */
+  margin-bottom: 92px;
+}
+
+.services-items {
+  display: grid;
+  grid-template-rows: repeat(2, 1fr);
+  grid-template-columns: repeat(3, 0fr);
+  place-content: center;
+  column-gap: 105px;
+  row-gap: 120px;
+  margin-top: 22px;
+}
+
+.service-item-normal {
+  display: flex;
+  height: 165px;
+  align-items: flex-end;
+}
+
+.service-item-normal:hover {
+  cursor: pointer;
+}
+
+.service-index {
+  width: auto;
+  height: 165px;
+  font-family: "tommy-medium-outline";
+  font-style: normal;
+  font-weight: normal;
+  font-size: 210px;
+  line-height: 263px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  z-index: 0;
+
+  color: #565656;
+}
+
+.service-index-active {
+  background: linear-gradient(
+    137.83deg,
+    rgba(222, 200, 167, 0.5) 15.11%,
+    rgba(243, 150, 58, 0.5) 37.03%,
+    rgba(227, 123, 0, 0.5) 62.01%,
+    rgba(176, 59, 49, 0.5) 87.72%
+  );
+
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  z-index: 1;
+}
+
+.service-index-deactive {
+  color: #565656;
+  /* z-index: 1; */
+}
+
+.service-text {
+  height: 68px;
+  font-family: "tommy-regular";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 30px;
+  line-height: 37px;
+  display: flex;
+  align-items: center;
+  text-transform: uppercase;
+
+  margin-left: -38px;
+  margin-bottom: 14px;
+}
+
+.service-text-active {
+  color: #e2e2e1;
+  text-shadow: 9px 7px 10px rgba(17, 17, 17, 0.9);
+
+  z-index: 1;
+}
+
+.service-text-deactive {
+  color: #565656;
+  z-index: 0;
+}
+
+.service-item-last {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.service-last-img {
+  width: 60px;
+  height: 79px;
+  margin-bottom: 26px;
+}
+
+.service-last-text {
+  font-family: "tommy-regular";
+  font-style: normal;
+  font-weight: bold;
+  font-size: 30px;
+  line-height: 37px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  text-transform: uppercase;
+  /* color: #565656; */
+  color: #e2e2e1;
+  padding-left: 40px;
+  padding-right: 40px;
+}
+
+.service-last-text .active {
+  color: #e2e2e1;
+}

@@ -59,7 +59,7 @@ export const INITFORM_LIST = [
     key: "phoneNumber",
     label: "Phone*",
     error: false,
-    errorText: "Plese fill in the field",
+    errorText: "Please fill in the field",
   },
 ];
 

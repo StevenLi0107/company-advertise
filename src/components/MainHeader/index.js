@@ -43,6 +43,14 @@ const MainHeader = ({ scrollToElement, onScrollChange, active }) => {
             Main
           </a>
           <a
+            id="services"
+            onClick={(event) => handleNavBarClick(event, "Services")}
+            className={active === "Services" && "active"}
+            href="/"
+          >
+            Services
+          </a>
+          <a
             id="expertise"
             onClick={(event) => handleNavBarClick(event, "Expertise")}
             className={active === "Expertise" && "active"}
@@ -56,7 +64,7 @@ const MainHeader = ({ scrollToElement, onScrollChange, active }) => {
             className={active === "Portfolio" && "active"}
             href="/"
           >
-            Portfolio
+            Clients
           </a>
           <a
             id="about"

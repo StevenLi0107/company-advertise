@@ -52,10 +52,10 @@ const MainContainer = ({ scrollToElement }) => {
         <div className="arrow-button-wrapper">
           <img
             className="arrow-button"
-            id="expertise"
+            id="services"
             src={ArrowDown}
             alt=""
-            onClick={(event) => scrollToElement(event, "Expertise")}
+            onClick={(event) => scrollToElement(event, "Services")}
           />
         </div>
       </div>

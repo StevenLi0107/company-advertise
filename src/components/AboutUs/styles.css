@@ -1,0 +1,236 @@
+.about-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  margin-top: 22px;
+}
+
+.about-header-effect {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 35px;
+}
+
+.about-large-ecllipse {
+  margin-left: -25px;
+  width: 40px;
+  height: 40px;
+  background: radial-gradient(
+    59.62% 59.62% at 50% 50%,
+    rgba(222, 200, 167, 0.5) 41.98%,
+    rgba(227, 123, 0, 0.5) 100%
+  );
+  opacity: 0.7;
+  filter: blur(10px);
+  transform: matrix(0.96, -0.28, -0.28, -0.96, 0, 0);
+}
+
+.about-small-ecllipse {
+  margin-left: 76px;
+  margin-top: 78px;
+  width: 20px;
+  height: 20px;
+  background: radial-gradient(
+    59.62% 59.62% at 50% 50%,
+    rgba(222, 200, 167, 0.7) 41.98%,
+    rgba(227, 123, 0, 0.7) 100%
+  );
+  opacity: 0.9;
+  filter: blur(8px);
+  transform: matrix(0.96, -0.28, -0.28, -0.96, 0, 0);
+}
+
+.about-content-wrapper {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.about-height-bar {
+  position: absolute;
+  top: 0px;
+  left: 57%;
+  width: 2px;
+  height: 900px;
+
+  background: linear-gradient(
+    #dec8a7 13.29%,
+    #f3963a 36.35%,
+    #e37b00 61.62%,
+    #b03b31 89.68%
+  );
+
+  /* transform: rotate(90deg); */
+}
+
+.about-header-conetent {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  /* margin-left: 140px;
+  margin-right: 87px; */
+  margin-bottom: 25px;
+}
+
+.about-title-wrapper {
+  display: flex;
+  width: 57%;
+  /* flex-direction: column; */
+  align-items: center;
+  justify-content: center;
+}
+
+.about-title {
+  color: #565656;
+  font-family: "tommy-light";
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 57px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  /* margin-bottom: 20px; */
+}
+
+.about-description {
+  width: 592px;
+  font-family: "tommy-regular";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 44px;
+  line-height: 57px;
+  letter-spacing: 0.05em;
+  text-transform: capitalize;
+
+  background: linear-gradient(
+    137.83deg,
+    #dec8a7 15.11%,
+    #f3963a 37.03%,
+    #e37b00 62.01%,
+    #b03b31 87.72%
+  );
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+.about-color-pattern {
+  opacity: 80%;
+  width: 43%;
+  display: flex;
+  justify-content: center;
+  /* transform: matrix(0.03, -1, -1, -0.03, 0, 0); */
+}
+
+.about-width-bar {
+  width: 100%;
+  height: 2px;
+
+  background: linear-gradient(
+    90deg,
+    #dec8a7 13.29%,
+    #f3963a 38.62%,
+    #e37b00 67.5%,
+    #b03b31 97.22%
+  );
+
+  margin-bottom: 60px;
+}
+
+.about-content-items-wrapper {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 100%;
+  /* justify-content: space-between; */
+  /* margin-left: 140px;
+  margin-right: 156px; */
+}
+
+.about-content-items {
+  width: 57%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.about-content-item {
+  display: flex;
+  /* flex-direction: column; */
+  margin-bottom: 50px;
+}
+
+.about-content-item-title {
+  font-family: "tommy-light";
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 22px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #dec8a7;
+  /* margin-bottom: 16px; */
+}
+
+.about-content-item-content {
+  width: 573.53px;
+  font-family: "tommy-thin";
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 23px;
+  letter-spacing: 0.05em;
+  color: #e2e2e1;
+
+  background: rgba(226, 226, 225, 1);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+.about-content-img-wrapper {
+  width: 43%;
+  display: flex;
+  justify-content: center;
+}
+
+.about-content-img {
+  display: flex;
+  flex-direction: column;
+  width: 291px;
+  height: 315px;
+  position: relative;
+}
+
+.about-content-img img:nth-child(1) {
+  width: 244px;
+  height: 244px;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.about-content-img img:nth-child(2) {
+  width: 244px;
+  height: 244px;
+  position: absolute;
+  top: 24px;
+  left: 16px;
+}
+
+.about-content-img img:nth-child(3) {
+  width: 244px;
+  height: 244px;
+  position: absolute;
+  top: 48px;
+  left: 32px;
+}
+
+.about-content-img img:nth-child(4) {
+  width: 244px;
+  height: 244px;
+  position: absolute;
+  top: 72px;
+  left: 48px;
+}

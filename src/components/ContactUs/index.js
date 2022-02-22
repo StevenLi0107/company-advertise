@@ -2,12 +2,13 @@
 import { useState, useRef, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Snackbar } from "@material-ui/core";
-import { withStyles } from "@material-ui/core/styles";
+import { withStyles, makeStyles } from "@material-ui/core/styles";
 
 import { get } from "lodash";
 
 import MuiAlert from "@material-ui/lab/Alert";
 import { display, flexbox } from "@material-ui/system";
+import { TextField } from "@material-ui/core";
 import { classes } from "istanbul-lib-coverage";
 
 import { contactUs } from "../../redux/actions/formsActions";
@@ -20,19 +21,61 @@ import BackPoints from "../../assets/back-points.png";
 import Rectangle from "../../assets/contactRectangle.svg";
 import Arrow from "../../assets/arrow_horizontal.svg";
 import AttachChecked from "../../assets/attach_check.svg";
+import AttachFailed from "../../assets/attach_failed.svg";
 import FileAttach from "../../assets/file_attach.svg";
 import Logo from "../../assets/logo.svg";
 import Success from "../../assets/success-check.svg";
+import SendFailed from "../../assets/send_failed.svg";
 import Close from "../../assets/close-icon.svg";
 
 import { CONTACT_SERVICE_LIST, INITFORM_LIST } from "../../constant.js";
+import * as TYPES from "../../redux/actions/types.js";
 import "./styles.css";
 
-const styles = {
-  snackbarStyleViaContentProps: {
-    backgroundColor: "orange",
+const useStyles = makeStyles((theme) => ({
+  root: {
+    "& .MuiFormLabel-root": {
+      color: "#e2e2e1 !important",
+      marginLeft: "20px",
+      fontFamily: "tommy-thin",
+      fontSize: "18px",
+    },
+    "& .MuiFormLabel-root.Mui-focused": {
+      color: "#dec8a7 !important",
+    },
+    "& .MuiInput-underline": {
+      width: "430px",
+      borderBottom: "1px solid grey !important",
+    },
+    "& .MuiInput-underline:before": {
+      width: "430px",
+      borderBottom: "1px solid grey !important",
+    },
+    "& .MuiInput-underline:after": {
+      width: "430px",
+      borderBottom: "1px solid grey !important",
+    },
   },
-};
+
+  rootDeactive: {
+    "& .MuiFormLabel-root": {
+      color: "#dec8a7 !important",
+      marginLeft: "20px",
+    },
+    "& .MuiInput-underline": {
+      width: "430px",
+      borderBottom: "1px solid grey !important",
+    },
+    "& .MuiInput-underline:before": {
+      width: "430px",
+      borderBottom: "1px solid grey !important",
+    },
+    "& .MuiInput-underline:after": {
+      width: "430px",
+      borderBottom: "1px solid grey !important",
+    },
+  },
+}));
 
 const buttonText = [
   "Mobile",
@@ -71,12 +114,15 @@ function Alert(props) {
 }
 
 const ContactUs = ({ ref }) => {
+  const classes = useStyles();
+
   const dispatch = useDispatch();
   const isSendSuccess = useSelector((state) => state.adminReducer.sendSuccess);
+  const isSendFailed = useSelector((state) => state.adminReducer.failed);
 
   const [activeButtons, setActiveButtons] = useState([]);
-  const [activeInputs, setActiveInputs] = useState([]);
   const [attachFile, setAttachFile] = useState(false);
+  const [attachFileFailed, setAttachFileFailed] = useState(false);
   const [containA, setContainA] = useState(false);
   const [isOpen, setOpen] = useState(false);
   const [form, setForm] = useState(initForm);
@@ -103,16 +149,10 @@ const ContactUs = ({ ref }) => {
     });
   };
 
-  const handleActiveInput = (num, e) => {
-    if (activeInputs.some((n) => n === num) && form[e.target.name] === "") {
-      return setActiveInputs((prev) => prev.filter((n) => n !== num));
-    }
-    setActiveInputs([...activeInputs, num]);
-  };
-
   const handleAttachOnChange = () => {
     const _file = fileRef.current.files[0];
     if (_file && _file.size > 26000000) {
+      setAttachFileFailed(true);
       return alert("File size must be less than 25MB");
     }
     getBase64(_file)
@@ -129,7 +169,7 @@ const ContactUs = ({ ref }) => {
           };
         })
       )
-      .catch((e) => console.log(e));
+      .catch((e) => setAttachFileFailed(true));
   };
 
   const handleAttachClick = () => {
@@ -182,6 +222,7 @@ const ContactUs = ({ ref }) => {
 
   const handleClose = () => {
     setOpen(false);
+    dispatch({ type: TYPES.SEND_MSG_REQUEST, payload: null });
   };
 
   useEffect(() => {
@@ -190,12 +231,10 @@ const ContactUs = ({ ref }) => {
       setAttachFile(false);
       setOpen(isSendSuccess);
       setForm(initForm);
+    } else {
+      isSendFailed && setOpen(isSendFailed);
     }
-  }, [isSendSuccess]);
-
-  function Alert(props) {
-    return <MuiAlert elevation={6} variant="filled" {...props} />;
-  }
+  });
 
   return (
     <div className="contact-container">
@@ -211,25 +250,25 @@ const ContactUs = ({ ref }) => {
             </span>
           </div>
           <div style={{ display: "flex", width: "511px" }}>
-            <p className="quote">“</p>
+            <div className="quote">“</div>
           </div>
           <div className="contact-body">
             <span className="contact-text">
-              It has many landing page variations
-              <br /> to choose from, which one is <br />
-              always a big advantage.
+              Words don’t matter – our skill does,
+              <br /> and this is where your business can
+              <br /> benefit from.
             </span>
-            <p className="quote" id="after-quote">
+            <div className="quote" id="after-quote">
               “
-            </p>
+            </div>
           </div>
           <div className="contact-logo-wrapper">
             <img className="contact-logo-img" src={Logo} alt="" />
             <div className="contact-logo-text">
-              <span>Ivan Cheng</span>
-              <span img className="contact-logo-service-text">
+              <div className="contact-logo-title-text">Ivan Cheng</div>
+              <div className="contact-logo-service-text">
                 CEO <span> | </span> Cowork Development
-              </span>
+              </div>
             </div>
           </div>
         </div>
@@ -242,15 +281,24 @@ const ContactUs = ({ ref }) => {
               anchorOrigin={{ vertical: "bottom", horizontal: "right" }}
             >
               <div className="contact-alert-section">
-                <img
-                  src={Success}
-                  alt="success"
-                  className="contact-alert-success-img"
-                />
+                {((isSendSuccess || attachFile) && (
+                  <img
+                    src={Success}
+                    alt="success"
+                    className="contact-alert-success-img"
+                  />
+                )) ||
+                  (isSendFailed && (
+                    <img
+                      src={SendFailed}
+                      alt="Failed"
+                      className="contact-alert-success-img"
+                    />
+                  ))}
                 <div className="contact-alert-message">
-                  {attachFile
-                    ? "File is successfully attached"
-                    : "Request is successfully sent"}
+                  {(attachFile && "File is successfully attached") ||
+                    (isSendSuccess && "Request is successfully sent") ||
+                    (isSendFailed && "Form not submitted.")}
                 </div>
                 <img
                   src={Close}
@@ -287,22 +335,17 @@ const ContactUs = ({ ref }) => {
             <div className="contact-info-label">
               {INITFORM_LIST.map((item, index) => (
                 <span className="contact-info-item">
-                  <span
-                    className={`${
-                      activeInputs.some((num) => num === index)
-                        ? "contact-info-item-active"
-                        : "contact-info-item-normal"
-                    }`}
-                  >
-                    {item.label}
-                  </span>
-                  <input
-                    value={get(form, [`${item.key}`, "text"])}
-                    onChange={handleChangeForm}
-                    onFocus={handleActiveInput.bind(null, index)}
-                    onBlur={handleActiveInput.bind(null, index)}
-                    // placeholder={item.label}
+                  <TextField
+                    label={item.label}
                     name={item.key}
+                    variant="standard"
+                    value={get(form, [`${item.key}`, "text"])}
+                    className={
+                      get(form, [`${item.key}`, "text"]) === ""
+                        ? classes.root
+                        : classes.rootDeactive
+                    }
+                    onChange={handleChangeForm}
                   />
                   <div className="contact-info-item-line">
                     <span></span>
@@ -335,23 +378,17 @@ const ContactUs = ({ ref }) => {
                   className="contact-file-attach-wrapper"
                   style={{ border: "none" }}
                 >
-                  <span
-                    className={`${
-                      activeInputs.some((num) => num === 3)
-                        ? "contact-info-item-active"
-                        : "contact-info-item-normal"
-                    }`}
-                  >
-                    Message*
-                  </span>
-                  <input
-                    value={form.projectDetails.text}
-                    onChange={handleChangeForm}
-                    onFocus={handleActiveInput.bind(null, 3)}
-                    onBlur={handleActiveInput.bind(null, 3)}
+                  <TextField
+                    label="Message*"
                     name="projectDetails"
-                    id="contact-message"
-                    // placeholder="Message*"
+                    variant="standard"
+                    value={form.projectDetails.text}
+                    className={
+                      form.projectDetails.text === ""
+                        ? classes.root
+                        : classes.rootDeactive
+                    }
+                    onChange={handleChangeForm}
                   />
                   <img
                     onClick={handleAttachClick}
@@ -378,12 +415,17 @@ const ContactUs = ({ ref }) => {
                       : ""
                   }`}
                 >
-                  Plese fill in the field
+                  Please fill in the field
                 </div>
                 {attachFile ? (
                   <div className="contact-file-attach-check ">
                     <img alt="" src={AttachChecked} />
                     <p>file attached</p>
+                  </div>
+                ) : attachFileFailed ? (
+                  <div className="contact-file-attach-check ">
+                    <img alt="" src={AttachFailed} />
+                    <p>file not attached</p>
                   </div>
                 ) : (
                   <div className="contact-file-attach-check "></div>

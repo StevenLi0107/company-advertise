@@ -58,13 +58,10 @@ const OurCases = ({ ref }) => {
 
   const handlePageMove = (id) => {
     if (id === "back") {
-      clientIndex > 0
-        ? setClientIndex((prev) => prev - 1)
-        : setClientIndex(portfoliosList.length - 1);
+      clientIndex > 0 && setClientIndex((prev) => prev - 1);
     } else if (id === "next") {
-      clientIndex < portfoliosList.length - 1
-        ? setClientIndex((prev) => prev + 1)
-        : setClientIndex(0);
+      clientIndex < portfoliosList.length - 1 &&
+        setClientIndex((prev) => prev + 1);
     }
   };
 
@@ -96,7 +93,8 @@ const OurCases = ({ ref }) => {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <img src={SocialIcon} alt="" className="client-social-img" />
+                {/* <img src={SocialIcon} alt="" className="client-social-img" /> */}
+                <div className="client-social-img"></div>
               </a>
             </div>
             <div className="client-information">
@@ -138,51 +136,63 @@ const OurCases = ({ ref }) => {
                 {portfoliosList[clientIndex].services}
               </div>
             </div>
-            <div className="client-information-page-wrapper">
-              <div
-                id="back"
-                className="client-back-next-page"
-                onClick={() => handlePageMove("back")}
-              >
-                <img
-                  id="backImg"
-                  src={ArrowBack}
-                  alt=""
-                  style={{ marginRight: "5px" }}
-                />
-                <p>BACK</p>
-              </div>
-              <div className="client-information-group-page">
-                {portfoliosList.map((item, index) =>
-                  index === clientIndex ? (
+            {portfoliosList.length > 1 ? (
+              <div className="client-information-page-wrapper">
+                {clientIndex > 0 ? (
+                  <div
+                    id="back"
+                    className="client-back-next-page"
+                    onClick={() => handlePageMove("back")}
+                  >
                     <img
-                      src={GroupSelect}
+                      id="backImg"
+                      src={ArrowBack}
                       alt=""
-                      style={{ width: "7px", height: "7px" }}
+                      style={{ marginRight: "5px" }}
                     />
-                  ) : (
+                    <p>BACK</p>
+                  </div>
+                ) : (
+                  <div style={{ width: "78px" }}></div>
+                )}
+                <div className="client-information-group-page">
+                  {portfoliosList.map((item, index) =>
+                    index === clientIndex ? (
+                      <img
+                        src={GroupSelect}
+                        alt=""
+                        style={{ width: "7px", height: "7px" }}
+                      />
+                    ) : (
+                      <img
+                        src={GroupUnselect}
+                        alt=""
+                        style={{ width: "7px", height: "7px" }}
+                      />
+                    )
+                  )}
+                </div>
+                {clientIndex < portfoliosList.length - 1 ? (
+                  <div
+                    id="next"
+                    className="client-back-next-page"
+                    onClick={() => handlePageMove("next")}
+                  >
+                    <p>Next</p>
                     <img
-                      src={GroupUnselect}
+                      id="nextImg"
+                      src={ArrowNext}
                       alt=""
-                      style={{ width: "7px", height: "7px" }}
+                      style={{ marginLeft: "5px" }}
                     />
-                  )
+                  </div>
+                ) : (
+                  <div style={{ width: "78px" }}></div>
                 )}
               </div>
-              <div
-                id="next"
-                className="client-back-next-page"
-                onClick={() => handlePageMove("next")}
-              >
-                <p>Next</p>
-                <img
-                  id="nextImg"
-                  src={ArrowNext}
-                  alt=""
-                  style={{ marginLeft: "5px" }}
-                />
-              </div>
-            </div>
+            ) : (
+              <div className="client-information-page-wrapper-hidden"></div>
+            )}
           </div>
         </div>
       )}

@@ -2,6 +2,8 @@ import * as TYPES from "./types";
 import * as formService from "../../services/forms";
 
 export const contactUs = (payload) => async (dispatch) => {
+  console.log("contactUs sending:");
+
   dispatch({ type: TYPES.SEND_MSG_REQUEST, payload: null });
 
   try {
@@ -9,8 +11,12 @@ export const contactUs = (payload) => async (dispatch) => {
 
     if (response?.status === 200) {
       dispatch({ type: TYPES.SEND_MSG_SUCCESS, payload: null });
+    } else {
+      console.log("contactUs send err:", response?.status);
+      dispatch({ type: TYPES.SEND_MSG_ERROR, payload: null });
     }
   } catch (error) {
+    console.log("contactUs send err:", error);
     dispatch({ type: TYPES.SEND_MSG_ERROR, payload: error });
   }
 };

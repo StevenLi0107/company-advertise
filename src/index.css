@@ -70,3 +70,23 @@ a {
   font-family: tommy-extra-bold;
   src: url("./assets/made_tommy/MADE\ TOMMY\ ExtraBold_PERSONAL\ USE.otf");
 }
+
+@font-face {
+  font-family: tommy-thin-outline;
+  src: url("./assets/made_tommy/MADE\ TOMMY\ Thin\ Outline_PERSONAL\ USE.otf");
+}
+
+@font-face {
+  font-family: tommy-light-outline;
+  src: url("./assets/made_tommy/MADE\ TOMMY\ Light\ Outline_PERSONAL\ USE.otf");
+}
+
+@font-face {
+  font-family: tommy-regular-outline;
+  src: url("./assets/made_tommy/MADE\ TOMMY\ Regular\ Outline_PERSONAL\ USE.otf");
+}
+
+@font-face {
+  font-family: tommy-medium-outline;
+  src: url("./assets/made_tommy/MADE\ TOMMY\ Medium\ Outline_PERSONAL\ USE.otf");
+}

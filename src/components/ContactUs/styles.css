@@ -136,22 +136,25 @@
   flex-direction: column;
   align-items: start;
   font-size: 16px;
-  color: #ffffff;
 }
-.contact-logo-service-text {
-  display: flex;
-  font-size: 18px;
-  /* color: #ffffff; */
-  background: rgba(226, 226, 225, 1);
-  background-clip: text;
-  -webkit-background-clip: text;
-  color: transparent;
+
+.contact-logo-title-text {
+  color: #ffffff;
 }
 
 .contact-logo-service-text span {
   color: #e37b00;
   margin-left: 6px;
   margin-right: 6px;
+}
+
+.contact-logo-service-text {
+  display: flex;
+  font-size: 18px;
+  background: rgba(226, 226, 225, 1);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
 }
 
 .contact-info-wrapper {
@@ -280,17 +283,17 @@
 }
 
 .contact-info-item {
-  margin-top: 30px;
+  width: 100%;
+  margin-top: 20px;
   position: relative;
 }
 
-.contact-info-item-normal {
+/* .contact-info-item-normal {
   position: absolute;
   top: 10px;
   left: 22px;
   transition: all 0.2s ease-in-out;
   font-size: 18px;
-  /* opacity: 0.6; */
   font-family: "tommy-thin";
   line-height: 26px;
   color: #e2e2e1;
@@ -304,10 +307,10 @@
   font-family: "tommy-thin";
   line-height: 26px;
   color: #dec8a7;
-}
+} */
 
 .contact-info-item-line {
-  border: 1px solid grey;
+  /* border: 1px solid grey; */
   position: relative;
   margin-bottom: 6px;
 }
@@ -364,19 +367,19 @@
   display: flex;
   position: relative;
   gap: 10px;
-  justify-content: end;
+  justify-content: flex-end;
   margin-top: 22px;
   padding-right: 40px;
+
+  font-size: 16px;
+  font-weight: 400;
+  font-family: "tommy-light";
 
   /* color: #dec8a7; */
   background: rgba(222, 200, 167, 1);
   background-clip: text;
   -webkit-background-clip: text;
   color: transparent;
-
-  font-size: 16px;
-  font-weight: 400;
-  font-family: "tommy-light";
 }
 
 .contact-info-touch:hover {

@@ -9,31 +9,35 @@ import MainFooter from "../../components/MainFooter";
 import OurExpertise from "../../components/OurExpertise";
 import OurCases from "../../components/OurCases";
 import OurClients from "../../components/OurClients";
+import OurServices from "../../components/OurServices";
+import AboutUs from "../../components/AboutUs";
+import Customer from "../../components/Customer";
 
 import {
   getPortfoliosList,
   getClientsList,
-  getUserList,
+  // getUserList,
 } from "../../redux/actions/adminAction";
 
 const MainPage = () => {
   const dispatch = useDispatch();
 
   const [active, setActive] = useState("");
-  const [scrollPosition, setScrollPosition] = useState(false);
+  // const [scrollPosition, setScrollPosition] = useState(false);
 
   const mainRef = useRef();
+  const servicesRef = useRef();
   const expertiseRef = useRef();
   const portfolioRef = useRef();
   const contactUsRef = useRef();
-  const mainFooterRef = useRef();
+  const aboutRef = useRef();
 
-  const isActiveLogosSection = useSelector(
-    (state) => state.adminReducer.isActiveLogosSection
-  );
-  const isActiveDevelopersSection = useSelector(
-    (state) => state.adminReducer.isActivePeopleSection
-  );
+  // const isActiveLogosSection = useSelector(
+  //   (state) => state.adminReducer.isActiveLogosSection
+  // );
+  // const isActiveDevelopersSection = useSelector(
+  //   (state) => state.adminReducer.isActivePeopleSection
+  // );
 
   const portfoliosList = useSelector(
     (state) => state.adminReducer.portfoliosList
@@ -48,30 +52,30 @@ const MainPage = () => {
     //   contactUsRef.current.offsetTop,
     //   mainFooterRef.current.offsetTop
     // );
-    if (
-      window.pageYOffset > mainRef.current.offsetTop &&
-      window.pageYOffset < expertiseRef.current.offsetTop - 150
-    ) {
-      setActive("Main");
-    }
-    if (
-      window.pageYOffset > expertiseRef.current.offsetTop - 60 &&
-      window.pageYOffset < portfolioRef.current.offsetTop - 450
-    ) {
-      setActive("Expertise");
-    }
-    if (
-      window.pageYOffset > portfolioRef.current.offsetTop - 60 &&
-      window.pageYOffset < contactUsRef.current.offsetTop - 350
-    ) {
-      setActive("Portfolio");
-    }
-    if (
-      window.pageYOffset > contactUsRef.current.offsetTop - 350 &&
-      window.pageYOffset < contactUsRef.current.offsetTop + 5
-    ) {
-      setActive("About");
-    }
+    // if (
+    //   window.pageYOffset > mainRef.current.offsetTop &&
+    //   window.pageYOffset < expertiseRef.current.offsetTop - 150
+    // ) {
+    //   setActive("Main");
+    // }
+    // if (
+    //   window.pageYOffset > expertiseRef.current.offsetTop - 60 &&
+    //   window.pageYOffset < portfolioRef.current.offsetTop - 450
+    // ) {
+    //   setActive("Expertise");
+    // }
+    // if (
+    //   window.pageYOffset > portfolioRef.current.offsetTop - 60 &&
+    //   window.pageYOffset < contactUsRef.current.offsetTop - 350
+    // ) {
+    //   setActive("Portfolio");
+    // }
+    // if (
+    //   window.pageYOffset > contactUsRef.current.offsetTop - 350 &&
+    //   window.pageYOffset < contactUsRef.current.offsetTop + 5
+    // ) {
+    //   setActive("About");
+    // }
     // if (
     //   window.pageYOffset > contactUsRef.current.offsetTop - 60 &&
     //   window.pageYOffset < mainFooterRef.current.offsetTop
@@ -85,10 +89,11 @@ const MainPage = () => {
     event.preventDefault();
     const refs = {
       main: mainRef,
+      services: servicesRef,
       expertise: expertiseRef,
       portfolio: portfolioRef,
+      about: aboutRef,
       contactUs: contactUsRef,
-      about: contactUsRef,
     };
     window.scrollTo({
       behavior: "smooth",
@@ -115,17 +120,28 @@ const MainPage = () => {
         active={active}
       />
       <MainContainer scrollToElement={scrollToElement} />
+      <Box ref={servicesRef}>
+        <OurServices />
+      </Box>
       <Box ref={expertiseRef}>
         <OurExpertise />
-        {isActiveLogosSection && <OurClients />}
+        <OurClients />
       </Box>
 
       <Box ref={portfolioRef}>{portfoliosList.length > 0 && <OurCases />}</Box>
 
+      <Box ref={aboutRef}>
+        <AboutUs />
+      </Box>
+
+      <Box>
+        <Customer />
+      </Box>
+
       <Box ref={contactUsRef}>
         <ContactUs />
       </Box>
-      <Box ref={mainFooterRef}>
+      <Box>
         <MainFooter />
       </Box>
     </div>

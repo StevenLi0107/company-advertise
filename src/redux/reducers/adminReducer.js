@@ -7,7 +7,7 @@ const initialState = {
   clientsList: [],
   portfoliosList: [],
   loading: false,
-  success: false,
+  failed: false,
   error: null,
   sendSuccess: false,
 };
@@ -38,7 +38,7 @@ export default function (state = initialState, action) {
         ...state,
         loading: true,
         error: null,
-        success: false,
+        failed: false,
         sendSuccess: false,
       };
 
@@ -47,7 +47,7 @@ export default function (state = initialState, action) {
         ...state,
         loading: false,
         error: null,
-        success: true,
+        failed: false,
         isActiveLogosSection: action.payload,
       };
 
@@ -56,7 +56,7 @@ export default function (state = initialState, action) {
         ...state,
         loading: false,
         error: null,
-        success: true,
+        failed: false,
         isActivePeopleSection: action.payload,
       };
 
@@ -70,7 +70,7 @@ export default function (state = initialState, action) {
         ...state,
         loading: false,
         error: null,
-        success: true,
+        failed: false,
         usersList: userLists,
       };
     case TYPES.UPDATE_USER_SUCCESS:
@@ -78,7 +78,7 @@ export default function (state = initialState, action) {
         ...state,
         loading: false,
         error: null,
-        success: true,
+        failed: false,
         usersList: state.usersList.map((user) => {
           if (user.id === action.payload.id) {
             return action.payload;
@@ -91,7 +91,7 @@ export default function (state = initialState, action) {
         ...state,
         loading: false,
         error: null,
-        success: true,
+        failed: false,
         usersList: action.payload,
       };
     case TYPES.ADD_USER_SUCCESS:
@@ -99,7 +99,7 @@ export default function (state = initialState, action) {
         ...state,
         loading: false,
         error: null,
-        success: true,
+        failed: false,
         usersList: [...state.usersList, action.payload],
       };
     case TYPES.SAVE_USERS_ORDER_SUCCESS:
@@ -107,7 +107,7 @@ export default function (state = initialState, action) {
         ...state,
         loading: false,
         error: null,
-        success: true,
+        failed: false,
         usersList: action.payload,
       };
     case TYPES.DELETE_USER_SUCCESS:
@@ -115,7 +115,7 @@ export default function (state = initialState, action) {
         ...state,
         loading: false,
         error: null,
-        success: true,
+        failed: false,
         usersList: state.usersList.filter((user) => user.id !== action.payload),
       };
 
@@ -126,7 +126,7 @@ export default function (state = initialState, action) {
         ...state,
         loading: false,
         error: null,
-        success: true,
+        failed: false,
         portfoliosList: portfolioLists,
       };
     case TYPES.UPDATE_PORTFOLIO_SUCCESS:
@@ -134,7 +134,7 @@ export default function (state = initialState, action) {
         ...state,
         loading: false,
         error: null,
-        success: true,
+        failed: false,
         portfoliosList: state.portfoliosList.map((portfolio) => {
           if (portfolio.id === action.payload.id) {
             return action.payload;
@@ -147,7 +147,7 @@ export default function (state = initialState, action) {
         ...state,
         loading: false,
         error: null,
-        success: true,
+        failed: false,
         portfoliosList: [...state.portfoliosList, action.payload],
       };
     case TYPES.CHANGE_PORTFOLIOS_ORDER:
@@ -155,7 +155,7 @@ export default function (state = initialState, action) {
         ...state,
         loading: false,
         error: null,
-        success: true,
+        failed: false,
         portfoliosList: action.payload,
       };
     case TYPES.SAVE_PORTFOLIOS_ORDER_SUCCESS:
@@ -163,7 +163,7 @@ export default function (state = initialState, action) {
         ...state,
         loading: false,
         error: null,
-        success: true,
+        failed: false,
         portfoliosList: action.payload,
       };
     case TYPES.DELETE_PORTFOLIO_SUCCESS:
@@ -171,7 +171,7 @@ export default function (state = initialState, action) {
         ...state,
         loading: false,
         error: null,
-        success: true,
+        failed: false,
         portfoliosList: state.portfoliosList.filter(
           (portfolio) => portfolio.id !== action.payload
         ),
@@ -183,7 +183,7 @@ export default function (state = initialState, action) {
         ...state,
         loading: false,
         error: null,
-        success: true,
+        failed: false,
         clientsList: clientLists,
       };
     case TYPES.UPDATE_CLIENT_SUCCESS:
@@ -191,7 +191,7 @@ export default function (state = initialState, action) {
         ...state,
         loading: false,
         error: null,
-        success: true,
+        failed: false,
         clientsList: state.clientsList.map((client) => {
           if (client.id === action.payload.id) {
             return action.payload;
@@ -204,7 +204,7 @@ export default function (state = initialState, action) {
         ...state,
         loading: false,
         error: null,
-        success: true,
+        failed: false,
         clientsList: [...state.clientsList, action.payload],
       };
     case TYPES.CHANGE_CLIENTS_ORDER:
@@ -212,7 +212,7 @@ export default function (state = initialState, action) {
         ...state,
         loading: false,
         error: null,
-        success: true,
+        failed: false,
         clientsList: action.payload,
       };
     case TYPES.SAVE_CLIENTS_ORDER_SUCCESS:
@@ -220,7 +220,7 @@ export default function (state = initialState, action) {
         ...state,
         loading: false,
         error: null,
-        success: true,
+        failed: false,
         clientsList: action.payload,
       };
     case TYPES.DELETE_CLIENT_SUCCESS:
@@ -228,7 +228,7 @@ export default function (state = initialState, action) {
         ...state,
         loading: false,
         error: null,
-        success: true,
+        failed: false,
         clientsList: state.clientsList.filter(
           (user) => user.id !== action.payload
         ),
@@ -238,7 +238,7 @@ export default function (state = initialState, action) {
         ...state,
         loading: false,
         error: null,
-        success: true,
+        failed: false,
         sendSuccess: true,
       };
 
@@ -262,7 +262,8 @@ export default function (state = initialState, action) {
         ...state,
         loading: false,
         error: action.payload,
-        success: false,
+        failed: true,
+        sendSuccess: false,
       };
     default:
       return state;

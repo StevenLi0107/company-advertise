@@ -60,7 +60,19 @@
 }
 
 .main-title-span {
-  color: #f09236;
+  /* color: #f09236; */
+
+  background: linear-gradient(
+    180deg,
+    #dec8a7 15.11%,
+    #f3963a 37.03%,
+    #e37b00 62.01%,
+    #b03b31 87.72%
+  );
+
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
 }
 
 .main-content-text {
@@ -101,6 +113,23 @@
   line-height: 30px;
 
   transition: 1s all;
+
+  /* border: 2px solid;
+  border-radius: 4px;
+  border-image-source: linear-gradient(
+    137.83deg,
+    #dec8a7 15.11%,
+    #f3963a 37.03%,
+    #e37b00 62.01%,
+    #b03b31 87.72%
+  );
+
+  stroke: linear-gradient(
+    #dec8a7 0%,
+    #f3963a 30.18%,
+    #e37b00 64.58%,
+    #b03b31 100%
+  ); */
 }
 .contact-btn:hover {
   border: none;
