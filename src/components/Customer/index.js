@@ -32,10 +32,11 @@ const Customer = () => {
         className="customer-pattern-5"
       />
 
-      <span className="customer-text">
-        We Always Put
+      <div className="customer-text">
+        <span>We Always Put
         <br /> The Customer First
       </span>
+    </div>
     </div>
   );
 };

@@ -257,6 +257,13 @@ export default function (state = initialState, action) {
     case TYPES.SAVE_PORTFOLIOS_ORDER_ERROR:
     case TYPES.ADD_CLIENT_ERROR:
     case TYPES.SAVE_CLIENTS_ORDER_ERROR:
+      return {
+        ...state,
+        loading: false,
+        error: action.payload,
+        failed: false,
+        sendSuccess: false,
+      };
     case TYPES.SEND_MSG_ERROR:
       return {
         ...state,
@@ -265,6 +272,7 @@ export default function (state = initialState, action) {
         failed: true,
         sendSuccess: false,
       };
+
     default:
       return state;
   }

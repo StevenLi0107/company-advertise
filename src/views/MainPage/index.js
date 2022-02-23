@@ -52,36 +52,36 @@ const MainPage = () => {
     //   contactUsRef.current.offsetTop,
     //   mainFooterRef.current.offsetTop
     // );
-    // if (
-    //   window.pageYOffset > mainRef.current.offsetTop &&
-    //   window.pageYOffset < expertiseRef.current.offsetTop - 150
-    // ) {
-    //   setActive("Main");
-    // }
-    // if (
-    //   window.pageYOffset > expertiseRef.current.offsetTop - 60 &&
-    //   window.pageYOffset < portfolioRef.current.offsetTop - 450
-    // ) {
-    //   setActive("Expertise");
-    // }
-    // if (
-    //   window.pageYOffset > portfolioRef.current.offsetTop - 60 &&
-    //   window.pageYOffset < contactUsRef.current.offsetTop - 350
-    // ) {
-    //   setActive("Portfolio");
-    // }
-    // if (
-    //   window.pageYOffset > contactUsRef.current.offsetTop - 350 &&
-    //   window.pageYOffset < contactUsRef.current.offsetTop + 5
-    // ) {
-    //   setActive("About");
-    // }
-    // if (
-    //   window.pageYOffset > contactUsRef.current.offsetTop - 60 &&
-    //   window.pageYOffset < mainFooterRef.current.offsetTop
-    // ) {
-    //   setActive("About");
-    // }
+    if (
+      window.pageYOffset > mainRef.current.offsetTop &&
+      window.pageYOffset < mainRef.current.offsetTop + 30
+    ) {
+      setActive("Main");
+    }
+    if (
+      window.pageYOffset > servicesRef.current.offsetTop - 60 &&
+      window.pageYOffset < servicesRef.current.offsetTop - 30
+    ) {
+      setActive("Services");
+    }
+    if (
+      window.pageYOffset > expertiseRef.current.offsetTop - 60 &&
+      window.pageYOffset < expertiseRef.current.offsetTop - 30
+    ) {
+      setActive("Expertise");
+    }
+    if (
+      window.pageYOffset > portfolioRef.current.offsetTop - 60 &&
+      window.pageYOffset < portfolioRef.current.offsetTop - 30
+    ) {
+      setActive("Portfolio");
+    }
+    if (
+      window.pageYOffset > aboutRef.current.offsetTop - 60 &&
+      window.pageYOffset < aboutRef.current.offsetTop - 30
+    ) {
+      setActive("About");
+    }
   }, []);
 
   const scrollToElement = useCallback((event, navActive) => {
@@ -125,10 +125,12 @@ const MainPage = () => {
       </Box>
       <Box ref={expertiseRef}>
         <OurExpertise />
-        <OurClients />
       </Box>
 
-      <Box ref={portfolioRef}>{portfoliosList.length > 0 && <OurCases />}</Box>
+      <Box ref={portfolioRef}>
+        <OurClients />
+        {portfoliosList.length > 0 && <OurCases />}
+      </Box>
 
       <Box ref={aboutRef}>
         <AboutUs />

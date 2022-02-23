@@ -71,23 +71,20 @@
 }
 
 .contact-text {
+  font-size: 24px;
+  line-height: 30px;
+  font-weight: 400;
+  font-family: "tommy-thin";
   text-align: center;
-  /* color: #e2e2e1; */
+
   background: rgba(226, 226, 225, 1);
   background-clip: text;
   -webkit-background-clip: text;
   color: transparent;
 
-  /* margin-left: 40px; */
-
-  font-size: 24px;
-  line-height: 30px;
-  font-weight: 400;
-  font-family: "tommy-thin";
 }
 
 .quote {
-  display: flex;
   width: 19px;
   line-height: 30px;
   font-size: 48px;
@@ -104,10 +101,11 @@
   -webkit-background-clip: text;
   color: transparent;
   vertical-align: middle;
+  margin-left: 15px;
 }
 
 #after-quote {
-  margin-left: 10px;
+  margin-left: 15px;
   margin-top: 60px;
   line-height: 59px;
 }
@@ -144,12 +142,12 @@
 
 .contact-logo-service-text span {
   color: #e37b00;
-  margin-left: 6px;
-  margin-right: 6px;
+  margin-left: 3px;
+  margin-right: 3px;
 }
 
 .contact-logo-service-text {
-  display: flex;
+  display: inline-block;
   font-size: 18px;
   background: rgba(226, 226, 225, 1);
   background-clip: text;
@@ -340,8 +338,11 @@
 .contact-file-attach-img {
   /* position: absolute; */
   height: 35px;
-  width: 20px;
+  width: 30px;
+  padding-left: 5px;
+  padding-right: 5px;
   text-align: center;
+  box-sizing: border-box;
 }
 
 .contact-file-attach-img:hover {
@@ -364,13 +365,17 @@
 }
 
 .contact-info-touch {
-  display: flex;
+  display: block;
   position: relative;
-  gap: 10px;
-  justify-content: flex-end;
+  text-align: end;
+  /* gap: 10px; */
+  /* justify-content: flex-end; */
   margin-top: 22px;
   padding-right: 40px;
 
+}
+
+.contact-info-touch-block span {
   font-size: 16px;
   font-weight: 400;
   font-family: "tommy-light";
@@ -382,17 +387,18 @@
   color: transparent;
 }
 
-.contact-info-touch:hover {
+.contact-info-touch-block:hover {
   opacity: 0.7;
-}
-
-.contact-info-touch p:hover {
   cursor: pointer;
 }
 
-.contact-info-touch img:hover {
+/* .contact-info-touch-block span:hover {
   cursor: pointer;
 }
+
+.contact-info-touch-block img:hover {
+  cursor: pointer;
+} */
 
 .client-file-attach-status {
   display: flex;

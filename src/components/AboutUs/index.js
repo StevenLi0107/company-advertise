@@ -41,34 +41,35 @@ const AboutUs = () => {
         <div className="about-content-items-wrapper">
           <div className="about-content-items">
             <div className="about-content-item">
-              <div className="about-content-item-content">
-                <div className="about-content-item-title">Who WE are</div>
-                <br /> A diverse team of skilled developers who share a common
+              <span className="about-content-item-content">
+                <span className="about-content-item-title">Who WE are</span>
+                <br /> <br />A diverse team of skilled developers who share a common
                 desire to create perfect IT solutions.{" "}
-              </div>
+              </span>
             </div>
             <div className="about-content-item">
-              <div className="about-content-item-content">
-                <div className="about-content-item-title">
+              <span className="about-content-item-content">
+                <span className="about-content-item-title">
                   Cowork philosophy
-                </div>
+                </span>
+                <br />
                 <br />
                 We developed our own philosophy based on three fundametal
                 aspects: Focus, Idea, Passion, which helps us to overcome any
                 customer’s expectations and to provide the expertise,
                 experience, dedication and flexibility required to design,
                 develop and support a digital product.{" "}
-              </div>
+              </span>
             </div>
             <div className="about-content-item">
-              <div className="about-content-item-content">
-                <div className="about-content-item-title">How we work</div>
-                <br />
+              <span className="about-content-item-content">
+                <span className="about-content-item-title">How we work</span>
+                <br /><br />
                 Our team is renowned for 100% sprint completion rate, on-time
                 delivery and top-notch quality. If you have an idea and want to
                 see the first version of your MVP as soon as possible, our
                 company is what you search for.{" "}
-              </div>
+              </span>
             </div>
           </div>
           <div className="about-content-img-wrapper">

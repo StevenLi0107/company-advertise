@@ -250,7 +250,7 @@ const ContactUs = ({ ref }) => {
             </span>
           </div>
           <div style={{ display: "flex", width: "511px" }}>
-            <div className="quote">“</div>
+            <span className="quote">“</span>
           </div>
           <div className="contact-body">
             <span className="contact-text">
@@ -258,17 +258,17 @@ const ContactUs = ({ ref }) => {
               <br /> and this is where your business can
               <br /> benefit from.
             </span>
-            <div className="quote" id="after-quote">
+            <span className="quote" id="after-quote">
               “
-            </div>
+            </span>
           </div>
           <div className="contact-logo-wrapper">
             <img className="contact-logo-img" src={Logo} alt="" />
             <div className="contact-logo-text">
               <div className="contact-logo-title-text">Ivan Cheng</div>
-              <div className="contact-logo-service-text">
+              <span className="contact-logo-service-text">
                 CEO <span> | </span> Cowork Development
-              </div>
+              </span>
             </div>
           </div>
         </div>
@@ -433,8 +433,15 @@ const ContactUs = ({ ref }) => {
               </div>
 
               <div className="contact-info-touch">
-                <p onClick={handleSubmit}>GET IN TOUCH</p>
-                <img alt="" src={Arrow} onClick={handleSubmit} />
+                <span className="contact-info-touch-block">
+                  <span onClick={handleSubmit}>GET IN TOUCH</span>
+                  <img
+                    alt=""
+                    src={Arrow}
+                    onClick={handleSubmit}
+                    style={{ marginLeft: "10px" }}
+                  />
+                </span>
               </div>
             </div>
           </div>
