@@ -45,7 +45,7 @@ export const INITFORM_LIST = [
     key: "companyName",
     label: "Company*",
     error: false,
-    errorText: "Please type your companies name",
+    errorText: "Please type your company's name",
   },
   {
     text: "",

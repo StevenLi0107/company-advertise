@@ -28,7 +28,7 @@ const MainPage = () => {
   const mainRef = useRef();
   const servicesRef = useRef();
   const expertiseRef = useRef();
-  const portfolioRef = useRef();
+  const clientRef = useRef();
   const contactUsRef = useRef();
   const aboutRef = useRef();
 
@@ -71,16 +71,16 @@ const MainPage = () => {
       setActive("Expertise");
     }
     if (
-      window.pageYOffset > portfolioRef.current.offsetTop - 60 &&
-      window.pageYOffset < portfolioRef.current.offsetTop - 30
+      window.pageYOffset > clientRef.current.offsetTop - 60 &&
+      window.pageYOffset < clientRef.current.offsetTop - 30
     ) {
-      setActive("Portfolio");
+      setActive("Clients");
     }
     if (
       window.pageYOffset > aboutRef.current.offsetTop - 60 &&
       window.pageYOffset < aboutRef.current.offsetTop - 30
     ) {
-      setActive("About");
+      setActive("About US");
     }
   }, []);
 
@@ -91,7 +91,7 @@ const MainPage = () => {
       main: mainRef,
       services: servicesRef,
       expertise: expertiseRef,
-      portfolio: portfolioRef,
+      client: clientRef,
       about: aboutRef,
       contactUs: contactUsRef,
     };
@@ -127,7 +127,7 @@ const MainPage = () => {
         <OurExpertise />
       </Box>
 
-      <Box ref={portfolioRef}>
+      <Box ref={clientRef}>
         <OurClients />
         {portfoliosList.length > 0 && <OurCases />}
       </Box>

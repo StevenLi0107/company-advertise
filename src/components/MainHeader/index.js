@@ -16,12 +16,12 @@ const HEADER_LIST = [
     name: "Expertise",
   },
   {
-    key: "portfolio",
-    name: "Portfolio",
+    key: "client",
+    name: "Clients",
   },
   {
     key: "about",
-    name: "About",
+    name: "About US",
   },
 ];
 
