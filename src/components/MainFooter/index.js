@@ -17,11 +17,11 @@ const MainFooter = ({ scrollToElement, isActiveDevelopersSection }) => {
                 aria-label={item.label}
                 rel="noopener noreferrer"
               >
-                {item.label}
+                <span>{item.label}</span>
               </a>
             ))}
           </div>
-          <div className="footer-privacy">PRIVACY & POLICE</div>
+          <div className="footer-privacy">PRIVACY & POLICY</div>
         </div>
         <div className="footer-item">
           <img src={FooterLine} alt="" />

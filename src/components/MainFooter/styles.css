@@ -32,6 +32,19 @@
   gap: 57px;
 }
 
+.footer-social-item span:hover {
+  background: -webkit-linear-gradient(
+    300.83deg,
+    #dec8a7 15.11%,
+    #f3963a 37.03%,
+    #e37b00 62.01%,
+    #b03b31 87.72%
+  );
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
 .footer-social-item:link,
 .footer-social-item:visited,
 .footer-social-item:active {

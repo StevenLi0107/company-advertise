@@ -45,21 +45,21 @@ export const INITFORM_LIST = [
     key: "companyName",
     label: "Company*",
     error: false,
-    errorText: "Please type your name",
+    errorText: "Please type your companies name",
   },
   {
     text: "",
     key: "email",
     label: "Email*",
     error: false,
-    errorText: "Please type your e-mail",
+    errorText: "Please type your Email",
   },
   {
     text: "",
     key: "phoneNumber",
     label: "Phone*",
     error: false,
-    errorText: "Please fill in the field",
+    errorText: "Please type your phone number",
   },
 ];
 

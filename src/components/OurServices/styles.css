@@ -57,6 +57,7 @@
   font-size: 210px;
   line-height: 263px;
 
+  transition: all 0.3s;
   z-index: 0;
 }
 
@@ -93,6 +94,8 @@
 
   margin-left: -38px;
   margin-bottom: 40px;
+
+  transition: all 0.3s;
 }
 
 .service-text-active {

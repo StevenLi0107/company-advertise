@@ -415,7 +415,7 @@ const ContactUs = ({ ref }) => {
                       : ""
                   }`}
                 >
-                  Please fill in the field
+                  Please type your message
                 </div>
                 {attachFile ? (
                   <div className="contact-file-attach-check ">

@@ -44,7 +44,7 @@ const MainContainer = ({ scrollToElement }) => {
                 aria-label={item.label}
                 rel="noopener noreferrer"
               >
-                {item.label}
+                <span>{item.label}</span>
               </a>
             ))}
           </div>
