@@ -14,9 +14,6 @@ const initialState = {
 
 // eslint-disable-next-line import/no-anonymous-default-export
 export default function (state = initialState, action) {
-  // console.log("Redux : action type: ", action.type);
-  // console.log("Redux : payload", action.payload);
-
   switch (action.type) {
     case TYPES.GET_USERS_LIST_REQUEST:
     case TYPES.UPDATE_USER_REQUEST:
@@ -62,8 +59,6 @@ export default function (state = initialState, action) {
 
     case TYPES.GET_USERS_LIST_SUCCESS:
       const userLists = [...action.payload];
-
-      // console.log("Redux: userLists", userLists);
 
       userLists.sort((a, b) => a.id - b.id);
       return {

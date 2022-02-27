@@ -7,8 +7,7 @@
   font-family: "tommy-light";
   font-weight: 400;
 
-  padding-top: 70px;
-  /* padding-bottom: 100px; */
+  padding-top: 80px;
   position: relative;
 }
 
@@ -37,7 +36,6 @@
   display: flex;
   flex-direction: row;
   align-items: center;
-  /* justify-content: center; */
   margin-top: 110px;
   gap: 150px;
   box-sizing: border-box;

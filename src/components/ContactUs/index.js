@@ -2,27 +2,20 @@
 import { useState, useRef, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Snackbar } from "@material-ui/core";
-import { withStyles, makeStyles } from "@material-ui/core/styles";
-
+import { makeStyles } from "@material-ui/core/styles";
 import { get } from "lodash";
-
 import MuiAlert from "@material-ui/lab/Alert";
-import { display, flexbox } from "@material-ui/system";
 import { TextField } from "@material-ui/core";
-import { classes } from "istanbul-lib-coverage";
-
 import { contactUs } from "../../redux/actions/formsActions";
 import { getBase64 } from "../../utils/base64";
 import { isEmpty } from "../../utils/stringUtils";
-import Loader from "./Loader";
-
 import BigPattern from "../../assets/big-pattern.png";
 import BackPoints from "../../assets/back-points.png";
 import Rectangle from "../../assets/contactRectangle.svg";
 import Arrow from "../../assets/arrow_horizontal.svg";
 import AttachChecked from "../../assets/attach_check.svg";
 import AttachFailed from "../../assets/attach_failed.svg";
-import FileAttach from "../../assets/file_attach.svg";
+import FileAttach from "../../assets/file_attach.png";
 import Logo from "../../assets/logo.svg";
 import Success from "../../assets/success-check.svg";
 import SendFailed from "../../assets/send_failed.svg";
@@ -39,20 +32,27 @@ const useStyles = makeStyles((theme) => ({
       marginLeft: "20px",
       fontFamily: "tommy-thin",
       fontSize: "18px",
+      lineHeight: "26px",
     },
     "& .MuiFormLabel-root.Mui-focused": {
       color: "#dec8a7 !important",
+      fontFamily: "tommy-thin",
+      fontSize: "14px",
     },
     "& .MuiInput-underline": {
       width: "430px",
-      borderBottom: "1px solid grey !important",
+      border: "none",
+      // borderBottom: "1px solid grey !important",
     },
     "& .MuiInput-underline:before": {
       width: "430px",
+      padding: "0",
+      // border: "none",
       borderBottom: "1px solid grey !important",
     },
     "& .MuiInput-underline:after": {
       width: "430px",
+      // border: "none",
       borderBottom: "1px solid grey !important",
     },
   },
@@ -61,17 +61,23 @@ const useStyles = makeStyles((theme) => ({
     "& .MuiFormLabel-root": {
       color: "#dec8a7 !important",
       marginLeft: "20px",
+      fontFamily: "tommy-thin",
+      fontSize: "14px",
+      lineHeight: "26px",
     },
     "& .MuiInput-underline": {
       width: "430px",
-      borderBottom: "1px solid grey !important",
+      border: "none",
+      // borderBottom: "1px solid grey !important",
     },
     "& .MuiInput-underline:before": {
       width: "430px",
+      // border: "none",
       borderBottom: "1px solid grey !important",
     },
     "& .MuiInput-underline:after": {
       width: "430px",
+      // border: "none",
       borderBottom: "1px solid grey !important",
     },
   },
@@ -109,9 +115,9 @@ const initForm = {
   },
 };
 
-function Alert(props) {
-  return <MuiAlert elevation={6} variant="filled" {...props} />;
-}
+// function Alert(props) {
+//   return <MuiAlert elevation={6} variant="filled" {...props} />;
+// }
 
 const ContactUs = ({ ref }) => {
   const classes = useStyles();
@@ -126,6 +132,7 @@ const ContactUs = ({ ref }) => {
   const [containA, setContainA] = useState(false);
   const [isOpen, setOpen] = useState(false);
   const [form, setForm] = useState(initForm);
+  const [isSending, setIsSending] = useState(false);
 
   const fileRef = useRef();
 
@@ -218,23 +225,33 @@ const ContactUs = ({ ref }) => {
       },
     };
     dispatch(contactUs(query));
+    setIsSending(true);
+    setOpen(true);
   };
 
   const handleClose = () => {
+    setIsSending(false);
+
+    (isSendFailed || isSendSuccess) &&
+      dispatch({ type: TYPES.SEND_MSG_REQUEST, payload: null });
     setOpen(false);
-    dispatch({ type: TYPES.SEND_MSG_REQUEST, payload: null });
   };
 
   useEffect(() => {
-    // setOpen(isSendSuccess);
+    setOpen(isSendSuccess || isSending || isSendFailed || attachFileFailed);
     if (isSendSuccess) {
+      setOpen(true);
       setAttachFile(false);
-      setOpen(isSendSuccess);
+      setAttachFileFailed(false);
+      setIsSending(false);
       setForm(initForm);
-    } else {
-      isSendFailed && setOpen(isSendFailed);
+      dispatch({ type: TYPES.SEND_MSG_REQUEST, payload: null });
     }
-  });
+    if (isSendFailed) {
+      setIsSending(false);
+      setOpen(true);
+    }
+  }, [isSendSuccess, isSendFailed, isSending, attachFileFailed, dispatch]);
 
   return (
     <div className="contact-container">
@@ -276,29 +293,46 @@ const ContactUs = ({ ref }) => {
           <div style={{ zIndex: "3" }}>
             <Snackbar
               open={isOpen}
-              autoHideDuration={4000}
+              autoHideDuration={2000}
               onClose={handleClose}
               anchorOrigin={{ vertical: "bottom", horizontal: "right" }}
             >
               <div className="contact-alert-section">
-                {((isSendSuccess || attachFile) && (
+                {((attachFile &&
+                  !isSendFailed &&
+                  !isSending &&
+                  !attachFileFailed) ||
+                  (isSending && !isSendFailed) ||
+                  (isSendSuccess && !isSendFailed)) && (
                   <img
                     src={Success}
                     alt="success"
                     className="contact-alert-success-img"
                   />
-                )) ||
-                  (isSendFailed && (
+                )}
+                {(attachFileFailed || isSendFailed) &&
+                  !isSendSuccess &&
+                  !isSending && (
                     <img
                       src={SendFailed}
                       alt="Failed"
                       className="contact-alert-success-img"
                     />
-                  ))}
+                  )}
                 <div className="contact-alert-message">
-                  {(attachFile && "File is successfully attached") ||
-                    (isSendSuccess && "Request is successfully sent") ||
-                    (isSendFailed && "Form not submitted.")}
+                  {(!isSendSuccess &&
+                    !isSending &&
+                    !isSendFailed &&
+                    attachFile &&
+                    "File is successfully attached") ||
+                    (!isSendSuccess &&
+                      !isSendFailed &&
+                      isSending &&
+                      "Sending your request...") ||
+                    (!isSendFailed &&
+                      isSendSuccess &&
+                      "Request is successfully sent") ||
+                    (!isSendSuccess && isSendFailed && "Form not submitted.")}
                 </div>
                 <img
                   src={Close}
@@ -432,15 +466,10 @@ const ContactUs = ({ ref }) => {
                 )}
               </div>
 
-              <div className="contact-info-touch">
+              <div className="contact-info-touch" onClick={handleSubmit}>
                 <span className="contact-info-touch-block">
-                  <span onClick={handleSubmit}>GET IN TOUCH</span>
-                  <img
-                    alt=""
-                    src={Arrow}
-                    onClick={handleSubmit}
-                    style={{ marginLeft: "10px" }}
-                  />
+                  <span>GET IN TOUCH</span>
+                  <img alt="" src={Arrow} style={{ marginLeft: "10px" }} />
                 </span>
               </div>
             </div>

@@ -1,6 +1,3 @@
-import { useState, useCallback, useEffect } from "react";
-import { useSelector } from "react-redux";
-
 import "./styles.css";
 
 import JavascriptLogo from "../../assets/expertise/javascript-logo.svg";
@@ -62,7 +59,7 @@ const OurExpertise = ({ ref }) => {
       <div className="expertise-description">
         Varied tech-stacks and the ability to adapt quickly is one of our
         advantages
-        <br /> in modern software developing “pool”.
+        <br /> in modern software developing “pool”
       </div>
       <div className="expertise-logo-wrapper">
         {EXPERTISE_LIST.map((item) => (

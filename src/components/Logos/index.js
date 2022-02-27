@@ -1,8 +1,6 @@
 import React from "react";
 import { Box, Button, IconButton } from "@material-ui/core";
 import AddCircleOutlineIcon from "@material-ui/icons/AddCircleOutline";
-// import { useStyles } from "./styles";
-// import { mock } from "./mock";
 import { CardDnd } from "../CardDnd";
 import LogoCard from "./LogoCard";
 import { useDispatch, useSelector } from "react-redux";
@@ -20,7 +18,6 @@ import { AddClientModal } from "../Modals/AddClientModal";
 import { checkTokenValid } from "../../redux/actions/authAction";
 
 export default function Logos() {
-  // const [formState, setFormState] = React.useState(mock);
   const isActiveLogosSection = useSelector(
     (state) => state.adminReducer.isActiveLogosSection
   );
@@ -29,7 +26,6 @@ export default function Logos() {
   const [openModal, setOpenModal] = React.useState(false);
   const [openUpload, setOpenUpload] = React.useState(false);
   const dispatch = useDispatch();
-  // const classes = useStyles();
   const [uploadId, setUploadId] = React.useState();
 
   React.useEffect(() => {

@@ -88,7 +88,6 @@
   font-family: "tommy-thin";
   font-size: 20px;
   line-height: 26px;
-  /* or 26px */
   color: #ffffff;
 
   margin: 0px 57px 80px 70px;
@@ -113,7 +112,6 @@
   justify-content: end;
   align-items: center;
   margin-top: 35px;
-  /* margin-right: 35px; */
   padding-right: 35px;
 }
 
@@ -137,7 +135,6 @@
   height: 36px;
   flex-direction: row;
   align-items: center;
-  /* margin-top: 42px; */
   margin-left: 144px;
   margin-right: 76px;
   justify-content: space-between;
@@ -163,9 +160,7 @@
   display: flex;
   align-items: center;
 
-  /* Light Grey */
   color: #e2e2e1;
-
   font-family: "tommy-thin";
 }
 
@@ -173,7 +168,6 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  /* margin-top: 42px; */
 }
 
 .client-information-text {
@@ -256,11 +250,9 @@
 }
 
 .client-back-next-page {
-  /* width: 100%; */
   display: flex;
   flex-direction: row;
   align-items: center;
-  /* justify-content: end; */
 
   font-family: "tommy-thin";
   font-size: 14px;
@@ -277,7 +269,6 @@
 }
 
 .client-information-group-page {
-  /* width: 100%; */
   display: flex;
   flex-direction: row;
   align-items: center;

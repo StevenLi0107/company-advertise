@@ -1,4 +1,3 @@
-import { makeStyles } from "@material-ui/core";
 import { SOCIAL_LIST } from "../../constant.js";
 import FooterLine from "../../assets/footer_line.svg";
 import "./styles.css";

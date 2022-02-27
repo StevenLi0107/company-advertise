@@ -5,7 +5,7 @@
   justify-content: center;
 
   margin-top: 90px;
-  padding-top: 40px;
+  padding-top: 80px;
   font-family: "tommy-light";
   font-style: normal;
   font-weight: 400;
@@ -18,7 +18,7 @@
   font-size: 14px;
   line-height: 17px;
   letter-spacing: 0.2em;
-  text-transform: capitalize;
+  text-transform: uppercase;
 
   color: rgba(86, 86, 86, 1);
 
@@ -41,8 +41,6 @@
   grid-template-rows: repeat(2, 1fr);
   grid-template-columns: repeat(4, 0fr);
   place-content: center;
-  /* row-gap: 45px;
-  column-gap: 65px; */
   margin-top: 59px;
   margin-bottom: 151px;
 

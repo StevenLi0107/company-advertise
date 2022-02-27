@@ -23,8 +23,6 @@
   line-height: 31px;
   color: #e2e2e1;
   text-align: center;
-  /* padding-left: 297px;
-  padding-right: 297px; */
   margin-bottom: 92px;
 }
 
@@ -57,7 +55,7 @@
   font-size: 210px;
   line-height: 263px;
 
-  transition: all 0.3s;
+  transition: all 5s;
   z-index: 0;
 }
 
@@ -73,12 +71,10 @@
   background-clip: text;
   -webkit-background-clip: text;
   color: transparent;
-  /* z-index: 1; */
 }
 
 .service-index-deactive {
   color: #565656;
-  /* z-index: 1; */
 }
 
 .service-text {
@@ -95,7 +91,7 @@
   margin-left: -38px;
   margin-bottom: 40px;
 
-  transition: all 0.3s;
+  transition: all 5s;
 }
 
 .service-text-active {
@@ -133,7 +129,6 @@
   align-items: center;
   text-align: center;
   text-transform: uppercase;
-  /* color: #565656; */
   color: #e2e2e1;
   padding-left: 40px;
   padding-right: 40px;

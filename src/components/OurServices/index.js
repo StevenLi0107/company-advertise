@@ -1,8 +1,5 @@
-import { useCallback, useEffect, useState } from "react";
-
-import ServiceNormalImg from "../../assets/services/service_last_normal.svg";
+import { useState } from "react";
 import ServiceActiveImg from "../../assets/services/service_last_active.svg";
-
 import "./styles.css";
 
 const SERVICES_LIST = [
@@ -24,8 +21,6 @@ const OurServices = () => {
     else setSelectedIndex(-1);
   };
 
-  console.log("selectedIndex, isMouseOver", selectedIndex, isMouseOver);
-
   return (
     <>
       <div className="services-container">
@@ -34,7 +29,7 @@ const OurServices = () => {
           We help our customers understand and experience the benefits of
           software
           <br /> solutions for their businesses by delivering projects fast and
-          cost efficiently.
+          cost efficiently
         </span>
         <div className="services-items">
           {SERVICES_LIST.map((item, index) =>

@@ -1,8 +1,6 @@
 import React from "react";
 import { Router } from "react-router-dom";
 
-import { makeStyles } from "@material-ui/core";
-
 import { createBrowserHistory } from "history";
 import { DndProvider } from "react-dnd";
 import { HTML5Backend } from "react-dnd-html5-backend";

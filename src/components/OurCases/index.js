@@ -1,53 +1,14 @@
 import { useState } from "react";
 import { useSelector } from "react-redux";
-
 import ArrowBack from "../../assets/client/arrow-back.svg";
 import ArrowNext from "../../assets/client/arrow-next.svg";
 import Business from "../../assets/client/client-business-icon.svg";
-import SocialIcon from "../../assets/client/client-social-icon.svg";
 import Cooperation from "../../assets/client/cooperation-icon.svg";
 import GroupSelect from "../../assets/client/group-selected-icon.svg";
 import GroupUnselect from "../../assets/client/group-unselected-icon.svg";
 import LocationImg from "../../assets/client/location-img.svg";
 import Pattern from "../../assets/client/pattern.svg";
-
 import "./styles.css";
-
-// const CLIENT_LIST = [
-//   {
-//     key: "corva_client",
-//     label: "Corva",
-//     nameImg: CorvaName,
-//     duration: "5 years",
-//     location: "USA",
-//     business: "Large Business",
-//     description:
-//       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat",
-//     services: "Frontend backend QA",
-//   },
-//   {
-//     key: "gplans_client",
-//     label: "gplans",
-//     nameImg: GplanLogo,
-//     duration: "8 months",
-//     location: "USA",
-//     business: "Large Business",
-//     description:
-//       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat",
-//     services: "Frontend backend QA",
-//   },
-//   {
-//     key: "meituan_client",
-//     label: "Meituan",
-//     nameImg: MeituanLogo,
-//     duration: "2 years",
-//     location: "China",
-//     business: "Medium Business",
-//     description:
-//       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat",
-//     services: "React Javascript Nodejs",
-//   },
-// ];
 
 const OurCases = ({ ref }) => {
   const portfoliosList = useSelector(
@@ -64,8 +25,6 @@ const OurCases = ({ ref }) => {
         setClientIndex((prev) => prev + 1);
     }
   };
-
-  // console.log("portfoliosList:", portfoliosList);
 
   return (
     <div className="portfolio-container">
@@ -93,7 +52,6 @@ const OurCases = ({ ref }) => {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                {/* <img src={SocialIcon} alt="" className="client-social-img" /> */}
                 <div className="client-social-img"></div>
               </a>
             </div>

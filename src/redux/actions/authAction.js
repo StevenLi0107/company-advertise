@@ -7,9 +7,6 @@ export const loginUser = (payload) => async (dispatch) => {
   dispatch({ type: TYPES.LOGIN_USER_REQUEST, payload: null });
   try {
     const { data } = await authService.loginUser(payload);
-
-    // console.log("login data", data);
-
     setAuthentication(data.token);
 
     await dispatch({ type: TYPES.LOGIN_USER_SUCCESS, payload: data });
@@ -30,7 +27,6 @@ export const checkTokenValid = (payload) => async (dispatch, getState) => {
       });
     }
   } catch (error) {
-    // console.log(error);
     removeFromBrowserStorage("token");
     dispatch({ type: TYPES.CHECK_TOKEN_VALID_ERROR, payload: null });
   }

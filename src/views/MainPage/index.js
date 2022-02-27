@@ -1,6 +1,6 @@
 import { useState, useRef, useCallback, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Box, makeStyles } from "@material-ui/core";
+import { Box } from "@material-ui/core";
 
 import ContactUs from "../../components/ContactUs";
 import MainContainer from "../../components/MainContainer";
@@ -21,9 +21,12 @@ import {
 
 const MainPage = () => {
   const dispatch = useDispatch();
+  const portfoliosList = useSelector(
+    (state) => state.adminReducer.portfoliosList
+  );
 
-  const [active, setActive] = useState("");
-  // const [scrollPosition, setScrollPosition] = useState(false);
+  const [active, setActive] = useState("Main");
+  const [refreshFlag, setRefreshFlag] = useState(true);
 
   const mainRef = useRef();
   const servicesRef = useRef();
@@ -32,26 +35,7 @@ const MainPage = () => {
   const contactUsRef = useRef();
   const aboutRef = useRef();
 
-  // const isActiveLogosSection = useSelector(
-  //   (state) => state.adminReducer.isActiveLogosSection
-  // );
-  // const isActiveDevelopersSection = useSelector(
-  //   (state) => state.adminReducer.isActivePeopleSection
-  // );
-
-  const portfoliosList = useSelector(
-    (state) => state.adminReducer.portfoliosList
-  );
-
   const handleScroll = useCallback(() => {
-    // console.log(
-    //   "window.pageYoffset:",
-    //   window.pageYOffset,
-    //   mainRef.current.offsetTop,
-    //   expertiseRef.current.offsetTop,
-    //   contactUsRef.current.offsetTop,
-    //   mainFooterRef.current.offsetTop
-    // );
     if (
       window.pageYOffset > mainRef.current.offsetTop &&
       window.pageYOffset < mainRef.current.offsetTop + 30
@@ -77,17 +61,21 @@ const MainPage = () => {
       setActive("Clients");
     }
     if (
-      window.pageYOffset > aboutRef.current.offsetTop - 60 &&
-      window.pageYOffset < aboutRef.current.offsetTop - 30
+      window.pageYOffset > aboutRef.current.offsetTop + 60 &&
+      window.pageYOffset < aboutRef.current.offsetTop + 120
     ) {
       setActive("About US");
     }
+    if (window.pageYOffset > contactUsRef.current.offsetTop - 300) {
+      setActive("contactUS");
+    }
   }, []);
 
-  const scrollToElement = useCallback((event, navActive) => {
-    // console.log("scroll id:", event.target.id);
-    event.preventDefault();
+  const scrollToElement = (event, navActive) => {
+    if (event.target.id !== "mainLogo") event.preventDefault();
+
     const refs = {
+      mainLogo: mainRef,
       main: mainRef,
       services: servicesRef,
       expertise: expertiseRef,
@@ -95,31 +83,56 @@ const MainPage = () => {
       about: aboutRef,
       contactUs: contactUsRef,
     };
-    window.scrollTo({
-      behavior: "smooth",
-      top: refs[event.target.id].current.offsetTop - 56,
-    });
 
+    if (event.target.id) {
+      window.scrollTo({
+        behavior: "smooth",
+        top:
+          event.target.id === "about"
+            ? refs[event.target.id].current?.offsetTop + 90
+            : refs[event.target.id].current?.offsetTop - 56,
+      });
+    }
     setActive(navActive);
-  }, []);
+  };
 
   useEffect(() => {
     dispatch(getPortfoliosList());
     dispatch(getClientsList());
+
     // dispatch(getUserList());
   }, [dispatch]);
 
+  useEffect(() => {
+    if (refreshFlag) {
+      setRefreshFlag(false);
+      window.scrollTo({
+        behavior: "smooth",
+        top: 0,
+      });
+    }
+  }, [refreshFlag]);
+
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  });
+
   return (
-    <div
-      ref={mainRef}
-      style={{ width: "100%", background: "#1d1d1d", overflowX: "none" }}
-    >
-      <MainHeader
-        scrollToElement={scrollToElement}
-        onScrollChange={handleScroll}
-        active={active}
-      />
-      <MainContainer scrollToElement={scrollToElement} />
+    <div style={{ width: "100%", background: "#1d1d1d", overflowX: "none" }}>
+      <Box ref={mainRef}>
+        <MainHeader
+          scrollToElement={scrollToElement}
+          onScrollChange={handleScroll}
+          active={active}
+        />
+      </Box>
+      <Box>
+        <MainContainer scrollToElement={scrollToElement} />
+      </Box>
+
       <Box ref={servicesRef}>
         <OurServices />
       </Box>
